@@ -7,6 +7,6 @@
          * @Route("/", name="default_home", methods={"GET"})
          */
         public function home() {
-            return $this->render('default/home.html.twig');
+            return $this->render('default/home.html.twig', ['title' => 'Accueil']);
         }
     }
