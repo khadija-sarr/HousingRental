@@ -3,6 +3,7 @@
     use App\Entity\Category;
     use App\Entity\House;
     use App\Entity\User;
+    use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
     use Symfony\Bridge\Doctrine\Form\Type\EntityType;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -22,13 +23,12 @@
          * @Route("/logement/nouveau", name="house_new", methods={"GET|POST"})
          * @param Request $request
          * @param SluggerInterface $slugger
-         * @return RedirectResponse|Response
          */
         public function newHouse(Request $request, SluggerInterface $slugger) {
             $house = new House();
             $user = $this->getDoctrine()
                 ->getRepository(User::class)
-                ->find(2);
+                ->find($this->getUser());
             $house->setUser($user);
             $form = $this->createFormBuilder($house)
                 ->add('photo', FileType::class, ['label' => false, 'attr' => ['class' => 'dropify']])
@@ -38,9 +38,9 @@
                 ->add('address', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Adresse']])
                 ->add('zipcode', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Code Postal']])
                 ->add('city', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Ville']])
-                ->add('country', CountryType::class, ['label' => false, 'attr' => ['placeholder' => 'Pays']])
+                ->add('country', CountryType::class, ['label' => false])
                 ->add('price', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Prix']])
-                ->add('submit', SubmitType::class, ['label' => 'Ajouter', 'attr' => ['class' => 'btn-block btn-dark']])
+                ->add('submit', SubmitType::class, ['label' => 'Ajouter'])
                 ->getForm();
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
@@ -57,8 +57,11 @@
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($house);
                 $em->flush();
-                $this->addFlash('notice', 'Félicitation votre article est en ligne !');
-                return $this->redirectToRoute('default_house', ['category' => $house->getCategory()->getAlias(), 'alias' => $house->getAlias(), 'id' => $house->getId()]);
+                $this->addFlash('notice', 'Félicitation votre logement a bien ajoutée !');
+                return $this->redirectToRoute('default_home', [
+                    'category' => $house->getCategory()->getAlias(),
+                    'alias' => $house->getAlias(),
+                    'id' => $house->getId()]);
             }
             return $this->render('house/new.html.twig', ['form' => $form->createView()]);
         }
