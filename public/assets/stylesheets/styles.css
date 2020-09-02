@@ -1,0 +1,15 @@
+.titreMargin{
+    font-size: 35px;
+    margin: 20px;
+}
+.card:hover{
+    -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+}
