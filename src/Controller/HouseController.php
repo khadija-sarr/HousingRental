@@ -21,7 +21,6 @@
     class HouseController extends AbstractController {
         /**
          * @Route("/logement/nouveau", name="house_new", methods={"GET|POST"})
-         * @IsGranted("ROLE_ADMIN")
          * @param Request $request
          * @param SluggerInterface $slugger
          */
