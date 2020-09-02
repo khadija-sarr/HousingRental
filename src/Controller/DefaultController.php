@@ -24,4 +24,5 @@
         public function category(Category $category) {
             return $this->render('default/category.html.twig', ['category' => $category]);
         }
+        
     }
