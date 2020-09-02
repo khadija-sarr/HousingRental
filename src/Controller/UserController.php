@@ -58,7 +58,7 @@
                 $entityManager->persist($user);
                 $entityManager->flush();
                 $this->addFlash('notice', 'Félicitations vous êtes inscrit !');
-                return $this->redirectToRoute('home');
+                return $this->redirectToRoute('default_home');
             }
             return $this->render('user/register.html.twig', ['form' => $form->createView()]);
         }

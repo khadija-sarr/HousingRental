@@ -8,10 +8,10 @@
     <nav>
         <a class="siteTitle" href="{{ path('default_home') }}">HousingRental</a>
         <ul>
-            {% if category is defined %}
+            {% if categories is defined %}
                 {% for category in categories %}
                     <li>
-                        <a href="#">{{ category.name }}</a>
+                        <a href="{{ path('default_category', { 'alias' : category.alias }) }}">{{ category.name }}</a>
                     </li>
                 {% endfor %}
             {% endif %}
@@ -44,13 +44,13 @@
                     <div class="icon">
                         <i class="fas fa-envelope"></i>
                     </div>
-                    <p>{% if app.user %}{{ app.user.email }}{% else %}Email{% endif %}</p>
+                    <p title="{{ app.user.email }}">{% if app.user %}{{ app.user.email|slice(0, 12) }}...{% else %}Email{% endif %}</p>
                 </div>
                 <div class="userInfo">
                     <div class="icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <p>{% if app.user %}{{ app.user.phone }}{% else %}Téléphone{% endif %}</p>
+                    <p>{% if app.user %}0{{ app.user.phone }}{% else %}Téléphone{% endif %}</p>
                 </div>
                 <div class="userInfo">
                     <div class="icon">
@@ -72,13 +72,55 @@
             </div>
             <div class="mainContent">
                 <div class="usersList">
-                    <h2>Utilisateurs</h2>
+                    <div class="adminHeader">
+                        <h2>Utilisateurs</h2>
+                        <div class="divider"></div>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Id</th>
+                            <th>Photo</th>
+                            <th>Prénom</th>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>Téléphone</th>
+                            <th>Pays</th>
+                            <th>Code Postal</th>
+                            <th>Suppression</th>
+                        </tr>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td><img src="{{ asset('uploads/users/' ~ user.photo) }}" alt=""></td>
+                                <td>{{ user.firstname }}</td>
+                                <td>{{ user.lastname }}</td>
+                                <td title="{{ user.email }}">{{ user.email|slice(0, 12) }}...</td>
+                                <td>0{{ user.phone }}</td>
+                                <td>{{ user.country }}</td>
+                                <td>{{ user.zipcode }}</td>
+                                <td class="delete">
+                                    <a href="{{ path('admin_deleteUser', { 'id': user.id }) }}">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
                 </div>
                 <div class="rentalsList">
-                    <h2>Locations</h2>
+                    <div class="adminHeader">
+                        <h2>Locations</h2>
+                        <div class="divider"></div>
+                    </div>
                 </div>
                 <div class="editForm">
-                    <h2>Profil</h2>
+                    <div class="adminHeader">
+                        <h2>Profil</h2>
+                        <div class="divider"></div>
+                    </div>
+                </div>
+                <div class="bottomBar">
+
                 </div>
             </div>
         </div>
