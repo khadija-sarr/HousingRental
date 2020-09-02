@@ -1,0 +1,38 @@
+<footer class="mt-4 pt-4 position ">
+    <div class="container border-top">
+        <div class="row">
+            <div class="col-12 col-md text-center">
+                <h5>HousingRental</h5>
+                <small class="d-block text-muted">&copy; 2020</small>
+            </div>
+            <div class="col-6 col-md text-center">
+                <h5>Catégories</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="{{ path('default_category', {'alias' : 'appartement'}) }}">
+                            Appartement
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('default_category', {'alias' : 'maison'}) }}">
+                            Maison
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('default_category', {'alias' : 'evenements'}) }}">
+                            Evènements
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="col-6 col-md text-center">
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-muted">Mentions légales</a></li>
+                    <li><a href="#" class="text-muted">Politique de confidentialité</a></li>
+                    <li><a href="#" class="text-muted">Plan du site</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
