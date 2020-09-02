@@ -1,9 +1,6 @@
 <?php
 
-
 namespace App\Controller;
-
-
 
 
 use App\Entity\Category;
@@ -21,7 +18,6 @@ class DefaultController extends AbstractController
      */
     public function home()
     {
-
         $houses = $this->getDoctrine()
             ->getRepository(House::class)
             ->findBy([], ['id' => 'DESC'], 6);
@@ -37,18 +33,11 @@ class DefaultController extends AbstractController
      * @param Category $category
      * @return \Symfony\Component\HttpFoundation\Response
      */
-
     public function category(Category $category)
     {
         return $this->render('default/category.html.twig', [
             'category' => $category,
         ]);
     }
-
-
-
-
-
-
 
 }

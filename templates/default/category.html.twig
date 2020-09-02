@@ -3,8 +3,6 @@
 {% block title %}{{ category.name }}{% endblock %}
 
 {% block content %}
-    <h2 class="text-center titreMargin mt-5">{{ category.name | title }}</h2>
-
-        {% include 'components/_card.html.twig' %}
-
+   <h2 class="text-center titreMargin">{{ category.name | title }}</h2>
+   {% include 'components/_card.html.twig' %}
 {% endblock %}
