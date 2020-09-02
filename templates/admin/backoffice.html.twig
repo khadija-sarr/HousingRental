@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+{% endblock %}
+{% block content %}
+    <div class="adminPanel">
+        <div class="sideBar">
+            <div class="adminPhoto">
+                {% if app.user %}
+                    <img src="{{ app.user.photo }}" alt="Photo de {{ app.user.firstname }} {{ app.user.lastname }}">
+                {% else %}
+                    <p>Photo</p>
+                {% endif %}
+            </div>
+            <div class="divider"></div>
+            <div class="userInfo">
+                <div class="icon">
+                    <i class="fas fa-signature"></i>
+                </div>
+                <p>{% if app.user %}{{ app.user.firstname }}{% else %}Prénom{% endif %}</p>
+            </div>
+            <div class="userInfo">
+                <div class="icon">
+                    <i class="fas fa-signature"></i>
+                </div>
+                <p>{% if app.user %}{{ app.user.lastname }}{% else %}Nom{% endif %}</p>
+            </div>
+            <div class="userInfo">
+                <div class="icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <p>{% if app.user %}{{ app.user.email }}{% else %}Email{% endif %}</p>
+            </div>
+            <div class="userInfo">
+                <div class="icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <p>{% if app.user %}{{ app.user.phone }}{% else %}Téléphone{% endif %}</p>
+            </div>
+            <div class="userInfo">
+                <div class="icon">
+                    <i class="fas fa-globe-africa"></i>
+                </div>
+                <p>{% if app.user %}{{ app.user.country }}{% else %}Pays{% endif %}</p>
+            </div>
+            <div class="userInfo">
+                <div class="icon">
+                    <i class="fas fa-city"></i>
+                </div>
+                <p>{% if app.user %}{{ app.user.city }}{% else %}Ville{% endif %}</p>
+            </div>
+            <div class="divider"></div>
+            <button id="getUsers">Utilisateurs</button>
+            <button id="getRentals">Locations</button>
+            <div class="divider"></div>
+            <button id="editProfile">Éditer le profil</button>
+        </div>
+        <div class="mainContent">
+
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('assets/javascripts/script.js') }}"></script>
+{% endblock %}
