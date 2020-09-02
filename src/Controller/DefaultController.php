@@ -15,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
+  
     /*
      *  Page d'accueil
      */
