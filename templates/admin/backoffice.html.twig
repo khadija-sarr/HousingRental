@@ -6,7 +6,7 @@
 {% endblock %}
 {% block content %}
     <nav>
-        <a class="siteTitle" href="{{ path('default_home') }}">HousingRental</a>
+        <a class="siteTitle" href="{{ path('home') }}">HousingRental</a>
         <ul>
             {% if category is defined %}
                 {% for category in categories %}
@@ -22,7 +22,7 @@
             <div class="sideBar">
                 <div class="adminPhoto">
                     {% if app.user %}
-                        <img src="{{ app.user.photo }}" alt="Photo de {{ app.user.firstname }} {{ app.user.lastname }}">
+                        <img src="{{ asset('uploads/users/' ~ app.user.photo) }}" alt="Photo de {{ app.user.firstname }} {{ app.user.lastname }}">
                     {% else %}
                         <p>Photo</p>
                     {% endif %}
