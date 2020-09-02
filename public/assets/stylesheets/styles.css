@@ -13,3 +13,15 @@ footer{
     width: 100%;
     background-color: white;
 }
+.footer {
+    height: 130px;
+}
+nav.navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+div.navHeight {
+    height: 60px;
+}

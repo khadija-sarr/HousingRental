@@ -27,7 +27,7 @@ const removeFirstNav = document.querySelector("body > nav.navbar");
 if(removeFirstNav) {
     removeFirstNav.remove();
 }
-const removeLastFooter = document.querySelector("body > footer.mt-4");
+const removeLastFooter = document.querySelector("footer");
 if(removeLastFooter) {
     removeLastFooter.remove();
 }

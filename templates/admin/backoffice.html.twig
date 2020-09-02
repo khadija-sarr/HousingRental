@@ -6,7 +6,7 @@
 {% endblock %}
 {% block content %}
     <nav>
-        <a class="siteTitle" href="{{ path('home') }}">HousingRental</a>
+        <a class="siteTitle" href="{{ path('default_home') }}">HousingRental</a>
         <ul>
             {% if category is defined %}
                 {% for category in categories %}
