@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Rechercher une location
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/stylesheets/slider.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="slidecontainer d-flex">
+        <div class="col-3">
+            <b>Prix Min</b>
+            <input type="range" min="1" max="100" value="50" class="sliderMin" id="myRangeMin">
+        </div>
+        <div class="col-3">
+            <b>Prix Max</b>
+            <input type="range" min="1" max="100" value="50" class="sliderMax" id="myRangeMax">
+        </div>
+    </div>
+    {{ form(form) }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/javascripts/search.js') }}"></script>
+{% endblock %}
+
+
+
