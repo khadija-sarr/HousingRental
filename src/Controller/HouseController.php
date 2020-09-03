@@ -32,8 +32,8 @@
             $house->setUser($user);
             $form = $this->createFormBuilder($house)
                 ->add('name', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Nom de logement']])
-                ->add('description', TextareaType::class, ['label' => false])
-                ->add('category', EntityType::class, ['class' => Category::class, 'choice_label' => 'name', 'label' => 'catégorie'])
+                ->add('description', TextareaType::class, ['label' => 'Description'])
+                ->add('category', EntityType::class, ['class' => Category::class, 'choice_label' => 'name', 'label' => false])
                 ->add('address' , TextType::class, ['label' => false, 'attr' =>  ['placeholder' => 'Adresse']  ])
                 ->add('zipcode', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Code Postal']])
                 ->add('city', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Ville']])

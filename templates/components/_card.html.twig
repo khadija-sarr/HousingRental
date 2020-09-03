@@ -7,7 +7,12 @@
             <h6 class="card-subtitle text-muted">{{ house.description | slice(0,100)}}...</h6>
         </div>
         <div class="card-footer text-muted text-center">
-            <a href="#" class="card-link">En savoir plus</a>
+            <a href="{{ path('default_house', {
+                'category': house.category.alias,
+                'alias': house.alias,
+                'id':house.id
+            }) }}"
+               class="card-link">En savoir plus</a>
         </div>
     </div>
 </div>

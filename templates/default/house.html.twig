@@ -5,17 +5,17 @@
 {% block  content%}
 
     <div class="p-3 mx-auto text-center">
-        <h1 class="display-4">{{ houses.name }}</h1>
+        <h1 class="display-4">{{ house.name }}</h1>
     </div>
 
     <div class="py-5 bg-light">
         <div class="container">
             <div class="row">
                 <aside class="col-md-6">
-                    <img src="{{ asset('uploads/houses/' ~ houses.photo) }}"
-                         class="card-img-top" alt="{{ houses.name }}">
+                    <img src="{{ asset('uploads/houses/' ~ house.photo) }}"
+                         class="card-img-top" alt="{{ house.name }}">
                 </aside>
-                <article class="col-md-6">{{ houses.description | raw}}</article>
+                <article class="col-md-6">{{ house.description | raw}}</article>
             </div>
         </div>
     </div>
