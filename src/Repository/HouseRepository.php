@@ -19,22 +19,26 @@ class HouseRepository extends ServiceEntityRepository
         parent::__construct($registry, House::class);
     }
 
-    // /**
-    //  * @return House[] Returns an array of House objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @param $priceMin
+     * @param $priceMax
+     * @return House[] Returns an array of House objects
+     */
+    public function findHouses($priceMin, $priceMax)
     {
         return $this->createQueryBuilder('h')
-            ->andWhere('h.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('h.price >= :priceMin')
+            ->setParameter('priceMin', $priceMin)
+
+            ->andWhere('h.price <= :priceMax')
+            ->setParameter('priceMax', $priceMax)
+
             ->orderBy('h.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?House

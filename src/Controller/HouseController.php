@@ -62,7 +62,37 @@
                     'category' => $house->getCategory()->getAlias(),
                     'alias' => $house->getAlias(),
                     'id' => $house->getId()]);
-            }
-            return $this->render('house/new.html.twig', ['form' => $form->createView()]);
-        }
+          }
+        return $this->render('house/new.html.twig', ['form' => $form->createView()]);
     }
+    /**
+     * @Route ("/search", name="search_house", methods={"GET"})
+     * @param Request $request
+     */
+    public function searchedHouse(Request $request)
+    {
+        # Formulaire de recherche en GET
+        $form = $this->createFormBuilder()
+            ->setMethod('GET')
+            ->add('priceMin')
+            ->add('priceMax')
+            ->add('submit', SubmitType::class)
+            ->getForm();
+        # Récupération des données du formulaire
+        $form->handleRequest($request);
+        if($form->isSubmitted()) {
+            $search = $form->getData();
+            $priceMin = $search['priceMin'];
+            $priceMax = $search['priceMax'];
+            # Recherche dans la BDD
+            $houses = $this->getDoctrine()->getRepository(House::class);
+            $result = $houses->findHouses($priceMin, $priceMax);
+            dump($search);
+            dd($result);
+        }
+        # Affichage du formulaire
+        return $this->render('house/searched.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+}
