@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\HouseRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=HouseRepository::class)
@@ -19,11 +20,17 @@ class House
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Image(
+     *     mimeTypesMessage="Vérifiez le format de votre image.",
+     *     maxSize="2M", maxSizeMessage="Votre image est trop lourde."
+     * )
      */
     private $photo;
 
     /**
      * @ORM\Column(type="string", length=80)
+     * @Assert\Length(max="45", maxMessage="Attention pas plus de {{ limit }} caractères")
+     * @Assert\NotBlank(message="Veuillez saisir le nom du logement.")
      */
     private $name;
 
@@ -34,11 +41,13 @@ class House
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Veuillez mettre la description.")
      */
     private $description;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank(message="Veuillez saisir le prix.")
      */
     private $price;
 
@@ -49,11 +58,13 @@ class House
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Veuillez saisir le code postal.")
      */
     private $zipcode;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir l'adresse'.")
      */
     private $address;
 
@@ -71,6 +82,7 @@ class House
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @Assert\NotBlank(message="Veuillez selectionner la catégorie.")
      */
     private $city;
 

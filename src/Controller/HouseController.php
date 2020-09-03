@@ -31,15 +31,15 @@
                 ->find($this->getUser());
             $house->setUser($user);
             $form = $this->createFormBuilder($house)
-                ->add('photo', FileType::class, ['label' => false, 'attr' => ['class' => 'dropify']])
                 ->add('name', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Nom de logement']])
                 ->add('description', TextareaType::class, ['label' => false])
                 ->add('category', EntityType::class, ['class' => Category::class, 'choice_label' => 'name', 'label' => 'catégorie'])
-                ->add('address', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Adresse']])
+                ->add('address' , TextType::class, ['label' => false, 'attr' =>  ['placeholder' => 'Adresse']  ])
                 ->add('zipcode', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Code Postal']])
                 ->add('city', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Ville']])
-                ->add('country', CountryType::class, ['label' => false])
+                ->add('country', CountryType::class, ['label' => false, 'preferred_choices' => ['value' => 'FR']])
                 ->add('price', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Prix']])
+                ->add('photo', FileType::class, ['label' => false, 'attr' => ['class' => 'dropify']])
                 ->add('submit', SubmitType::class, ['label' => 'Ajouter'])
                 ->getForm();
             $form->handleRequest($request);

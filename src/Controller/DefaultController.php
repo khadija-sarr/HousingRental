@@ -32,4 +32,21 @@
 
             return $this->render('default/category.html.twig', ['category' => $category, 'houses' => $houses]);
         }
+
+
+        /**
+         * @Route("/{category}/{alias}_{id}.html", name="default_house", methods={"GET"})
+         * param $category
+         * @return Response
+         */
+        public function house(House $house = null, $id = null)
+        {
+            if ($house === null) {
+                return $this->redirectToRoute('/');
+            }
+
+            return $this->render('default/house.html.twig', [
+                'house' =>$house
+            ]);
+        }
     }
