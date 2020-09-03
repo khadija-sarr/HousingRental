@@ -57,7 +57,7 @@
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($house);
                 $em->flush();
-                $this->addFlash('notice', 'Félicitation votre logement a bien ajoutée !');
+                $this->addFlash('notice', 'Félicitation votre logement a bien été ajouté !');
                 return $this->redirectToRoute('default_home', [
                     'category' => $house->getCategory()->getAlias(),
                     'alias' => $house->getAlias(),
