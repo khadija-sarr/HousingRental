@@ -17,8 +17,8 @@ nav.navbar {
 div.navHeight {
     height: 60px;
 }
-.bgImage {
-    background-image: url("../images/backgrounds/maldives.jpg");
+.bgCategory {
+    background-image: url("../images/backgrounds/villa.jpg");
 }
 main.container-fluid {
     flex-direction: column;
