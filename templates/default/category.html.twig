@@ -1,6 +1,16 @@
 {% extends "base.html.twig" %}
 {% block title %}{{ category.name }}{% endblock %}
 {% block content %}
-   <h2 class="text-center titreMargin">{{ category.name | title }}</h2>
-   {% include 'components/_card.html.twig' %}
+   <div class="bgCategory">
+      <h2 class="text-center titreMargin">{{ category.name | title }}</h2>
+      <div class="container mt-5">
+         <div class="row justify-content-around">
+            {% for house in houses %}
+               {% include 'components/_card.html.twig' %}
+            {% endfor %}
+         </div>
+      </div>
+   </div>
+
+
 {% endblock %}

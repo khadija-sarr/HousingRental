@@ -15,13 +15,38 @@
                 ->getRepository(House::class)
                 ->findBy([], ['id' => 'DESC'], 6);
             return $this->render('default/home.html.twig', ['houses' => $houses]);
+
         }
         /**
          * @Route("/categorie/{alias}", name="default_category", methods={"GET"})
          * @param Category $category
+         *
          * @return Response
          */
         public function category(Category $category) {
-            return $this->render('default/category.html.twig', ['category' => $category]);
+
+            $houses = $this->getDoctrine()
+                ->getRepository(House::class)
+                ->findBy(['category' => $category]);
+
+
+            return $this->render('default/category.html.twig', ['category' => $category, 'houses' => $houses]);
+        }
+
+
+        /**
+         * @Route("/{category}/{alias}_{id}.html", name="default_house", methods={"GET"})
+         * param $category
+         * @return Response
+         */
+        public function house(House $house = null, $id = null)
+        {
+            if ($house === null) {
+                return $this->redirectToRoute('/');
+            }
+
+            return $this->render('default/house.html.twig', [
+                'house' =>$house
+            ]);
         }
     }
