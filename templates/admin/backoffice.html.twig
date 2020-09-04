@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
+{% block title %}HousingRental - Back Office{% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('assets/stylesheets/reset.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/stylesheets/root.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/stylesheets/admin/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/stylesheets/admin/root.css') }}">
 {% endblock %}
 {% block content %}
     <nav>
@@ -68,64 +69,131 @@
                 <button id="getUsers">Utilisateurs</button>
                 <button id="getRentals">Locations</button>
                 <div class="divider"></div>
-                <button id="editProfile">Éditer le profil</button>
+                <a href="{{ path('admin_updateProfile', { 'id': app.user.id }) }}" id="editProfile">Éditer le profil</a>
             </div>
             <div class="mainContent">
                 <div class="usersList">
                     <div class="adminHeader">
                         <h2>Utilisateurs</h2>
-                        <div class="divider"></div>
                     </div>
-                    <table>
-                        <tr>
-                            <th>Id</th>
-                            <th>Photo</th>
-                            <th>Prénom</th>
-                            <th>Nom</th>
-                            <th>Email</th>
-                            <th>Téléphone</th>
-                            <th>Pays</th>
-                            <th>Code Postal</th>
-                            <th>Suppression</th>
-                        </tr>
-                        {% for user in users %}
+                    <table border-collapse="collapse">
+                        <tbody>
                             <tr>
-                                <td>{{ user.id }}</td>
-                                <td><img src="{{ asset('uploads/users/' ~ user.photo) }}" alt=""></td>
-                                <td>{{ user.firstname }}</td>
-                                <td>{{ user.lastname }}</td>
-                                <td title="{{ user.email }}">{{ user.email|slice(0, 12) }}...</td>
-                                <td>0{{ user.phone }}</td>
-                                <td>{{ user.country }}</td>
-                                <td>{{ user.zipcode }}</td>
-                                <td class="delete">
-                                    <a href="{{ path('admin_deleteUser', { 'id': user.id }) }}">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </td>
+                                <th>Id</th>
+                                <th>Photo</th>
+                                <th>Prénom</th>
+                                <th>Nom</th>
+                                <th>Email</th>
+                                <th>Téléphone</th>
+                                <th>Pays</th>
+                                <th>Code Postal</th>
+                                <th>Suppression</th>
                             </tr>
-                        {% endfor %}
+                            {% if users is defined %}
+                                {% for user in users %}
+                                    <tr>
+                                        <td>{{ user.id }}</td>
+                                        <td><img src="{{ asset('uploads/users/' ~ user.photo) }}" alt="Photo de {{ user.firstname }} {{ user.lastname }}"></td>
+                                        <td>{{ user.firstname }}</td>
+                                        <td>{{ user.lastname }}</td>
+                                        <td title="{{ user.email }}">{{ user.email|slice(0, 12) }}...</td>
+                                        <td>0{{ user.phone }}</td>
+                                        <td>{{ user.country }}</td>
+                                        <td>{{ user.zipcode }}</td>
+                                        <td class="delete">
+                                            <a data-user="{{ user.firstname }} {{ user.lastname }}" href="{{ path('admin_deleteUser', { 'id': user.id }) }}">
+                                                <i class="fas fa-user-minus"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                        </tbody>
                     </table>
                 </div>
                 <div class="rentalsList">
                     <div class="adminHeader">
                         <h2>Locations</h2>
-                        <div class="divider"></div>
                     </div>
-                </div>
-                <div class="editForm">
-                    <div class="adminHeader">
-                        <h2>Profil</h2>
-                        <div class="divider"></div>
-                    </div>
+                    <table border-collapse="collapse">
+                        <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <th>Propriétaire</th>
+                                <th>Photo</th>
+                                <th>Catégorie</th>
+                                <th>Pays</th>
+                                <th>Ville</th>
+                                <th>Adresse</th>
+                                <th>Prix</th>
+                                <th>Modification</th>
+                                <th>Suppression</th>
+                            </tr>
+                            {% if houses is defined %}
+                                {% for house in houses %}
+                                    <tr>
+                                        <td>{{ house.id }}</td>
+                                        <td>{{ house.user.id }}</td>
+                                        <td><img src="{{ asset('uploads/houses/' ~ house.photo) }}" alt=""></td>
+                                        <td>{{ house.category.name }}</td>
+                                        <td>{{ house.country }}</td>
+                                        <td>{{ house.city }}</td>
+                                        <td title="{{ house.address }}">{{ house.address|slice(0, 14) }}...</td>
+                                        <td>{{ house.price }}</td>
+                                        <td class="update">
+                                            <a data-house="{{ house.name }}" href="{{ path('admin_updateRental', { 'id': house.id }) }}">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </td>
+                                        <td class="delete">
+                                            <a data-house="{{ house.name }}" href="{{ path('admin_deleteRental', { 'id': house.id }) }}">
+                                                <i class="fas fa-user-minus"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
                 </div>
                 <div class="bottomBar">
-
+                    <button id="adminPageSettings">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+                <div class="settings">
+                    <h2>Paramètres</h2>
+                    <h4>Thème</h4>
+                    <div class="themeSelect">
+                        <i class="fas fa-moon"></i>
+                        <label for="themeSwitch" class="switch">
+                            <input id="themeSwitch" type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                        <i class="fas fa-sun"></i>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="confirmAction">
+            <p>Êtes-vous sûr de vouloir supprimer <span id="elementToBeDeleted"></span> ?</p>
+            <div class="modalButtons">
+                <button id="confirm">Oui</button>
+                <button id="cancel">Non</button>
+            </div>
+        </div>
     </div>
+    {% for message in app.flashes('success') %}
+        <div class="flashMessage success">
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('error') %}
+        <div class="flashMessage error">
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
 {% endblock %}
 {% block javascripts %}
-    <script src="{{ asset('assets/javascripts/script.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/admin/admin.js') }}"></script>
 {% endblock %}
