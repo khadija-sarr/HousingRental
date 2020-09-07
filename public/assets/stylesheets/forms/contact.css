@@ -1,0 +1,180 @@
+/* ----------------------------------------------------------------------------------------------------------------- */
+/* CSS Form Containers */
+/* ----------------------------------------------------------------------------------------------------------------- */
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 60px;
+}
+.formContainer > div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--base-bckg);
+}
+.formContainer > div:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.formContainer > div:nth-child(2) > div.step {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 3);
+    height: 300px;
+    position: relative;
+}
+.formContainer > div:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 800px;
+    margin-bottom: 60px;
+    background-color: var(--base-bckg);
+}
+.formContainer > div:last-child > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: calc(100% / 3);
+    margin-bottom: 10px;
+}
+/* ----------------------------------------------------------------------------------------------------------------- */
+/* CSS Form Containers Content */
+/* ----------------------------------------------------------------------------------------------------------------- */
+.formContainer > div:first-child > h2,
+.formContainer > div:first-child > h6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 50px;
+    margin: 20px 0;
+    padding: 0 20px;
+    text-align: center;
+    color: var(--alt-bckg);
+}
+.formContainer > div:first-child > h6 {
+    margin-top: 0;
+}
+.formContainer > div:nth-child(2) > div.step > div.stepNumber {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background-color: var(--base-bckg);
+    box-shadow: 2px 2px 4px #00000080;
+}
+.formContainer > div:nth-child(2) > div.step > div.stepNumber > p {
+    color: var(--alt-bckg);
+}
+.formContainer > div:nth-child(2) > div.step > h5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 50px;
+    margin: 0 auto 20px auto;
+    text-align: center;
+    color: var(--alt-bckg);
+}
+.formContainer > div:nth-child(2) > div.step > p {
+    margin: 0;
+    padding: 0 20px;
+    text-align: center;
+    color: var(--alt-bckg);
+}
+.formContainer > div:last-child > div > h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 50px;
+    margin: 20px 0;
+    text-align: center;
+    color: var(--alt-bckg);
+}
+.formContainer > div:last-child > div:nth-child(2) > form {
+    width: 100%;
+}
+.formContainer > div:last-child > div:nth-child(2) > form > #form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.formContainer > div:last-child > div:nth-child(2) > form > #form > div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 60px;
+}
+.formContainer > div:last-child > div:nth-child(2) > form > #form > div:nth-child(4) {
+    height: fit-content;
+}
+.formContainer > div:last-child > div:nth-child(2) > form > #form > div > input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 40px;
+    margin: auto;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px #00000080 inset;
+}
+form select,
+form textarea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 30px;
+    margin: auto;
+    padding: 0 10px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px #00000080 inset;
+}
+form textarea {
+    height: 250px;
+    margin: 10px auto;
+    padding: 10px;
+    resize: none;
+}
+form > #form button {
+    width: 120px;
+    height: 30px;
+    margin: auto;
+    color: var(--base-bckg);
+    border-radius: 10px;
+    background-color: var(--color-38FF);
+    box-shadow: 2px 2px 4px #00000080;
+}
+@media screen and (max-width: 1000px) {
+    .formContainer > div:last-child > div:first-child,
+    .formContainer > div:last-child > div:last-child {
+        display: none;
+    }
+    .formContainer > div:last-child > div:nth-child(2) {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 900px) {
+    .formContainer > div:first-child,
+    .formContainer > div:nth-child(2) {
+        display: none;
+    }
+}

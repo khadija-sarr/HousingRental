@@ -1,16 +1,38 @@
 {% extends "base.html.twig" %}
 {% block title %}{{ category.name }}{% endblock %}
 {% block content %}
-   <div class="bgCategory">
-      <h2 class="text-center titreMargin">{{ category.name | title }}</h2>
-      <div class="container mt-5">
-         <div class="row justify-content-around">
-            {% for house in houses %}
-               {% include 'components/_card.html.twig' %}
-            {% endfor %}
-         </div>
-      </div>
-   </div>
-
-
+    {% if category.name == "Appartement" %}
+        <div id="appartement">
+            <h2 class="text-center titreMargin">{{ category.name | title }}</h2>
+            <div class="container mt-5">
+                <div class="row justify-content-around">
+                    {% for house in houses %}
+                        {% include 'components/_card.html.twig' %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% elseif category.name == "Maison" %}
+        <div id="maison">
+            <h2 class="text-center titreMargin">{{ category.name | title }}</h2>
+            <div class="container mt-5">
+                <div class="row justify-content-around">
+                    {% for house in houses %}
+                        {% include 'components/_card.html.twig' %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% elseif category.name == "Évenement" %}
+        <div id="evenement">
+            <h2 class="text-center titreMargin">{{ category.name | title }}</h2>
+            <div class="container mt-5">
+                <div class="row justify-content-around">
+                    {% for house in houses %}
+                        {% include 'components/_card.html.twig' %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
