@@ -1,15 +1,15 @@
 * {
     margin: 0;
     padding: 0;
-    color: var(--color-FF);
     text-decoration: none;
     outline: none;
     user-select: none;
     list-style: none;
     box-sizing: border-box;
     overflow-x: hidden;
+    transition: all 0.5s ease-in-out;
 }
-a, input, button {
+a, input, button, select, textarea {
     border: none;
     background: none;
     cursor: pointer;
