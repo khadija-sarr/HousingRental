@@ -6,6 +6,7 @@
     use Symfony\Component\Form\Extension\Core\Type\EmailType;
     use Symfony\Component\Form\Extension\Core\Type\FileType;
     use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+    use Symfony\Component\Form\Extension\Core\Type\NumberType;
     use Symfony\Component\Form\Extension\Core\Type\PasswordType;
     use Symfony\Component\Form\Extension\Core\Type\SubmitType;
     use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -26,16 +27,17 @@
          */
         public function newUser(Request $request, UserPasswordEncoderInterface $encoder) {
             $user = new User();
+
             $form = $this->createFormBuilder($user)
                 ->add('firstname', TextType::class, ['label' => false, 'attr' => ['placeholder' => "Prénom"]])
                 ->add('lastname', TextType::class, ['label' => false, 'attr' => ['placeholder' => "Nom"]])
                 ->add('email', EmailType::class, ['label' => false, 'attr' => ['placeholder' => "Email"]])
                 ->add('password', PasswordType::class, ['label' => false, 'attr' => ['placeholder' => "Mot de passe"]])
-                ->add('phone', IntegerType::class, ['label' => false, 'attr' => ['placeholder' => "Téléphone"]])
+                ->add('phone', NumberType::class, ['label' => false, 'attr' => ['placeholder' => "Téléphone"]])
                 ->add('address', TextType::class, ['label' => false, 'attr' => ['placeholder' => "Adresse"]])
                 ->add('city', TextType::class, ['label' => false, 'attr' => ['placeholder' => "Ville"]])
                 ->add('zipcode', IntegerType::class, ['label' => false, 'attr' => ['placeholder' => "Code Postal"]])
-                ->add('country', CountryType::class, ['label' => false])
+                ->add('country', CountryType::class, ['label' => false, 'preferred_choices' => ['value' => 'FR']])
                 ->add('photo', FileType::class, ['label' => false, 'attr' => ['class' => 'dropify']])
                 ->add('submit', SubmitType::class, ['label' => 'Valider mon inscription'])
                 ->getForm();
