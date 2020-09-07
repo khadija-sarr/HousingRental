@@ -2,6 +2,7 @@
     namespace App\Controller;
     use App\Entity\Category;
     use App\Entity\House;
+    use PhpParser\Node\Name;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\Routing\Annotation\Route;
@@ -36,10 +37,10 @@
 
         /**
          * @Route("/{category}/{alias}_{id}.html", name="default_house", methods={"GET"})
-         * param $category
+         * @param Category $category
          * @return Response
          */
-        public function house(House $house = null, $id = null)
+        public function house(House $house = null)
         {
             if ($house === null) {
                 return $this->redirectToRoute('/');

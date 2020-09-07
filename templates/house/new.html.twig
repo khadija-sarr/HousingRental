@@ -1,5 +1,9 @@
 {% extends "base.html.twig" %}
-{% block title %}Ajouter un logement{% endblock %}
+
+{% block title %}
+    Ajouter un logement
+{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" integrity="sha512-EZSUkJWTjzDlspOoPSpUFR0o0Xy7jdzW//6qhUkoZ9c4StFkVsp9fbbd0O06p9ELS3H486m4wmrCELjza4JEog==" crossorigin="anonymous" />
@@ -12,20 +16,13 @@
         }
     </style>
 {% endblock %}
-{% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-8 mx-auto">
-                <h3 class="my-4 text-center">
-                    Ajouter un logement
-                </h3>
-                {{ form(form, {'attr' : {'novalidate':'novalidate'}}) }}
-            </div>
-        </div>
-    </div>
-{% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
+    <script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor.create( document.querySelector( '#form_content' ) );
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew==" crossorigin="anonymous"></script>
     <script>
         $('.dropify').dropify({
@@ -37,4 +34,17 @@
             }
         });
     </script>
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-8 mx-auto">
+                <h3 class="my4 text-center">
+                    Ajouter un logement
+                </h3>
+                {{ form(form, {'attr' : {'novalidate':'novalidate'}}) }}
+            </div>
+        </div>
+    </div>
 {% endblock %}
