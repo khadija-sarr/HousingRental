@@ -21,6 +21,7 @@ div.navHeight {
     background-image: url("../images/backgrounds/maldives.jpg");
 }
 main.container-fluid {
+    margin-top: 60px;
     flex-direction: column;
     min-height: calc(100vh - 150px);
 }
@@ -29,7 +30,6 @@ main.container-fluid > h2 {
 }
 main.container-fluid > div.homeBckg {
     height: fit-content;
-    margin-top: 60px;
 }
 main.container-fluid > div.homeBckg > h2 {
     margin-top: 10px;
