@@ -1,12 +1,48 @@
 {% extends "base.html.twig" %}
-{% block title %}Contact{% endblock %}
+{% block title %}HousingRental - Contact{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/stylesheets/forms/contact.css') }}">
+{% endblock %}
 {% block content %}
-    <div class="container">
-        <div class="row">
-                <div class="col-8 mx-auto">
-                    <h3 class="my4 text-center">Contactez-nous</h3>
-                   {{ form(form, {'attr' : {'novalidate':'novalidate'}}) }}
+    <div class="formContainer">
+        <div>
+            <h2>Vous rencontrez un problème ?</h2>
+            <h6>Contactez-nous via le formulaire ci-dessous !</h6>
+        </div>
+        <div>
+            <div class="step">
+                <div class="stepNumber">
+                    <p>1</p>
                 </div>
+                <h5>Remplissez le formulaire</h5>
+                <p>Remplissez le formulaire, en mettant ( s'il vous plaît ) vos réelles coordonnées pour que nous puissions vous recontacter.</p>
+            </div>
+            <div class="step">
+                <div class="stepNumber">
+                    <p>2</p>
+                </div>
+                <h5>Valider l'envoi du message</h5>
+                <p>Transmettez-nous votre message en validant le formulaire, afin que nous puissions vous aidez le mieux possible !</p>
+            </div>
+            <div class="step">
+                <div class="stepNumber">
+                    <p>3</p>
+                </div>
+                <h5>Nous vous recontacterons</h5>
+                <p>Une fois votre message reçu, nous vous recontacterons dans les plus brefs délais afin de vous aider au mieux.</p>
+            </div>
+        </div>
+        <div>
+            <div></div>
+            <div>
+                <h3>Inscrivez-vous</h3>
+                {{ form(form, {'attr' : {'novalidate':'novalidate'}}) }}
+            </div>
+            <div></div>
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
 {% endblock %}

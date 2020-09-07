@@ -1,3 +1,31 @@
+/* ----------------------------------------------------------------------------------------------------------------- */
+/* CSS Variables */
+/* ----------------------------------------------------------------------------------------------------------------- */
+:root {
+    --color-FF: #FFFFFF;
+    --color-34: #343434;
+    --color-38FF: #338FFF;
+    --color-success: #5BAF4A;
+    --color-error: #CF5A43;
+    --dark-filter: #00000080;
+    --light-filter: #FFFFFF80;
+    --base-bckg: var(--color-FF);
+    --alt-bckg: var(--color-34);
+    --filter: var(--light-filter);
+}
+/* ----------------------------------------------------------------------------------------------------------------- */
+/* CSS Resets */
+/* ----------------------------------------------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: var(--base-bckg);
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--alt-bckg);
+}
+/* ----------------------------------------------------------------------------------------------------------------- */
+/* CSS Resets */
+/* ----------------------------------------------------------------------------------------------------------------- */
 * {
     margin: 0;
     padding: 0;
@@ -6,11 +34,32 @@
     user-select: none;
     list-style: none;
     box-sizing: border-box;
-    overflow-x: hidden;
+    overflow: hidden;
     transition: all 0.5s ease-in-out;
 }
 a, input, button, select, textarea {
     border: none;
     background: none;
     cursor: pointer;
+}
+h1 {
+    font-size: 2.2rem;
+}
+h2 {
+    font-size: 2rem;
+}
+h3 {
+    font-size: 1.8rem;
+}
+h4 {
+    font-size: 1.6rem;
+}
+h5 {
+    font-size: 1.4rem;
+}
+h6 {
+    font-size: 1.2rem;
+}
+a, p, button, input, textarea, select, option {
+    font-size: 1rem;
 }
