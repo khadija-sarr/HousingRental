@@ -1,14 +1,79 @@
 {% extends "base.html.twig" %}
 {% block title %}Housing Rental{% endblock %}
 {% block content %}
-    <div class="homeBckg bgImage">
-        <h2 class="text-center pt-5">Housing Rental</h2>
-        <div class="container mt-5">
-            <div class="row justify-content-around">
+    <div class="categoryDiv">
+        <div id="accueil" class="hauteurDiv"></div>
+
+        <h2 class="titre affichageTitre">Nos dernieres offres !</h2>
+
+
+        <div class="container">
                 {% for house in houses %}
                     {% include 'components/_card.html.twig' %}
                 {% endfor %}
-            </div>
+
         </div>
     </div>
+    <div class="categoryDiv">
+        <div id="appartement" class="hauteurDiv"></div>
+        <div class="fontDiv">
+            <h2 class="titre">Appartement</h2>
+            <p>Découvrez toutes nos annonces immobilières de location d'appartements, actualisées en temps réel !!!</p>
+        </div>
+
+
+        <div class="container">
+            {% for house in houses  %}
+                {% if house.category.name == 'appartement' %}
+                    {% include 'components/_card.html.twig' %}
+                {% endif %}
+            {% endfor %}
+
+        </div>
+        <a>Cliquez ici pour voir tous nos appartements</a>
+    </div>
+    <div class="categoryDiv">
+        <div id="maison" class="hauteurDiv"></div>
+        <div class="fontDiv">
+            <h2 class="titre">Maison</h2>
+            <p>Trouvez votre maison à louer. Annonces de maisons en location de particuliers et pros sur Housing Rental.</p>
+        </div>
+
+        <div class="container">
+            {% for house in houses  %}
+                {% if house.category.name == 'maison' %}
+                {% include 'components/_card.html.twig' %}
+                {% endif %}
+            {% endfor %}
+
+        </div>
+        <a>Cliquez ici pour voir toutes nos maisons</a>
+    </div>
+    <div class="categoryDiv">
+        <div id="evenement" class="hauteurDiv"></div>
+        <div class="fontDiv">
+            <h2 class="titre">Évènement</h2>
+        </div>
+
+
+        <div class="container">
+
+            {% for house in houses  %}
+                {% if house.category.name == 'evenement' %}
+                    {% include 'components/_card.html.twig' %}
+                {% endif %}
+            {% endfor %}
+
+        </div>
+        <a href="{{ path('default_category', {'alias' : 'evenement'}) }}">Cliquez ici pour voir nos évènements</a>
+    </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/javascripts/home.js') }}"></script>
+{% endblock %}
+
+
+
+

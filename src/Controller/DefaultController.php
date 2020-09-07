@@ -14,7 +14,7 @@
         public function home() {
             $houses = $this->getDoctrine()
                 ->getRepository(House::class)
-                ->findBy([], ['id' => 'DESC'], 6);
+                ->findBy([], ['id' => 'DESC'], 4);
             return $this->render('default/home.html.twig', ['houses' => $houses]);
 
         }
@@ -37,7 +37,7 @@
 
         /**
          * @Route("/{category}/{alias}_{id}.html", name="default_house", methods={"GET"})
-         * @param Category $category
+         * @param House|null $house
          * @return Response
          */
         public function house(House $house = null)

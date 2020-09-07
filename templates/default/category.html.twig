@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 {% block title %}{{ category.name }}{% endblock %}
 {% block content %}
-    {% if category.name == "Appartement" %}
+    {% if category.name == "appartement" %}
         <div id="appartement">
             <h2 class="text-center titreMargin">{{ category.name | title }}</h2>
             <div class="container mt-5">
@@ -12,7 +12,7 @@
                 </div>
             </div>
         </div>
-    {% elseif category.name == "Maison" %}
+    {% elseif category.name == "maison" %}
         <div id="maison">
             <h2 class="text-center titreMargin">{{ category.name | title }}</h2>
             <div class="container mt-5">
@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-    {% elseif category.name == "Évenement" %}
+    {% elseif category.name == "evenement" %}
         <div id="evenement">
             <h2 class="text-center titreMargin">{{ category.name | title }}</h2>
             <div class="container mt-5">
