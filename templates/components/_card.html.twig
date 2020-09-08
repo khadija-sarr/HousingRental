@@ -1,18 +1,27 @@
-<div class="col-4">
-    <div class="card mb-3 mt-4">
-        <h3 class="card-header text-center" style="height: 124px;">{{ house.name | title }} </h3>
-        <img style="height: 200px; width: 100%; display: block;" src="{{ asset('uploads/houses/' ~ house.photo) }}" alt="Card image">
-        <div class="card-body" style="height: 146px;">
-            <h5 class="card-title">{{ house.category.name }}</h5>
-            <h6 class="card-subtitle text-muted">{{ house.description | slice(0,100)}}...</h6>
-        </div>
-        <div class="card-footer text-muted text-center">
-            <a href="{{ path('default_house', {
-                'category': house.category.alias,
-                'alias': house.alias,
-                'id':house.id
-            }) }}"
-               class="card-link">En savoir plus</a>
-        </div>
+
+
+<div class="cards">
+
+
+    <img style="height: 200px; width: 100%; display: block;" src="{{ asset('uploads/houses/' ~ house.photo) }}" alt="Card image">
+    <div class="cardBody" >
+        <h5 class="">{{ house.name }}</h5>
+        <h6 class="">{{ house.description | slice(0,100)}}...</h6>
     </div>
+    <div class="headerFooter">
+        <a href="{{ path('default_house', {
+            'category': house.category.alias,
+            'alias': house.alias,
+            'id':house.id
+        }) }}
+" class="">En savoir plus</a>
+    </div>
+    <div class="categoryCard">
+        <p >{{ house.category.name | title }} </p>
+    </div>
+
+
+
 </div>
+
+

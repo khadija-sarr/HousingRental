@@ -12,8 +12,8 @@
          */
         public function home() {
             $houses = $this->getDoctrine()
-            ->getRepository(House::class)
-            ->findBy([], ['id' => 'DESC'], 6);
+                ->getRepository(House::class)
+                ->findBy([], ['id' => 'DESC'], 4);
             return $this->render('default/home.html.twig', ['houses' => $houses]);
         }
         /**
