@@ -65,7 +65,7 @@
         <div class="container">
             {% for house in houses  %}
                 {% if house.category.name == 'maison' %}
-                {% include 'components/_card.html.twig' %}
+                    {% include 'components/_card.html.twig' %}
                 {% endif %}
             {% endfor %}
 

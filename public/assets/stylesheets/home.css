@@ -27,8 +27,6 @@
     .categoryDiv{
 
         min-width: 100%;
-
-
     }
 
 }
@@ -51,9 +49,8 @@ body > main {
     backdrop-filter: blur(2px);
 
 }
-body > nav {
-    position: fixed;
-}
+
+/* ---------Footer------------ */
 footer {
     display: flex;
     flex-direction: column;
@@ -163,7 +160,7 @@ footer h5 {
     background-color: #ffffff50;
     display: flex;
     flex-direction: column;
-    /*align-items: center;*/
+    align-items: center;
 
 
 }
@@ -270,9 +267,6 @@ a:hover {
 
 
 /* ------------ NavBar----------------- */
-.container_nav {
-
-}
 
 .container_nav > .navList {
     display: flex;
