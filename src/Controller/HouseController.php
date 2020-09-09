@@ -82,8 +82,8 @@
             # Recherche dans la BDD
             $houses = $this->getDoctrine()->getRepository(House::class);
             $result = $houses->findHouses($priceMin, $priceMax);
-            dump($search);
-            dd($result);
+//            dump($search);
+//            dd($result);
         }
         return $this->render('house/searched.html.twig', [
             'form' => $form->createView()

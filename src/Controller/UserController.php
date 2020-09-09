@@ -6,6 +6,7 @@
     use Symfony\Component\Form\Extension\Core\Type\EmailType;
     use Symfony\Component\Form\Extension\Core\Type\FileType;
     use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+    use Symfony\Component\Form\Extension\Core\Type\NumberType;
     use Symfony\Component\Form\Extension\Core\Type\PasswordType;
     use Symfony\Component\Form\Extension\Core\Type\SubmitType;
     use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -62,4 +63,63 @@
             }
             return $this->render('user/register.html.twig', ['form' => $form->createView()]);
         }
+
+        /**
+         * @Route("/profil", name="user_profil", methods={"GET|POST"})
+         */
+        public function profil()
+        {
+            $user = $this->getUser();
+
+
+            return $this->render('user/profil.html.twig', [
+                'user' => $user
+            ]);
+        }
+
+        /**
+         * @Route("/modification/{champ}", name="user_update", methods={"GET|POST"} )
+         * @param Request $request
+         * @param $champ
+         * @param UserPasswordEncoderInterface $encoder
+         * @return Response
+         */
+        public function update(Request $request, $champ, UserPasswordEncoderInterface $encoder) {
+            $user = $this->getUser();
+            $form = $this->createFormBuilder($user);
+
+            if($champ === "email") {
+                $form->add("email", EmailType::class, ['label' => false, 'attr' => ['placeholder' => 'Email']]);
+            }
+            if($champ === "telephone") {
+                $form->add("phone", NumberType::class, ['label' => false, 'attr' => ['placeholder' => 'Télèphone']]);
+            }
+            if($champ === "adresse") {
+                $form->add("address", TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Adresse']])
+                ->add('zipcode', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'code postal']])
+                ->add('city', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'ville']]);
+            }
+            if($champ === "mot-de-passe"){
+                $form->add('password', PasswordType::class, ['label' => false, 'attr' => ['placeholder' => 'mot de passe']]);
+            }
+            $form->add('submit', SubmitType::class, ['label' => 'modifier']);
+            $form = $form->getForm();
+            $form->handleRequest($request);
+
+
+
+            if($form->isSubmitted() && $form->isValid()) {
+                $encoded = $encoder->encodePassword($user, $form->get('password')->getData());
+                $user->setPassword($encoded);
+
+
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
+                $this->addFlash('notice', 'Vos modifications ont bien été prises en compte !');
+
+            }
+            return $this->render('user/update.html.twig', ['form' => $form->createView(), 'champ' => $champ]);
+        }
+
     }

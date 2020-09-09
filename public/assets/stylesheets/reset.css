@@ -34,7 +34,7 @@
     user-select: none;
     list-style: none;
     box-sizing: border-box;
-    overflow: hidden;
+    /*overflow: hidden;*/
     transition: all 0.5s ease-in-out;
 }
 a, input, button, select, textarea {
