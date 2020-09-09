@@ -1,8 +1,8 @@
 <div class="container_nav">
     <ul class="navList">
-        <li>Accueil</li>
-        <li>Appartement</li>
-        <li>Maison</li>
-        <li>Evènement</li>
+        <li><a href="{{ path('default_home') }}">Accueil</a></li>
+        <li><a href="{{ path('default_category', {'alias' : 'appartement'}) }}">Appartement</a></li>
+        <li><a href="{{ path('default_category', {'alias' : 'maison'}) }}">Maison</a></li>
+        <li><a href="{{ path('default_category', {'alias' : 'evenement'}) }}">Evènement</a></li>
     </ul>
 </div>
