@@ -3,7 +3,6 @@
     use App\Entity\Category;
     use App\Entity\House;
     use App\Entity\User;
-    use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
     use Symfony\Bridge\Doctrine\Form\Type\EntityType;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -13,9 +12,7 @@
     use Symfony\Component\Form\Extension\Core\Type\TextType;
     use Symfony\Component\HttpFoundation\File\Exception\FileException;
     use Symfony\Component\HttpFoundation\File\UploadedFile;
-    use Symfony\Component\HttpFoundation\RedirectResponse;
     use Symfony\Component\HttpFoundation\Request;
-    use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\Routing\Annotation\Route;
     use Symfony\Component\String\Slugger\SluggerInterface;
     class HouseController extends AbstractController {
@@ -30,9 +27,10 @@
                 ->getRepository(User::class)
                 ->find($this->getUser());
             $house->setUser($user);
+            $houses = $this->getDoctrine()->getRepository(House::class)->findBy([], ['id' => 'DESC'], 2);
             $form = $this->createFormBuilder($house)
                 ->add('name', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Nom de logement']])
-                ->add('description', TextareaType::class, ['label' => 'Description'])
+                ->add('description', TextareaType::class, ['label' => false, 'attr' => ['placeholder' => 'Description']])
                 ->add('category', EntityType::class, ['class' => Category::class, 'choice_label' => 'name', 'label' => false])
                 ->add('address' , TextType::class, ['label' => false, 'attr' =>  ['placeholder' => 'Adresse']  ])
                 ->add('zipcode', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Code Postal']])
@@ -63,22 +61,19 @@
                     'alias' => $house->getAlias(),
                     'id' => $house->getId()]);
           }
-        return $this->render('house/new.html.twig', ['form' => $form->createView()]);
+        return $this->render('house/new.html.twig', ['form' => $form->createView(), 'houses' => $houses]);
     }
     /**
      * @Route ("/search", name="search_house", methods={"GET"})
      * @param Request $request
      */
-    public function searchedHouse(Request $request)
-    {
-        # Formulaire de recherche en GET
+    public function searchedHouse(Request $request) {
         $form = $this->createFormBuilder()
             ->setMethod('GET')
             ->add('priceMin')
             ->add('priceMax')
             ->add('submit', SubmitType::class)
             ->getForm();
-        # Récupération des données du formulaire
         $form->handleRequest($request);
         if($form->isSubmitted()) {
             $search = $form->getData();
@@ -87,12 +82,16 @@
             # Recherche dans la BDD
             $houses = $this->getDoctrine()->getRepository(House::class);
             $result = $houses->findHouses($priceMin, $priceMax);
-            dump($search);
-            dd($result);
+//            dump($search);
+//            dd($result);
+
         }
-        # Affichage du formulaire
+
         return $this->render('house/searched.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'houses' => $houses,
+            'result' => $result
+
         ]);
     }
 }

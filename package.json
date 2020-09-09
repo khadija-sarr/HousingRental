@@ -1,0 +1,11 @@
+{
+  "name": "HousingRental",
+  "version": "1.0.0",
+  "dependencies": {
+    "@ansur/leaflet-pulse-icon": "^0.1.1",
+    "leaflet": "^1.7.1"
+  },
+  "devDependencies": {
+    "leaflet-easybutton": "^2.4.0"
+  }
+}

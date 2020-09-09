@@ -31,8 +31,7 @@ namespace App\Controller;
             ->add('email', EmailType::class, ['label' => false, 'attr'  => ['placeholder' => 'Adresse email']])
             ->add('subject',TextType::class, ['label' => false, 'attr'  => ['placeholder' => 'Sujet']])
             ->add('message', TextareaType::class, ['label' => false,'attr'  => ['placeholder' => 'Message']])
-                ->add('Envoyer', SubmitType::class, ['label' => 'Valider'])
-
+            ->add('submit', SubmitType::class, ['label' => 'Envoyer'])
             ->getForm();
             $form->handleRequest($request);
             if($form->isSubmitted() && $form->isValid()) {

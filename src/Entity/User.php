@@ -7,7 +7,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -23,9 +22,6 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Assert\Email (message="Attention au format de votre email")
-     * @Assert\NotBlank (message="Ce champ est obligatoire")
-     *
      */
     private $email;
 
@@ -37,29 +33,21 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(message="Ce champ est obligatoire")
-     * @Assert\NotCompromisedPassword(message="Attention ce mot de passe n'est pas sécurisé")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=80)
-     * @Assert\NotBlank (message="Ce champ est obligatoire")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=80)
-     * @Assert\NotBlank (message="Ce champ est obligatoire")
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank (message="Vous devez uploader une image")
-     * @Assert\Image (
-     *     mimeTypesMessage="Vérifiez le format de votre fichier",
-     *     maxSize="2M", maxSizeMessage="Votre image est trop lourde")
      */
     private $photo;
 
@@ -70,25 +58,16 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank (message="Ce champ est obligatoire")
      */
     private $zipcode;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank (message="Ce champ est obligatoire")
      */
     private $address;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank (message="Ce champ est obligatoire")
-     * @Assert\Length (
-     *     min= 10,
-     *     max = 14,
-     *     minMessage="Le numéro doit comporter entre 10 et 14 chiffres",
-     *     maxMessage="Le numéro doit comporter entre 10 et 14 chiffres"
-     * )
      */
     private $phone;
 
@@ -99,7 +78,6 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=30)
-     * @Assert\NotBlank (message="Ce champ est obligatoire")
      */
     private $city;
 
@@ -157,9 +135,9 @@ class User implements UserInterface
     /**
      * @see UserInterface
      */
-    public function getPassword(): ?string
+    public function getPassword(): string
     {
-        return $this->password;
+        return (string) $this->password;
     }
 
     public function setPassword(string $password): self
