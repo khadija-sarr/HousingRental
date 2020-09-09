@@ -1,0 +1,58 @@
+.detailscontainer{
+    display: flex;
+    justify-content: center;
+    background-color: #FFFFFF80;
+    backdrop-filter: blur(2px);
+    overflow: hidden;
+    margin-top: 100px;
+    height: 1200px;
+}
+
+
+.detailscontainer >.droite {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding-top: 15px;
+    overflow: hidden;
+
+}
+
+.detailscontainer >.droite >h1{
+    text-align: center;
+    margin: 25px;
+    font-size: xx-large;
+    overflow: hidden;
+}
+
+.detailscontainer >.droite > #carousel {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 40%;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+.detailscontainer > .droite > #carousel >img{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 425px;
+    margin:0 auto;
+}
+
+.detailscontainer >.droite >.houseDescription {
+    width: 50%;
+    height: 30%;
+    margin: 20px;
+    overflow: hidden;
+}
+.detailscontainer >.droite >.ficheUser {
+    width: 50%;
+    height: 30%;
+    margin: 20px;
+    overflow: hidden;
+
+}

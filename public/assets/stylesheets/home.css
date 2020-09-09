@@ -27,10 +27,9 @@
 body {
     width: 100vw;
     height: 100vh;
-    overflow-y: scroll;
     scroll-behavior: smooth;
-    }
 }
+
 body > main {
     display: flex;
     flex-direction: column;
@@ -38,7 +37,6 @@ body > main {
     height: fit-content;
     background-color: var(--filter);
     backdrop-filter: blur(2px);
-
 }
 /* ---------Footer------------ */
 body > nav {

@@ -1,18 +1,54 @@
 {% extends "base.html.twig" %}
 {% block title %}{{ house.name }}{% endblock %}
-{% block  content%}
-    <div class="p-3 mx-auto text-center">
-        <h1 class="display-4">{{ house.name }}</h1>
-    </div>
-    <div class="py-5 bg-light">
-        <div class="container">
-            <div class="row">
-                <aside class="col-md-6">
-                    <img src="{{ asset('uploads/houses/' ~ house.photo) }}"
-                         class="card-img-top" alt="{{ house.name }}">
-                </aside>
-                <article class="col-md-6">{{ house.description | raw}}</article>
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/stylesheets/house.css') }}">
+{% endblock %}
+
+{% block  content %}
+    <div class="detailscontainer">
+
+        <div class="droite">
+
+            <h1>{{ house.name }}</h1>
+
+            <div class="housePhoto" id="carousel" data-image="image1">
+                <img src="{{ asset('assets/images/backgrounds/bckg1.jpg') }}"
+                     alt="{{ house.name }}">
+                <img src="{{ asset('uploads/houses/Belle-maison-avec-vue-sur-la-mer-5f4f7c38af211.jpeg') }}"
+                     alt="{{ house.name }}" style="opacity: 0;">
+                <img src="{{ asset('uploads/houses/Charmante-maison-avec-jardin-quartier-calme-5f4f95d681b63.jpeg') }}"
+                     alt="{{ house.name }}" style="opacity: 0;">
+                <img src="{{ asset('uploads/houses/appa-5f4f7a70f3082.jpeg' ) }}"
+                     alt="{{ house.name }}" style="opacity: 0;">
+                <img src="{{ asset('uploads/houses/maison-5f4f89d1d4d9f.jpeg') }}"
+                     alt="{{ house.name }}" style="opacity: 0;">
+                <img src="{{ asset('assets/images/backgrounds/appartement.jpg') }}"
+                     alt="{{ house.name }}" style="opacity: 0;">
+                <img src="{{ asset('uploads/houses/appartement-5f4f7a915c7c9.jpeg') }}"
+                     alt="{{ house.name }}" style="opacity: 0;">
+                <img src="{{ asset('uploads/houses/Appartement-5f4f8079078f3.jpeg') }}"
+                     alt="{{ house.name }}" style="opacity: 0;">
+            </div>
+            <br><br><br>
+
+            <div class="houseDescription"><p class="">{{ house.description | raw }}</p></div>
+
+            <div class="ficheUser">
+                <h2>Proposé par: </h2><br>
+                {{ house.user.firstname | raw }}
+                {{ house.user.lastname | raw }}<br>
+                {{ house.user.address | raw }}
+                {{ house.user.zipcode | raw }}
+                {{ house.user.city | raw }}
+                {{ house.user.country | raw }}<br>
+                <p>Tel: {{ house.user.phone | raw }}
+                <p>Email: {{ house.user.email | raw }}<br>
             </div>
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/javascripts/house.js') }}"></script>
 {% endblock %}
