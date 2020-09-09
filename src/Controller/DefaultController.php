@@ -8,26 +8,22 @@
     class DefaultController extends AbstractController {
         /**
          * @Route("/", name="default_home", methods={"GET"})
-
          * @return Response
          */
         public function home() {
             $houses = $this->getDoctrine()
                 ->getRepository(House::class)
                 ->findBy([], ['id' => 'DESC'], 4);
-
-            $appartements= $this->getDoctrine()
+            $homes = $this->getDoctrine()
                 ->getRepository(House::class)
                 ->findBy(['category' => 2], ['id' => 'DESC'], 4);
-
-            $maisons= $this->getDoctrine()
+            $apartments = $this->getDoctrine()
                 ->getRepository(House::class)
                 ->findBy(['category' => 1], ['id' => 'DESC'], 4);
-
-            $events= $this->getDoctrine()
+            $events = $this->getDoctrine()
                 ->getRepository(House::class)
                 ->findBy(['category' => 3], ['id' => 'DESC'], 4);
-            return $this->render('default/home.html.twig', ['houses' => $houses, 'events' => $events, 'maisons' => $maisons, 'appartements' => $appartements]);
+            return $this->render('default/home.html.twig', ['houses' => $houses, 'homes' => $homes, 'apartments' => $apartments, 'events' => $events]);
         }
         /**
          * @Route("/categorie/{alias}", name="default_category", methods={"GET"})

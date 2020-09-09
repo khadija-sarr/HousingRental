@@ -10,7 +10,9 @@
         {% endblock %}
     </head>
     <body>
-        {% include 'components/_nav.html.twig' %}
+        {% if app.request.get('_route') != 'default_home' %}
+            {% include 'components/_nav.html.twig' %}
+        {% endif %}
         <main>
             {% block content %}{% endblock %}
         </main>

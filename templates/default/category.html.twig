@@ -2,34 +2,36 @@
 {% block title %}{{ category.name }}{% endblock %}
 {% block content %}
     {% if category.name == "appartement" %}
-        <div class="hauteurDiv"></div>
         <div id="appartement">
-            <h2 class="titreMargin">{{ category.name | title }}</h2>
-            <div class="container">
-                {% for house in houses %}
-                    {% include 'components/_card.html.twig' %}
-                {% endfor %}
+            <h2 class="text-center titreMargin">{{ category.name | title }}</h2>
+            <div class="container mt-5">
+                <div class="row justify-content-around">
+                    {% for house in houses %}
+                        {% include 'components/_card.html.twig' %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     {% elseif category.name == "maison" %}
-        <div class="hauteurDiv"></div>
         <div id="maison">
-            <h2 class="titreMargin">{{ category.name | title }}</h2>
-            <div class="container">
-                {% for house in houses %}
-                    {% include 'components/_card.html.twig' %}
-                {% endfor %}
-
+            <h2 class="text-center titreMargin">{{ category.name | title }}</h2>
+            <div class="container mt-5">
+                <div class="row justify-content-around">
+                    {% for house in houses %}
+                        {% include 'components/_card.html.twig' %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     {% elseif category.name == "evenement" %}
-        <div class="hauteurDiv"></div>
         <div id="evenement">
-            <h2 class="titreMargin">{{ category.name | title }}</h2>
-            <div class="container">
-                {% for house in houses %}
-                    {% include 'components/_card.html.twig' %}
-                {% endfor %}
+            <h2 class="text-center titreMargin">{{ category.name | title }}</h2>
+            <div class="container mt-5">
+                <div class="row justify-content-around">
+                    {% for house in houses %}
+                        {% include 'components/_card.html.twig' %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     {% endif %}

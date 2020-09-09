@@ -1,9 +1,31 @@
 {% extends "base.html.twig" %}
 {% block title %}Housing Rental{% endblock %}
 {% block content %}
+    <div class="landingPage">
+        <div class="navLogo">
+            <img src="{{ asset('assets/images/logoHousingRental.png') }}" alt="Logo de l'entreprise">
+        </div>
+        <div class="landingName">HousingRental</div>
+        <div class="navBar">
+            <ul>
+                <li><a href="#appartement">Appartement</a></li>
+                <li><a href="#maison">Maison</a></li>
+                <li><a href="#evenement">Evènement</a></li>
+            </ul>
+        </div>
+        <div class="expandArrow">
+            <a href="#accueil">
+                <img src="{{ asset('assets/images/expand-arrow-40.png') }}" alt="Flèche descendante">
+            </a>
+        </div>
+
+    </div>
+
     <div class="categoryDiv">
+
         <div id="accueil" class="hauteurDiv"></div>
 
+        {% include 'components/_nav.html.twig' %}
         <h2 class="titre affichageTitre">Nos dernieres offres !</h2>
 
 
@@ -11,7 +33,6 @@
                 {% for house in houses %}
                     {% include 'components/_card.html.twig' %}
                 {% endfor %}
-
         </div>
     </div>
     <div class="categoryDiv">
@@ -23,7 +44,8 @@
 
 
         <div class="container">
-            {% for house in appartements  %}
+            {% for house in apartments  %}
+
                 {% if house.category.name == 'appartement' %}
                     {% include 'components/_card.html.twig' %}
                 {% endif %}
@@ -40,9 +62,9 @@
         </div>
 
         <div class="container">
-            {% for house in maisons  %}
+            {% for house in homes  %}
                 {% if house.category.name == 'maison' %}
-                {% include 'components/_card.html.twig' %}
+                    {% include 'components/_card.html.twig' %}
                 {% endif %}
             {% endfor %}
 
@@ -53,8 +75,6 @@
         <div id="evenement" class="hauteurDiv"></div>
         <div class="fontDiv">
             <h2 class="titre">Évènement</h2>
-            <p>Besoin de lancer un évènement ? Vous souhaitez louer une structure spécifique pour votre mariage ? Un concert ? Une convention ? Tout est en dessous !
-            </p>
         </div>
 
 
@@ -65,7 +85,6 @@
                     {% include 'components/_card.html.twig' %}
                 {% endif %}
             {% endfor %}
-
         </div>
         <a href="{{ path('default_category', {'alias' : 'evenement'}) }}">Cliquez ici pour voir nos évènements</a>
     </div>
