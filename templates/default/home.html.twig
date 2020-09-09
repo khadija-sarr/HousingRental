@@ -46,7 +46,8 @@
 
 
         <div class="container">
-            {% for house in houses  %}
+            {% for house in apartments  %}
+
                 {% if house.category.name == 'appartement' %}
                     {% include 'components/_card.html.twig' %}
                 {% endif %}
@@ -63,7 +64,7 @@
         </div>
 
         <div class="container">
-            {% for house in houses  %}
+            {% for house in homes  %}
                 {% if house.category.name == 'maison' %}
                     {% include 'components/_card.html.twig' %}
                 {% endif %}
@@ -81,7 +82,7 @@
 
         <div class="container">
 
-            {% for house in houses  %}
+            {% for house in events  %}
                 {% if house.category.name == 'evenement' %}
                     {% include 'components/_card.html.twig' %}
                 {% endif %}
