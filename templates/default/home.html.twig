@@ -23,14 +23,14 @@
 
 
         <div class="container">
-            {% for house in houses  %}
+            {% for house in appartements  %}
                 {% if house.category.name == 'appartement' %}
                     {% include 'components/_card.html.twig' %}
                 {% endif %}
             {% endfor %}
 
         </div>
-        <a>Cliquez ici pour voir tous nos appartements</a>
+        <a href="{{ path('default_category', {'alias' : 'appartement'}) }}">Cliquez ici pour voir tous nos appartements</a>
     </div>
     <div class="categoryDiv">
         <div id="maison" class="hauteurDiv"></div>
@@ -40,25 +40,27 @@
         </div>
 
         <div class="container">
-            {% for house in houses  %}
+            {% for house in maisons  %}
                 {% if house.category.name == 'maison' %}
                 {% include 'components/_card.html.twig' %}
                 {% endif %}
             {% endfor %}
 
         </div>
-        <a>Cliquez ici pour voir toutes nos maisons</a>
+        <a href="{{ path('default_category', {'alias' : 'maison'}) }}">Cliquez ici pour voir toutes nos maisons</a>
     </div>
     <div class="categoryDiv">
         <div id="evenement" class="hauteurDiv"></div>
         <div class="fontDiv">
             <h2 class="titre">Évènement</h2>
+            <p>Besoin de lancer un évènement ? Vous souhaitez louer une structure spécifique pour votre mariage ? Un concert ? Une convention ? Tout est en dessous !
+            </p>
         </div>
 
 
         <div class="container">
 
-            {% for house in houses  %}
+            {% for house in events  %}
                 {% if house.category.name == 'evenement' %}
                     {% include 'components/_card.html.twig' %}
                 {% endif %}

@@ -44,7 +44,7 @@
 body {
     width: 100vw;
     height: 100vh;
-    background-image: url("../images/backgrounds/maldives.jpg");
+    /*background-image: url("../images/backgrounds/maldives.jpg");*/
     background-size: cover;
     background-attachment: fixed;
     overflow-y: auto;
@@ -166,7 +166,7 @@ footer h5 {
 }
 .categoryDiv{
     /*height: 100vh;*/
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     background-color: #ffffff50;
     display: flex;
@@ -210,6 +210,165 @@ footer h5 {
     width: 100%;
 }
 
+/*-----------category-------------------*/
+
+.titreMargin{
+    text-align: center;
+}
+
+/* ------------------------- profil-----------------------------------*/
 
 
 
+/*.userProfil{*/
+/*    display: flex;*/
+
+
+/*    background-color: white;*/
+/*    height: 70px;*/
+/*    border: 1px solid black;*/
+
+
+/*}*/
+/*.userProfil > div:first-child{*/
+/*    min-width: 40%;*/
+/*}*/
+
+/*.userProfil > div:nth-child(2){*/
+/*    min-width: 50%;*/
+
+
+/*}*/
+/*.userProfil > div:last-child{*/
+/*    min-width: 10%;*/
+/*    align-self: end;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    height: 100%;*/
+/*}*/
+/*.bgColor{*/
+/*    !*width: 60%;*!*/
+/*    !*margin: 0 auto;*!*/
+
+
+
+/*}*/
+/*.userProfil > div > p {*/
+/*    font-size: 20px;*/
+/*    padding: 10px 10px;*/
+/*    height: 100%;*/
+/*}*/
+
+/*.userProfil:hover{*/
+/*    background-color: #06f3e3;*/
+/*}*/
+
+
+
+/*.bgColor > h2{*/
+/*    margin-bottom: 50px;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.bgColor >figure{*/
+/*    width: 400px;*/
+/*    height: 400px;*/
+/*    margin: 0 auto;*/
+/*}*/
+
+/*.bgColor > figure > img{*/
+/*    width: 100%;*/
+
+
+/*}*/
+
+/*-----test ______*/
+
+.blockDiv{
+    background: linear-gradient(to right, #007c91, white);
+    width:70%;
+    height: 600px;
+    position: relative;
+    margin-top: 180px;
+    
+
+
+}
+
+.infoUser{
+    border-radius: 3px;
+    position: absolute;
+    top:310px;
+    right: -208px;
+    border: 1px solid black;
+    min-width: 600px;
+
+
+}
+.userProfil {
+    display: flex;
+    background-color: white;
+    height: 35px;
+    border: 1px solid black;
+    text-decoration: none;
+    color: black;
+    padding-left: 10px;
+    align-items: center;
+}
+.userProfil>div:first-child{
+    width:30%
+}
+.userProfil>div:nth-child(2){
+    width:66%
+}
+.userProfil>div:last-child{
+    width:4%
+}
+.userProfil>div>p{
+    display: inline-block;
+    height: 100%;
+}
+
+
+.blockDiv > div:first-child{
+
+    position: absolute;
+    top: 225px;
+    left: 30px;
+
+
+}
+.blockDiv >div > h2,
+.blockDiv >div > p
+{
+    color: black;
+
+}
+.blockDiv >div > p{
+    font-size: 20px;
+}
+.blockDiv >div  >figure{
+    width: 350px;
+    height: 350px;
+    margin-bottom: -50px;
+
+
+
+
+
+}
+.blockDiv >div >figure >img{
+   width: 100%;
+    border: 1px solid black;
+
+}
+.photoProfil{
+    position: absolute;
+    top:-150px;
+    right: 65px;
+
+}
+.infoUser >a:hover{
+    background-color: #5ddef4;
+}
