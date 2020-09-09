@@ -48,8 +48,8 @@ body {
     background-size: cover;
     background-attachment: fixed;
     overflow-y: auto;
-
 }
+
 body > main {
     display: flex;
     flex-direction: column;
@@ -57,7 +57,6 @@ body > main {
     height: fit-content;
     background-color: var(--filter);
     backdrop-filter: blur(2px);
-
 }
 body > nav {
     position: fixed;
