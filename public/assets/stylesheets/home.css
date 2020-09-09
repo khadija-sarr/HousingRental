@@ -2,52 +2,32 @@
     .container > .cards:nth-child(4n){
         display: none;
     }
-
 }
-
 @media screen and (max-width: 1200px ){
     .container > .cards:nth-child(3n){
         display: none;
     }
 }
-
 @media screen and (max-width: 800px ){
     .container > .cards:nth-child(3n){
         display: none;
     }
     .categoryDiv{
-
         min-width: 100%;
-
-
     }
 }
-
 @media screen and (max-width: 630px ){
     .container > .cards:nth-child(2n){
         display: none;
     }
     .categoryDiv{
-
         min-width: 100%;
-
-
     }
-
 }
-
-
-
-
-
-
 body {
     width: 100vw;
     height: 100vh;
-    background-image: url("../images/backgrounds/maldives.jpg");
-    background-size: cover;
-    background-attachment: fixed;
-    overflow-y: auto;
+    scroll-behavior: smooth;
 }
 
 body > main {
@@ -58,6 +38,7 @@ body > main {
     background-color: var(--filter);
     backdrop-filter: blur(2px);
 }
+/* ---------Footer------------ */
 body > nav {
     position: fixed;
 }
@@ -81,7 +62,6 @@ footer > div > div {
     width: calc(100% / 3);
     height: 100%;
 }
-
 footer h5 {
     display: flex;
     justify-content: center;
@@ -89,21 +69,17 @@ footer h5 {
     width: 100%;
     height: 50px;
 }
-
-
 /* -----------------card------------------*/
 .container{
     display: flex;
     justify-content: space-around;
 }
-
 .cards:hover{
     -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
     transform: translateY(-10px);
 }
-
 .cards{
     position: relative;
     border: 1px solid black;
@@ -113,23 +89,17 @@ footer h5 {
     margin: 40px 0;
     background-color: #ffffff;
 }
-
 .cardBody > h5{
     font-size: 18px;
     margin-top: 10px;
     padding: 5px;
-
-
 }
-
-
 .cardBody > h6 {
     font-size: 15px;
     margin-top: 10px;
     margin-bottom: 50px;
     padding: 5px;
 }
-
 .categoryCard{
     position: absolute;
     top: 8px;
@@ -139,10 +109,7 @@ footer h5 {
     border-radius: 8px;
     color: white;
     font-size: 15px;
-
-
 }
-
 .headerFooter{
     padding: 10px;
     background-color: lightgrey;
@@ -151,35 +118,27 @@ footer h5 {
     bottom: 0;
     width: 100%;
     border-top: 1px solid black;
-
 }
-
 /* -----------------------------home-------------------------------*/
-
 .titre{
     text-align: center;
     font-size: 25px;
     margin: 50px;
-
-
 }
 .categoryDiv{
     /*height: 100vh;*/
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     background-color: #ffffff50;
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
-
 .fontDiv >p{
     font-size: 20px;
     text-align: center;
     margin-bottom: 50px;
 }
-
 .hauteurDiv{
     height: 60px;
 }
@@ -196,19 +155,147 @@ footer h5 {
     margin-top: 50px;
     margin-bottom: 50px;
 }
-
 .categoryDiv >a:hover{
     -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-
 }
-
-
 .fontDiv{
     background-color: white;
     width: 100%;
 }
-
-
-
-
+a:link {
+    opacity: 0.7;
+}
+a:visited {
+    color: black;
+}
+a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+/* ------------------- Landing Page ------------------- */
+.landingPage {
+    width: 100vw;
+    height: 100vh;
+}
+.landingPage > .expandArrow {
+    position: relative;
+    top: 750px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+.landingPage > .navBar {
+    position: relative;
+    top: 500px;
+    width: 50%;
+    margin: 0 auto;
+}
+.landingPage > .navBar > ul {
+    display: flex;
+    justify-content: space-around;
+}
+.landingPage > .navBar > ul > li {
+    width: 100px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+.landingPage > .landingName {
+    position: relative;
+    top: 350px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: x-large;
+    opacity: 0.7;
+}
+.landingPage > .navLogo {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    left: 20px;
+}
+.landingPage > .navLogo > img {
+    width: 100px;
+    height: 100px;
+}
+/* ------------- Bannière ------------- */
+/* ------------ NavBar----------------- */
+.container_nav > .navList {
+    display: flex;
+    justify-content: space-around;
+}
+.container_nav > .navList > ul > li {
+    padding: 5px;
+}
+/*-----------category-------------------*/
+.titreMargin{
+    text-align: center;
+}
+/*-----test ______*/
+.blockDiv{
+    background: linear-gradient(to right, #007c91, white);
+    width:70%;
+    height: 600px;
+    position: relative;
+    margin-top: 180px;
+}
+.infoUser{
+    border-radius: 3px;
+    position: absolute;
+    top:310px;
+    right: -208px;
+    border: 1px solid black;
+    min-width: 600px;
+}
+.userProfil {
+    display: flex;
+    background-color: white;
+    height: 35px;
+    border: 1px solid black;
+    text-decoration: none;
+    color: black;
+    padding-left: 10px;
+    align-items: center;
+}
+.userProfil>div:first-child {
+    width:30%
+}
+.userProfil>div:nth-child(2) {
+    width:66%
+}
+.userProfil>div:last-child {
+    width:4%
+}
+.userProfil>div>p {
+    display: inline-block;
+    height: 100%;
+}
+.blockDiv > div:first-child {
+    position: absolute;
+    top: 225px;
+    left: 30px;
+}
+.blockDiv >div > h2,
+.blockDiv >div > p {
+    color: black;
+}
+.blockDiv >div > p {
+    font-size: 20px;
+}
+.blockDiv >div  >figure {
+    width: 350px;
+    height: 350px;
+    margin-bottom: -50px;
+}
+.blockDiv >div >figure >img{
+     width: 100%;
+     border: 1px solid black;
+}
+.photoProfil{
+    position: absolute;
+    top:-150px;
+    right: 65px;
+}
+.infoUser >a:hover{
+    background-color: #5ddef4;
+}

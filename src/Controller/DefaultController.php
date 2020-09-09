@@ -14,7 +14,16 @@
             $houses = $this->getDoctrine()
                 ->getRepository(House::class)
                 ->findBy([], ['id' => 'DESC'], 4);
-            return $this->render('default/home.html.twig', ['houses' => $houses]);
+            $homes = $this->getDoctrine()
+                ->getRepository(House::class)
+                ->findBy(['category' => 2], ['id' => 'DESC'], 4);
+            $apartments = $this->getDoctrine()
+                ->getRepository(House::class)
+                ->findBy(['category' => 1], ['id' => 'DESC'], 4);
+            $events = $this->getDoctrine()
+                ->getRepository(House::class)
+                ->findBy(['category' => 3], ['id' => 'DESC'], 4);
+            return $this->render('default/home.html.twig', ['houses' => $houses, 'homes' => $homes, 'apartments' => $apartments, 'events' => $events]);
         }
         /**
          * @Route("/categorie/{alias}", name="default_category", methods={"GET"})

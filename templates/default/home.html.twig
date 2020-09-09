@@ -1,9 +1,31 @@
 {% extends "base.html.twig" %}
 {% block title %}Housing Rental{% endblock %}
 {% block content %}
+    <div class="landingPage">
+        <div class="navLogo">
+            <img src="{{ asset('assets/images/logoHousingRental.png') }}" alt="Logo de l'entreprise">
+        </div>
+        <div class="landingName">HousingRental</div>
+        <div class="navBar">
+            <ul>
+                <li><a href="#appartement">Appartement</a></li>
+                <li><a href="#maison">Maison</a></li>
+                <li><a href="#evenement">Evènement</a></li>
+            </ul>
+        </div>
+        <div class="expandArrow">
+            <a href="#accueil">
+                <img src="{{ asset('assets/images/expand-arrow-40.png') }}" alt="Flèche descendante">
+            </a>
+        </div>
+
+    </div>
+
     <div class="categoryDiv">
+
         <div id="accueil" class="hauteurDiv"></div>
 
+        {% include 'components/_nav.html.twig' %}
         <h2 class="titre affichageTitre">Nos dernieres offres !</h2>
 
 
@@ -11,7 +33,6 @@
                 {% for house in houses %}
                     {% include 'components/_card.html.twig' %}
                 {% endfor %}
-
         </div>
     </div>
     <div class="categoryDiv">
@@ -23,14 +44,15 @@
 
 
         <div class="container">
-            {% for house in houses  %}
+            {% for house in apartments  %}
+
                 {% if house.category.name == 'appartement' %}
                     {% include 'components/_card.html.twig' %}
                 {% endif %}
             {% endfor %}
 
         </div>
-        <a>Cliquez ici pour voir tous nos appartements</a>
+        <a href="{{ path('default_category', {'alias' : 'appartement'}) }}">Cliquez ici pour voir tous nos appartements</a>
     </div>
     <div class="categoryDiv">
         <div id="maison" class="hauteurDiv"></div>
@@ -40,14 +62,14 @@
         </div>
 
         <div class="container">
-            {% for house in houses  %}
+            {% for house in homes  %}
                 {% if house.category.name == 'maison' %}
-                {% include 'components/_card.html.twig' %}
+                    {% include 'components/_card.html.twig' %}
                 {% endif %}
             {% endfor %}
 
         </div>
-        <a>Cliquez ici pour voir toutes nos maisons</a>
+        <a href="{{ path('default_category', {'alias' : 'maison'}) }}">Cliquez ici pour voir toutes nos maisons</a>
     </div>
     <div class="categoryDiv">
         <div id="evenement" class="hauteurDiv"></div>
@@ -58,12 +80,11 @@
 
         <div class="container">
 
-            {% for house in houses  %}
+            {% for house in events  %}
                 {% if house.category.name == 'evenement' %}
                     {% include 'components/_card.html.twig' %}
                 {% endif %}
             {% endfor %}
-
         </div>
         <a href="{{ path('default_category', {'alias' : 'evenement'}) }}">Cliquez ici pour voir nos évènements</a>
     </div>

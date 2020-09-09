@@ -10,14 +10,22 @@
     <div class="slidecontainer d-flex">
         <div class="col-3">
             <b>Prix Min</b>
-            <input type="range" min="1" max="100" value="50" class="sliderMin" id="myRangeMin">
+            <input type="range" min="1" max="999" value="50" class="sliderMin" id="myRangeMin">
         </div>
         <div class="col-3">
             <b>Prix Max</b>
-            <input type="range" min="1" max="100" value="50" class="sliderMax" id="myRangeMax">
+            <input type="range" min="1" max="999" value="50" class="sliderMax" id="myRangeMax">
         </div>
     </div>
     {{ form(form) }}
+
+    <div class="container_search">
+        {% for house in result %}
+
+                {% include 'components/_card.html.twig' %}
+
+        {% endfor %}
+    </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
