@@ -63,19 +63,14 @@
           }
         return $this->render('house/new.html.twig', ['form' => $form->createView(), 'houses' => $houses]);
     }
-
-        /**
-         * @Route ("/search", name="search_house", methods={"GET"})
-         * @param Request $request
-         *
-         *
-         * @return \Symfony\Component\HttpFoundation\Response
-         */
+    /**
+     * @Route ("/search", name="search_house", methods={"GET"})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function searchedHouse(Request $request) {
-
         $houses = $this->getDoctrine()->getRepository(House::class);
         $result = [];
-
         $form = $this->createFormBuilder()
             ->setMethod('GET')
             ->add('priceMin')
@@ -83,16 +78,13 @@
             ->add('submit', SubmitType::class)
             ->getForm();
         $form->handleRequest($request);
-
         if($form->isSubmitted()) {
             $search = $form->getData();
             $priceMin = $search['priceMin'];
             $priceMax = $search['priceMax'];
             # Recherche dans la BDD
             $result = $houses->findHouses($priceMin, $priceMax);
-
         }
-
         return $this->render('house/searched.html.twig', [
             'form' => $form->createView(),
             'result' => $result

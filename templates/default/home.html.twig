@@ -26,7 +26,6 @@
         <div id="accueil" class="hauteurDiv"></div>
 
         {% include 'components/_nav.html.twig' %}
-
         <h2 class="titre affichageTitre">Nos dernieres offres !</h2>
 
 
@@ -34,7 +33,6 @@
                 {% for house in houses %}
                     {% include 'components/_card.html.twig' %}
                 {% endfor %}
-
         </div>
     </div>
     <div class="categoryDiv">
@@ -87,7 +85,6 @@
                     {% include 'components/_card.html.twig' %}
                 {% endif %}
             {% endfor %}
-
         </div>
         <a href="{{ path('default_category', {'alias' : 'evenement'}) }}">Cliquez ici pour voir nos évènements</a>
     </div>
