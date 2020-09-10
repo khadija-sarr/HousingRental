@@ -10,7 +10,7 @@
 .slidecontainer > form {
     display: table-caption;
     position: relative;
-    left: calc(100%/3);
+    left: calc(100%/2);
     margin-top: 15px;
 }
 
