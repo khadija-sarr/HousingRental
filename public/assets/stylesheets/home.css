@@ -434,3 +434,105 @@ footer > .credentials > p {
 footer > .credentials > p > a {
     color: white;
 }
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+/* CSS - Why Us Section */
+/* ------------------------------------------------------------------------------------------------------------------ */
+#carrousel{
+    position: relative;
+    height: 350px;
+    width: 600px;
+    margin: auto;
+}
+
+#carrousel ul li img {
+    position:absolute;
+    top:0;
+    left:0;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.position_container {
+    position: relative;
+}
+
+.container_carrousel {
+    position: absolute;
+    bottom: 350px;
+    left: 60px;
+}
+
+.whyUs {
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
+    height: 800px;
+    width: 70%;
+    display: flex;
+    margin: 0 auto;
+}
+
+.left_section {
+    height: 100%;
+    width: 50%
+}
+
+.right-section {
+    height: 100%;
+    width: 50%
+}
+
+.right-section h1 {
+    position: relative;
+    width: 70%;
+    top: 160px;
+    left: 50px;
+    font-family: Lobster, sans-serif;
+    color: white;
+    font-size: 45px;
+}
+
+.right-section p {
+    position: relative;
+    left: 50px;
+    top: 220px;
+    width: 70%;
+    color: white;
+    font-family: Roboto, sans-serif;
+}
+
+@media screen and (max-width: 1150px){
+    /*.position_container {*/
+    /*    display: none;*/
+    /*}*/
+    .whyUs {
+        flex-direction: column-reverse;
+        height: 500px;
+    }
+    .left_section {
+        width: 100%;
+    }
+    .right-section {
+        width: 100%;
+    }
+    .right-section h1 {
+        width: 100%;
+        text-align: center;
+        position: static;
+    }
+    .right-section > p {
+        width: 100%;
+        text-align: center;
+        position: static;
+        margin-top: 10px;
+    }
+    .container_carrousel {
+        position: relative;
+        bottom: 375px;
+        left: 35px;
+    }
+
+}
+
+
+
+
