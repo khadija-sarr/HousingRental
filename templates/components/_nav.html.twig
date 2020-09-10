@@ -1,41 +1,43 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="{{ path('default_home') }}">HousingRental</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarColor01">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('default_category', {'alias' : 'appartement'}) }}">Appartement</a>
+<nav id="mainNav">
+    <div class="siteLogo">
+        <img src="{{ asset('assets/images/logos/navlogo.png') }}" alt="">
+    </div>
+    <div class="menuContainer">
+        <button class="menuButton">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul>
+            <li>
+                <a href="{{ path('default_home') }}">Accueil</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('default_category', {'alias' : 'maison'}) }}">Maison</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('default_category', {'alias' : 'evenement'}) }}">Évènement</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                {% if is_granted("ROLE_ADMIN") %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('admin_backOffice') }}">Back Office</a>
+            {% if categories is defined %}
+                {% for category in categories %}
+                    <li>
+                        <a href="{{ path('default_category', { 'alias': category.alias }) }}">{{ category.name }}</a>
                     </li>
-                {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('house_new') }}">Logement</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('user_register') }}">Inscription</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
-                </li>
+                {% endfor %}
             {% endif %}
+            <li>
+                <a href="{{ path('contact_form') }}">Contact</a>
+            </li>
+            <li id="login">
+                <a href="{{ path('app_login') }}">Connexion</a>
+            </li>
+            <li id="register">
+                <a href="{{ path('app_logout') }}">Inscription</a>
+            </li>
+            <li id="closeMenu">
+                <button class="closeMenuButton">
+                    <i class="fas fa-times"></i>
+                </button>
+            </li>
         </ul>
+        <a class="loginButton" href="{{ path('app_login') }}">
+            <i class="fas fa-user"></i>
+        </a>
+    </div>
+    <div class="userButtons">
+        <a href="{{ path('user_register') }}">Inscription</a>
+        <a href="{{ path('app_login') }}">Connexion</a>
     </div>
 </nav>
