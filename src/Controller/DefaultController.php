@@ -11,19 +11,29 @@
          * @return Response
          */
         public function home() {
-            $houses = $this->getDoctrine()
-                ->getRepository(House::class)
-                ->findBy([], ['id' => 'DESC'], 4);
-            $homes = $this->getDoctrine()
-                ->getRepository(House::class)
-                ->findBy(['category' => 2], ['id' => 'DESC'], 4);
+            $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+            $lastHouses = $this->getDoctrine()
+            ->getRepository(House::class)
+            ->findBy([], ['id' => 'DESC'], 4);
             $apartments = $this->getDoctrine()
-                ->getRepository(House::class)
-                ->findBy(['category' => 1], ['id' => 'DESC'], 4);
+            ->getRepository(House::class)
+            ->findBy(['category' => 1], ['id' => 'DESC'], 4);
+            $houses = $this->getDoctrine()
+            ->getRepository(House::class)
+            ->findBy(['category' => 2], ['id' => 'DESC'], 4);
             $events = $this->getDoctrine()
-                ->getRepository(House::class)
-                ->findBy(['category' => 3], ['id' => 'DESC'], 4);
-            return $this->render('default/home.html.twig', ['houses' => $houses, 'homes' => $homes, 'apartments' => $apartments, 'events' => $events]);
+            ->getRepository(House::class)
+            ->findBy(['category' => 3], ['id' => 'DESC'], 4);
+            return $this->render('default/home.html.twig',
+                [
+                    'lastHouses' => $lastHouses,
+                    'apartments' => $apartments,
+                    'houses' => $houses,
+                    'events' => $events,
+                    'categories' => $categories,
+                    'bannerTitle' => 'En recherche de destination de vacances ?',
+                    'bannerText' => 'Nous vous proposons des propriétés à louer pour tout les goûts !'
+                ]);
         }
         /**
          * @Route("/categorie/{alias}", name="default_category", methods={"GET"})
@@ -31,10 +41,28 @@
          * @return Response
          */
         public function category(Category $category) {
+            $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
             $houses = $this->getDoctrine()
             ->getRepository(House::class)
             ->findBy(['category' => $category]);
-            return $this->render('default/category.html.twig', ['category' => $category, 'houses' => $houses]);
+            $bannerTitle = "";
+            if($category->getName() == "Appartement") {
+                $bannerTitle = "appartements";
+            }
+            if($category->getName() == "Maison") {
+                $bannerTitle = "maisons";
+            }
+            if($category->getName() == "Évènement") {
+                $bannerTitle = "propriétés pour mettre en place un évènement";
+            }
+            return $this->render('default/category.html.twig',
+                [
+                    'category' => $category,
+                    'categories' => $categories,
+                    'houses' => $houses,
+                    'bannerTitle' => $category->getName(),
+                    'bannerText' => 'Découvrez nos ' . $bannerTitle
+                ]);
         }
         /**
          * @Route("/categorie/{category}/{alias}_{id}.html", name="default_house", methods={"GET"})
@@ -42,9 +70,16 @@
          * @return Response
          */
         public function house(House $house = null) {
+            $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
             if ($house === null) {
                 return $this->redirectToRoute('/');
             }
-            return $this->render('default/house.html.twig', ['house' =>$house]);
+            return $this->render('default/house.html.twig',
+                [
+                    'house' => $house,
+                    'categories' => $categories,
+                    'bannerTitle' => $house->getName(),
+                    'bannerText' => 'Découvrez plus d\'informations sur cette propriété juste en dessous !'
+                ]);
         }
     }

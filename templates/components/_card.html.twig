@@ -1,17 +1,13 @@
 <div class="cards">
-    <img style="height: 200px; width: 100%; display: block;" src="{{ asset('uploads/houses/' ~ house.photo) }}" alt="Card image">
+    <img style="height: 200px; width: 100%; display: block;" src="{{ asset('uploads/houses/' ~ property.photo) }}" alt="Card image">
     <div class="cardBody" >
-        <h5 class="">{{ house.name }}</h5>
-        <h6 class="">{{ house.description | slice(0,100)}}...</h6>
+        <h5 class="">{{ property.name }}</h5>
+        <h6 class="">{{ property.description|slice(0, 100) }}...</h6>
     </div>
     <div class="headerFooter">
-        <a href="{{ path('default_house', {
-            'category': house.category.alias,
-            'alias': house.alias,
-            'id':house.id
-        }) }}" class="">En savoir plus</a>
+        <a href="{{ path('default_house', { 'category': property.category.alias, 'alias': property.alias, 'id':property.id }) }}">En savoir plus</a>
     </div>
     <div class="categoryCard">
-        <p >{{ house.category.name | title }} </p>
+        <p >{{ property.category.name | title }} </p>
     </div>
 </div>

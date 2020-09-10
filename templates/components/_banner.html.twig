@@ -1,0 +1,22 @@
+{% if app.request.get('_route') != "default_home" %}
+    <style>
+        div.homeSlider {
+            height: 500px;
+        }
+    </style>
+{% endif %}
+<div class="homeSlider" data-image="image1">
+    <div class="filter">
+        <h2>{{ bannerTitle }}</h2>
+        <h6>{{ bannerText }}</h6>
+        {% if app.request.get('_route') == "user_register" %}
+            <p>Vous êtes déjà inscrit ? Connectez-vous en cliquant <a href="{{ path('app_login') }}">ici</a></p>
+        {% endif %}
+        {% if app.request.get('_route') == "app_login" %}
+            <p>Vous n'avez pas de compte ? Inscrivez-vous en cliquant <a href="{{ path('user_register') }}">ici</a></p>
+        {% endif %}
+    </div>
+    {% if app.request.get('_route') == "default_home" %}
+        <a class="searchHouse" href="{{ path('search_house') }}">Recherchez votre propriété</a>
+    {% endif %}
+</div>

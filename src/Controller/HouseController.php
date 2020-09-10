@@ -12,7 +12,9 @@
     use Symfony\Component\Form\Extension\Core\Type\TextType;
     use Symfony\Component\HttpFoundation\File\Exception\FileException;
     use Symfony\Component\HttpFoundation\File\UploadedFile;
+    use Symfony\Component\HttpFoundation\RedirectResponse;
     use Symfony\Component\HttpFoundation\Request;
+    use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\Routing\Annotation\Route;
     use Symfony\Component\String\Slugger\SluggerInterface;
     class HouseController extends AbstractController {
@@ -20,26 +22,28 @@
          * @Route("/logement/nouveau", name="house_new", methods={"GET|POST"})
          * @param Request $request
          * @param SluggerInterface $slugger
+         * @return RedirectResponse|Response
          */
         public function newHouse(Request $request, SluggerInterface $slugger) {
+            $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
             $house = new House();
             $user = $this->getDoctrine()
-                ->getRepository(User::class)
-                ->find($this->getUser());
+            ->getRepository(User::class)
+            ->find($this->getUser());
             $house->setUser($user);
             $houses = $this->getDoctrine()->getRepository(House::class)->findBy([], ['id' => 'DESC'], 2);
             $form = $this->createFormBuilder($house)
-                ->add('name', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Nom de logement']])
-                ->add('description', TextareaType::class, ['label' => false, 'attr' => ['placeholder' => 'Description']])
-                ->add('category', EntityType::class, ['class' => Category::class, 'choice_label' => 'name', 'label' => false])
-                ->add('address' , TextType::class, ['label' => false, 'attr' =>  ['placeholder' => 'Adresse']  ])
-                ->add('zipcode', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Code Postal']])
-                ->add('city', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Ville']])
-                ->add('country', CountryType::class, ['label' => false, 'preferred_choices' => ['value' => 'FR']])
-                ->add('price', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Prix']])
-                ->add('photo', FileType::class, ['label' => false, 'attr' => ['class' => 'dropify']])
-                ->add('submit', SubmitType::class, ['label' => 'Ajouter'])
-                ->getForm();
+            ->add('name', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Nom de logement']])
+            ->add('description', TextareaType::class, ['label' => false, 'attr' => ['placeholder' => 'Description']])
+            ->add('category', EntityType::class, ['class' => Category::class, 'choice_label' => 'name', 'label' => false])
+            ->add('address' , TextType::class, ['label' => false, 'attr' =>  ['placeholder' => 'Adresse']  ])
+            ->add('zipcode', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Code Postal']])
+            ->add('city', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Ville']])
+            ->add('country', CountryType::class, ['label' => false, 'preferred_choices' => ['value' => 'FR']])
+            ->add('price', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Prix']])
+            ->add('photo', FileType::class, ['label' => false, 'attr' => ['class' => 'dropify']])
+            ->add('submit', SubmitType::class, ['label' => 'Ajouter'])
+            ->getForm();
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
                 $house->setAlias($slugger->slug($house->getName()));
@@ -56,38 +60,50 @@
                 $em->persist($house);
                 $em->flush();
                 $this->addFlash('notice', 'Félicitation votre logement a bien été ajouté !');
-                return $this->redirectToRoute('default_home', [
-                    'category' => $house->getCategory()->getAlias(),
-                    'alias' => $house->getAlias(),
-                    'id' => $house->getId()]);
+                return $this->redirectToRoute('default_home',
+                    [
+                        'category' => $house->getCategory()->getAlias(),
+                        'alias' => $house->getAlias(),
+                        'id' => $house->getId()
+                    ]);
           }
-        return $this->render('house/new.html.twig', ['form' => $form->createView(), 'houses' => $houses]);
+        return $this->render('house/new.html.twig',
+            [
+                'categories' => $categories,
+                'form' => $form->createView(),
+                'houses' => $houses,
+                'bannerTitle' => 'Location',
+                'bannerText' => 'Proposez votre propriété comme destination de vacances !'
+            ]);
     }
     /**
-     * @Route ("/search", name="search_house", methods={"GET"})
+     * @Route ("/recherche", name="search_house", methods={"GET"})
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function searchedHouse(Request $request) {
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
         $houses = $this->getDoctrine()->getRepository(House::class);
         $result = [];
         $form = $this->createFormBuilder()
-            ->setMethod('GET')
-            ->add('priceMin')
-            ->add('priceMax')
-            ->add('submit', SubmitType::class)
-            ->getForm();
+        ->setMethod('GET')
+        ->add('priceMin')
+        ->add('priceMax')
+        ->add('submit', SubmitType::class)
+        ->getForm();
         $form->handleRequest($request);
         if($form->isSubmitted()) {
             $search = $form->getData();
             $priceMin = $search['priceMin'];
             $priceMax = $search['priceMax'];
-            # Recherche dans la BDD
             $result = $houses->findHouses($priceMin, $priceMax);
         }
         return $this->render('house/searched.html.twig', [
+            'categories' => $categories,
             'form' => $form->createView(),
-            'result' => $result
+            'result' => $result,
+            'bannerTitle' => 'Recherche',
+            'bannerText' => 'Trouvez une propriété sur mesure pour vos vacances !'
         ]);
     }
 }

@@ -1,10 +1,6 @@
 <?php
-
-
-
-
-namespace App\Controller;
-
+    namespace App\Controller;
+    use App\Entity\Category;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\Form\Extension\Core\Type\EmailType;
     use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -16,16 +12,15 @@ namespace App\Controller;
     use Symfony\Component\Mailer\MailerInterface;
     use Symfony\Component\Mime\Email;
     use Symfony\Component\Routing\Annotation\Route;
-
-
     class ContactController extends AbstractController {
         /**
-         * @Route("/contact", name="contact_new", methods={"GET|POST"})
+         * @Route("/contact", name="contact_form", methods={"GET|POST"})
          * @param Request $request
          * @param MailerInterface $mailer
          * @return Response
          */
-        public function newContact(Request $request, MailerInterface $mailer) {
+        public function contactForm(Request $request, MailerInterface $mailer) {
+            $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
             $form = $this->createFormBuilder()
             ->add('fullname',TextType::class, ['label' => false, 'attr'  => ['placeholder' => 'Nom et Prénom']])
             ->add('email', EmailType::class, ['label' => false, 'attr'  => ['placeholder' => 'Adresse email']])
@@ -46,22 +41,12 @@ namespace App\Controller;
                     dd($e);
                 }
             }
-            return $this->render('contact/new.html.twig', ['form' => $form->createView()]);
+            return $this->render('contact/new.html.twig',
+                [
+                    'form' => $form->createView(),
+                    'categories' => $categories,
+                    'bannerTitle' => 'Contact',
+                    'bannerText' => 'Contactez nous pour toute question via le formulaire ci-dessous !'
+                ]);
         }
-//        private $emailVide;
-//        public function from($adresseEmailObtenue) {
-//            $this->emailVide = $adresseEmailObtenue;
-//        }
-//        public function to() {
-//
-//        }
-//        public function subject() {
-//
-//        }
-//        $email = {
-//            'from': "l'adresse de l'utilisateur"
-//            'to': 'l\'adresse du destinataire ( souvent l\'administrateur )'
-//            'subject': 'L\'objet du mail'
-//            'text': 'Le contenu du mail'
-//        }
     }
