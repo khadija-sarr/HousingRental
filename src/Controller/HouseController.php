@@ -3,6 +3,7 @@
     use App\Entity\Category;
     use App\Entity\House;
     use App\Entity\User;
+    use phpDocumentor\Reflection\Types\Void_;
     use Symfony\Bridge\Doctrine\Form\Type\EntityType;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -84,9 +85,9 @@
         $result = [];
         $form = $this->createFormBuilder()
         ->setMethod('GET')
-        ->add('priceMin')
-        ->add('priceMax')
-        ->add('submit', SubmitType::class)
+        ->add('priceMin', TextType::class, ['label' => 'Prix min / nuit'])
+        ->add('priceMax', TextType::class, ['label' => 'Prix max / nuit'])
+        ->add('submit', SubmitType::class, ['label' => 'Valider'])
         ->getForm();
         $form->handleRequest($request);
         if($form->isSubmitted()) {
