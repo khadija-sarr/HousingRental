@@ -5,24 +5,29 @@
     <link rel="stylesheet" href="{{ asset('assets/stylesheets/slider.css') }}">
 {% endblock %}
 {% block content %}
-    <div class="slidecontainer d-flex">
-        <div class="col-3">
-            <b>Prix Min</b>
+    <div class="slidecontainer">
+        <div class="container_min">
+            <b>Min</b>
             <input type="range" min="1" max="999" value="50" class="sliderMin" id="myRangeMin">
         </div>
-        <div class="col-3">
-            <b>Prix Max</b>
+        <div class="container_max">
+            <b>Max</b>
             <input type="range" min="1" max="999" value="50" class="sliderMax" id="myRangeMax">
         </div>
+
+        {{ form_start(form) }}
+
+        {{ form_end(form) }}
     </div>
-    {{ form(form) }}
 
-    <div class="container_search">
-        {% for house in result %}
+    <div class="categoryDiv">
+        <div class="container">
+            {% for property in result %}
 
-                {% include 'components/_card.html.twig' %}
+                    {% include 'components/_card.html.twig' %}
 
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
 {% block javascripts %}
