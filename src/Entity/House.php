@@ -29,7 +29,7 @@ class House
 
     /**
      * @ORM\Column(type="string", length=80)
-     * @Assert\Length(max="45", maxMessage="Attention pas plus de {{ limit }} caractères")
+     * @Assert\Length(max="35", maxMessage="Attention pas plus de {{ limit }} caractères")
      * @Assert\NotBlank(message="Veuillez saisir le nom du logement.")
      */
     private $name;
@@ -62,11 +62,7 @@ class House
      */
     private $zipcode;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Veuillez saisir l'adresse'.")
-     */
-    private $address;
+
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="houses")

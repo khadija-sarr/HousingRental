@@ -47,7 +47,6 @@
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
                 $house->setAlias($slugger->slug($house->getName()));
-                /** @var UploadedFile $imageFile */
                 $imageFile = $form->get('photo')->getData();
                 $newFilename = $house->getAlias() . '-' . uniqid() . '.' . $imageFile->guessExtension();
                 try {

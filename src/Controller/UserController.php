@@ -46,9 +46,6 @@
             if($form->isSubmitted() && $form->isValid()) {
                 $encoded = $encoder->encodePassword($user, $form->get('password')->getData());
                 $user->setPassword($encoded)->setRoles(['ROLE_USER']);
-                /**
-                 * @var UploadedFile $imageFile
-                 */
                 $imageFile = $form->get('photo')->getData();
                 $newFilename = $user->getFirstname() . '-' . $user->getLastname() . '-' . uniqid() . '.' . $imageFile->guessExtension();
                 try {
@@ -113,8 +110,10 @@
             $form = $form->getForm();
             $form->handleRequest($request);
             if($form->isSubmitted() && $form->isValid()) {
-                $encoded = $encoder->encodePassword($user, $form->get('password')->getData());
-                $user->setPassword($encoded);
+                if($champ === 'mot-de-passe'){
+                    $encoded = $encoder->encodePassword($user, $form->get('password')->getData());
+                    $user->setPassword($encoded);
+                }
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($user);
                 $entityManager->flush();
@@ -122,5 +121,4 @@
             }
             return $this->render('user/update.html.twig', ['form' => $form->createView(), 'champ' => $champ]);
         }
-
     }
