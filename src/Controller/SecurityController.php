@@ -12,6 +12,9 @@
          * @return Response
          */
         public function login(AuthenticationUtils $authenticationUtils): Response {
+            if($this->getUser()) {
+                return $this->redirectToRoute('default_home');
+            }
             $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
             $error = $authenticationUtils->getLastAuthenticationError();
             $lastUsername = $authenticationUtils->getLastUsername();

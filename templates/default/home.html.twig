@@ -13,16 +13,21 @@
                 {% elseif loop.index == 3 %}
                     <img src="{{ asset('assets/images/backgrounds/evenement.jpg') }}" alt="">
                 {% endif %}
-                <div class="filter">
+                <div class="filter"></div>
+                <div>
                     <h5>{{ category.name }}</h5>
-                    <p>{{ category.houses|length }} propriétés</p>
+                    {% if category.houses|length > 1 %}
+                        <p>{{ category.houses|length }} propriétés</p>
+                    {% else %}
+                        <p>{{ category.houses|length }} propriété</p>
+                    {% endif %}
                 </div>
             </a>
         {% endfor %}
     </div>
+    <h6>Les propriétés les plus récentes</h6>
+    <h3>Une sélection de propriétés les plus récentes</h3>
     <div class="categoryDiv">
-        <div id="accueil" class="hauteurDiv"></div>
-        <h2 class="titre affichageTitre">Nos dernières offres !</h2>
         <div class="container">
             {% for property in lastHouses %}
                 {% include 'components/_card.html.twig' %}

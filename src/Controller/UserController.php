@@ -26,6 +26,9 @@
          * @return RedirectResponse|Response
          */
         public function newUser(Request $request, UserPasswordEncoderInterface $encoder) {
+            if($this->getUser()) {
+                return $this->redirectToRoute('default_home');
+            }
             $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
             $user = new User();
             $form = $this->createFormBuilder($user)
@@ -68,7 +71,7 @@
                 ]);
         }
         /**
-         * @Route("/profil", name="user_profil", methods={"GET|POST"})
+         * @Route("/profil", name="user_profile", methods={"GET|POST"})
          */
         public function profil() {
             $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
