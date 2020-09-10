@@ -109,8 +109,12 @@
 
 
             if($form->isSubmitted() && $form->isValid()) {
-                $encoded = $encoder->encodePassword($user, $form->get('password')->getData());
-                $user->setPassword($encoded);
+                if($champ === 'mot-de-passe'){
+
+                    $encoded = $encoder->encodePassword($user, $form->get('password')->getData());
+                    $user->setPassword($encoded);
+                }
+
 
 
                 $entityManager = $this->getDoctrine()->getManager();

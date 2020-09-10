@@ -1,24 +1,51 @@
-@media screen and (max-width: 1600px ){
-    .container > .cards:nth-child(4n){
-        display: none;
+
+@media screen and (max-width: 1080px ){
+    .container > .cards{
+        /*min-width: 400px;*/
     }
-}
-@media screen and (max-width: 1200px ){
-    .container > .cards:nth-child(3n){
-        display: none;
-    }
-}
-@media screen and (max-width: 800px ){
-    .container > .cards:nth-child(3n){
-        display: none;
+    .container{
+
+        grid-template-columns: repeat(2, 410px) !important;
+
     }
     .categoryDiv{
         min-width: 100%;
     }
 }
-@media screen and (max-width: 630px ){
-    .container > .cards:nth-child(2n){
-        display: none;
+@media screen and (max-width: 850px ){
+    .container > .cards{
+        /*min-width: 300px;*/
+    }
+    .container{
+
+        grid-template-columns: repeat(2, 310px) !important;
+        grid-template-rows: repeat(2, 210px ) !important;
+    }
+    .categoryDiv{
+        min-width: 100%;
+    }
+}
+@media screen and (max-width: 650px ){
+    .container > .cards{
+        /*min-width: 300px;*/
+    }
+    .container{
+
+        grid-template-columns: repeat(2, 260px) !important;
+        grid-template-rows: repeat(2, 210px ) !important;
+    }
+    .categoryDiv{
+        min-width: 100%;
+    }
+}
+@media screen and (max-width: 540px ){
+    .container > .cards{
+        /*min-width: 300px;*/
+    }
+    .container{
+
+        grid-template-columns: repeat(1, 390px) !important;
+        grid-template-rows: repeat(4, 210px ) !important;
     }
     .categoryDiv{
         min-width: 100%;
@@ -71,8 +98,9 @@ footer h5 {
 }
 /* -----------------card------------------*/
 .container{
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 510px);
+    grid-template-rows: repeat(2, 310px );
 }
 .cards > div.filter:hover{
     background: none;
@@ -84,11 +112,13 @@ footer h5 {
     position: relative;
     box-shadow: 1px 1px 1px black;
 
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    margin: auto;
+    /*width: 20%;*/
+    /*min-width: 500px;*/
+    /*height: 300px;*/
 
-    width: 20%;
-    min-width: 500px;
-    height: 300px;
-    margin-right: 20px;
 
 }
 .cards > img {
