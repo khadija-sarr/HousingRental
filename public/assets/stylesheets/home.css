@@ -381,7 +381,7 @@ body > main > div.categoryCards > a > div.filter > p {
 footer {
     width: 100%;
     min-height: 250px;
-    background-color: var(--color-24);
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
 }
 footer > .center {
     display: flex;
@@ -401,6 +401,8 @@ footer > hr {
     width: 75%;
     margin: 0 auto;
     border: 1px solid white;
+    position: relative;
+    top: 15px;
 }
 footer > .social {
     display: flex;
@@ -423,11 +425,11 @@ footer > .credentials {
     justify-content: center;
     align-items: center;
     width: fit-content;
-    margin: 30px auto auto auto;
+    margin: 45px auto auto auto;
 }
 footer > .credentials > p {
     color: var(--color-FF);
 }
 footer > .credentials > p > a {
-    color: var(--color-primary);
+    color: white;
 }
