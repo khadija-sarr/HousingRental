@@ -98,7 +98,6 @@ body > main > h3 {
     color: #7dccff;
 }
 .categoryDiv{
-    /*height: 100vh;*/
     width: 100%;
     margin: 0 auto;
     background-color: #ffffff50;
@@ -249,6 +248,7 @@ body > main > div.categoryCards > a > div.filter > p {
     }
 }
 .cards {
+    display: flex;
     width: calc(100% - 10px);
     height: calc(100% - 10px);
     margin: auto;
@@ -286,23 +286,25 @@ body > main > div.categoryCards > a > div.filter > p {
     position: absolute;
     top: 10px;
     right: 10px;
-    color: var(--color-FF);
     border-radius: 8px;
-    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));;
+    background-color: var(--color-primary);
+}
+.propertyCategory > p {
+    color: var(--color-FF);
 }
 /*-----------category-------------------*/
-.titreMargin{
+.titreMargin {
     text-align: center;
 }
 /*-----test ______*/
-.blockDiv{
+.blockDiv {
     background: linear-gradient(to right, #007c91, white);
     width:70%;
     height: 600px;
     position: relative;
     margin-top: 180px;
 }
-.infoUser{
+.infoUser {
     border-radius: 3px;
     position: absolute;
     top:310px;
@@ -381,43 +383,51 @@ footer {
     min-height: 250px;
     background-color: var(--color-24);
 }
-footer .center a {
-    color: white;
+footer > .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: 10px auto;
 }
-footer .credentials a {
-    color: white;
+footer > .center > a {
+    padding: 10px;
+    color: var(--color-FF);
 }
 .footer_link:hover {
     text-decoration: none;
 }
-footer .center {
-    display: flex;
-    justify-content: space-around;
-    width: calc(100%/4);
-    margin: 0 auto;
-    padding: 15px;
-}
-footer .w-75 {
-    margin: 0 auto;
+footer > hr {
     width: 75%;
-    border: 2px solid white;
+    margin: 0 auto;
+    border: 1px solid white;
 }
-footer .social {
+footer > .social {
+    display: flex;
+    width: fit-content;
     position: relative;
     top: 25px;
     text-align: center;
     padding: 15px;
     margin: 0 auto;
 }
-footer .social a {
+footer > .social > a {
     font-size: 45px;
 }
-footer .social a i {
+footer > .social > a > i {
     color: white;
-    padding: 5px;
+    padding: 10px;
 }
-footer .credentials {
-    text-align: center;
-    position: relative;
-    top: 50px;
+footer > .credentials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: 30px auto auto auto;
+}
+footer > .credentials > p {
+    color: var(--color-FF);
+}
+footer > .credentials > p > a {
+    color: var(--color-primary);
 }
