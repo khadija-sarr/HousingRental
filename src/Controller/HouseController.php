@@ -32,7 +32,7 @@
                 ->add('name', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Nom de logement']])
                 ->add('description', TextareaType::class, ['label' => false, 'attr' => ['placeholder' => 'Description']])
                 ->add('category', EntityType::class, ['class' => Category::class, 'choice_label' => 'name', 'label' => false])
-                ->add('address' , TextType::class, ['label' => false, 'attr' =>  ['placeholder' => 'Adresse']  ])
+
                 ->add('zipcode', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Code Postal']])
                 ->add('city', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Ville']])
                 ->add('country', CountryType::class, ['label' => false, 'preferred_choices' => ['value' => 'FR']])
