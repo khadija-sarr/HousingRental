@@ -1,0 +1,108 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /*height: fit-content;*/
+    padding: 70px;
+}
+.formContainer > div:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 60px;
+    background-color: var(--base-bckg);
+}
+
+.formContainer > div:last-child > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+
+.formContainer > div:last-child > div > h3 {
+    margin-top: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.formContainer > div:last-child > div:nth-child(2) > form {
+    width: 100%;
+    border: solid #797777 1px;
+    padding: 10px;
+}
+
+.formContainer > div:last-child > div:nth-child(2) > form > #form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.formContainer > div:last-child > div:nth-child(2) > form > #form > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+}
+.formContainer > div:last-child > div:nth-child(2) > form > #form > div:nth-child(10) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+}
+
+.formContainer > div:last-child > div:nth-child(2) > form > #form > div > input {
+    max-width: 1800px;
+    width: 800px;
+    height: 50px;
+    background-color: #a4a2a2;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.formContainer > div:last-child > div:nth-child(2) > form > #form > div > label {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-top: 10px;
+}
+form > #form button {
+    width: 120px;
+    height: 50px;
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
+    color: #FFFFFF;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+    .formContainer > div:last-child > div:nth-child(2),
+    .formContainer > div:last-child > div:nth-child(2) > form > #form > div > input,
+    form select, form textarea, form .dropify-wrapper {
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    .formContainer > div:last-child > div:nth-child(2) > form > #form > div > input,
+    form select, form textarea, form .dropify-wrapper {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    form > #form button {
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+
+}
