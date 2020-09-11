@@ -1,0 +1,63 @@
+/* ----------------------------------------------------------------------------------------------------------------- */
+/* CSS - Search property */
+/* ----------------------------------------------------------------------------------------------------------------- */
+.rangeContainer {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: 30px auto;
+}
+.rangeContainer > div {
+    display: flex;
+    margin: 20px;
+}
+.rangeContainer > div > div {
+    max-width: 150px;
+    margin: 0 20px;
+}
+.rangeMin,
+.rangeMax {
+    width: 100%;
+    height: 10px;
+    border-radius: 20px;
+    background-color: var(--color-grey-light);
+    -webkit-appearance: none;
+}
+.rangeMin::-webkit-slider-thumb,
+.rangeMax::-webkit-slider-thumb {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    background: var(--color-primary-dark);
+    -webkit-appearance: none;
+    transition: all 0.5s ease-in-out;
+}
+.rangeMin::-webkit-slider-thumb:hover,
+.rangeMax::-webkit-slider-thumb:hover {
+    background: var(--color-primary);
+}
+.rangeContainer > form {
+    display: grid;
+    grid-template-columns: repeat(2, calc(150px + 40px));
+    margin: auto;
+}
+.rangeContainer > form > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.rangeContainer > form > div:first-child > input,
+.rangeContainer > form > div:nth-child(2) > input {
+    width: 40px;
+    height: 40px;
+    color: var(--color-primary);
+    text-align: center;
+}
+#form_submit {
+    width: 80px;
+    height: 35px;
+    margin: 10px auto auto 30px;
+    color: var(--color-FF);
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
+}

@@ -2,38 +2,32 @@
 {% block title %}HousingRental - Recherche de location{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('assets/stylesheets/slider.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/stylesheets/components/range.css') }}">
 {% endblock %}
 {% block content %}
-    <div class="slidecontainer">
-        <div class="container_min">
-            <b>Min</b>
-            <input type="range" min="1" max="999" value="50" class="sliderMin" id="myRangeMin">
+    <div class="rangeContainer">
+        <div>
+            <div class="container_min">
+                <b>Min</b>
+                <input type="range" min="1" max="999" value="50" class="rangeMin" id="myRangeMin">
+            </div>
+            <div class="container_max">
+                <b>Max</b>
+                <input type="range" min="1" max="999" value="50" class="rangeMax" id="myRangeMax">
+            </div>
         </div>
-        <div class="container_max">
-            <b>Max</b>
-            <input type="range" min="1" max="999" value="50" class="sliderMax" id="myRangeMax">
-        </div>
-
         {{ form_start(form) }}
-
         {{ form_end(form) }}
     </div>
-
     <div class="categoryDiv">
         <div class="container">
             {% for property in result %}
-
-                    {% include 'components/_card.html.twig' %}
-
+                {% include 'components/_card.html.twig' %}
             {% endfor %}
         </div>
     </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('assets/javascripts/search.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/components/search.js') }}"></script>
 {% endblock %}
-
-
-

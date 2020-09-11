@@ -11,10 +11,10 @@
             <div class="cache"></div>
             <ul>
                 <li>
-                    <a href="#">Utilisateurs</a>
+                    <a id="showUsers" href="#">Utilisateurs</a>
                 </li>
                 <li>
-                    <a href="#">Locations</a>
+                    <a id="showProperties" href="#">Locations</a>
                 </li>
             </ul>
         </nav>
@@ -43,7 +43,7 @@
                                 <td>{{ user.zipcode }}</td>
                                 <td class="delete">
                                     <a data-user="{{ user.firstname }} {{ user.lastname }}" href="{{ path('admin_deleteUser', { 'id': user.id }) }}">
-                                        <i class="fas fa-user-minus"></i>
+                                        <i class="fas fa-trash-alt"></i>
                                     </a>
                                 </td>
                             </tr>
@@ -73,7 +73,7 @@
                                 <td>{{ house.price }}</td>
                                 <td class="delete">
                                     <a data-house="{{ house.name }}" href="{{ path('admin_deleteRental', { 'id': house.id }) }}">
-                                        <i class="fas fa-user-minus"></i>
+                                        <i class="fas fa-trash-alt"></i>
                                     </a>
                                 </td>
                             </tr>
@@ -81,6 +81,13 @@
                     {% endif %}
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div class="confirmAction">
+        <p>Êtes-vous sûr de vouloir supprimer <span id="elementToBeDeleted"></span> ?</p>
+        <div class="modalButtons">
+            <button id="confirm">Oui</button>
+            <button id="cancel">Non</button>
         </div>
     </div>
 {% endblock %}

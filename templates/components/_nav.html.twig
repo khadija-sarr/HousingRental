@@ -1,6 +1,8 @@
 <nav id="mainNav">
     <div class="siteLogo">
-        <img src="{{ asset('assets/images/logos/navlogo.png') }}" alt="">
+        <a href="{{ path('default_home') }}">
+            <img src="{{ asset('assets/images/logos/navlogo.png') }}" alt="">
+        </a>
     </div>
     <div class="menuContainer">
         <button class="menuButton">
@@ -23,6 +25,9 @@
             {% if app.user %}
                 <li>
                     <a href="{{ path('house_new') }}">Location</a>
+                </li>
+                <li id="profile">
+                    <a href="{{ path('user_profile') }}">Profil</a>
                 </li>
                 {% if is_granted('ROLE_ADMIN') %}
                     <li>

@@ -3,6 +3,7 @@
 /* ------------------------------------------------------------------------------------------------------------------ */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 /* ----------------------------------------------------------------------------------------------------------------- */
 /* CSS - Scrollbar */
 /* ----------------------------------------------------------------------------------------------------------------- */
@@ -19,9 +20,11 @@
 :root {
     --color-FF: #FFFFFF;
     --color-24: #242424;
+    --color-F3E: #FF3E3E;
     --color-primary-light: #9ED9FF;
     --color-primary: #68CDFF;
     --color-primary-dark: #1C8BD1;
+    --color-grey-light: #D4D4D4;
     --base-color: var(--color-44);
     --box-shadow: 0px 2px 6px #00000050;
 }

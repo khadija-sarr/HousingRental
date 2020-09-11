@@ -5,19 +5,13 @@
           integrity="sha512-EZSUkJWTjzDlspOoPSpUFR0o0Xy7jdzW//6qhUkoZ9c4StFkVsp9fbbd0O06p9ELS3H486m4wmrCELjza4JEog=="
           crossorigin="anonymous"/>
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('assets/stylesheets/forms/house.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/stylesheets/forms/forms.css') }}">
 {% endblock %}
 {% block content %}
     <div class="formContainer">
-        <div>
-        </div>
-        <div>
-            <div></div>
-            <div>
-                <h3>Proposez une location</h3>
-                {{ form(form, {'attr' : {'novalidate':'novalidate'}}) }}
-            </div>
-
+        <div class="formBuilder">
+            <h2>Proposer une location</h2>
+            {{ form(form, {'attr' : {'novalidate':'novalidate'}}) }}
         </div>
     </div>
 {% endblock %}

@@ -22,16 +22,33 @@ div.homeSlider {
     width: 100%;
     height: 700px;
     position: relative;
-    background-image: url('../images/backgrounds/maldives.jpg');
+    background-image: url('../../images/backgrounds/maldives.jpg');
     background-size: cover;
-    background-attachment: fixed;
     transition: all 0.5s ease-in-out;
 }
+.background1 {
+    background-image: url('../../images/backgrounds/villa1.jpg') !important;
+}
 .background2 {
-    background-image: url('../images/backgrounds/villa1.jpg') !important;
+    background-image: url('../../images/backgrounds/villa2.jpg') !important;
 }
 .background3 {
-    background-image: url('../images/backgrounds/villa2.jpg') !important;
+    background-image: url('../../images/backgrounds/maldives.jpg') !important;
+}
+.background4 {
+    background-image: url('../../images/backgrounds/appartement.jpg') !important;
+}
+.background5 {
+    background-image: url('../../images/backgrounds/chateau.jpg') !important;
+}
+.background6 {
+    background-image: url('../../images/backgrounds/maison1.jpg') !important;
+}
+.background7 {
+    background-image: url('../../images/backgrounds/appartement1.jpg') !important;
+}
+.background8 {
+    background-image: url('../../images/backgrounds/evenement.jpg') !important;
 }
 div.homeSlider > div.filter {
     display: flex;
@@ -49,7 +66,12 @@ div.homeSlider > div.filter > * {
     color: var(--color-FF);
 }
 div.homeSlider > div.filter > h2 {
-    margin-bottom: 10px;
+    margin: 100px auto 10px auto;
+}
+@media screen and (max-width: 1300px) {
+    div.homeSlider > div.filter > h2 {
+        margin: 150px auto 10px auto;
+    }
 }
 div.homeSlider > div.filter > p {
     margin-top: 20px;
@@ -97,26 +119,26 @@ body > main > .categoryDiv {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin: 80px auto 30px auto;
+    margin: 80px auto;
 }
 @media screen and (max-width: 1300px) {
     body > main > div.categoryDiv {
-        margin: 70px auto 30px auto;
+        margin: 70px auto;
     }
 }
 @media screen and (max-width: 1100px) {
     body > main > div.categoryDiv {
-        margin: 60px auto 30px auto;
+        margin: 60px auto;
     }
 }
 @media screen and (max-width: 700px) {
     body > main > div.categoryDiv {
-        margin: 50px auto 30px auto;
+        margin: 50px auto;
     }
 }
 @media screen and (max-width: 550px) {
     body > main > div.categoryDiv {
-        margin: 10px auto 30px auto;
+        margin: 10px auto;
     }
 }
 div.whyUs {
@@ -131,7 +153,7 @@ div.whyUs > div.whyUsSlider {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-image: url('../images/backgrounds/maldives.jpg');
+    background-image: url('../../images/backgrounds/maldives.jpg');
     background-size: cover;
     transition: all 0.5s ease-in-out;
     box-shadow: var(--box-shadow);
@@ -368,47 +390,66 @@ body > main > div.categoryCards > a > div:last-child p {
 /* ------------------------------------------------------------------------------------------------------------------ */
 /* CSS - Properties cards */
 /* ------------------------------------------------------------------------------------------------------------------ */
+.cardsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 80px auto;
+}
 .container {
     display: grid;
     grid-template-columns: repeat(2, 510px);
-    grid-template-rows: repeat(2, 310px );
-
 }
 @media screen and (max-width: 1080px) {
     .container {
         grid-template-columns: repeat(2, 410px) !important;
     }
-    .categoryDiv{
-        min-width: 100%;
-    }
 }
 @media screen and (max-width: 850px) {
     .container {
         grid-template-columns: repeat(2, 310px) !important;
-        grid-template-rows: repeat(2, 210px ) !important;
     }
 }
 @media screen and (max-width: 650px) {
-    .container{
+    .container {
         grid-template-columns: repeat(2, 260px) !important;
-        grid-template-rows: repeat(2, 210px ) !important;
     }
 }
 @media screen and (max-width: 540px) {
-    .container{
+    .container {
         grid-template-columns: repeat(1, 390px) !important;
-        grid-template-rows: repeat(4, 210px ) !important;
     }
 }
-.cards {
+.card {
     display: flex;
     width: calc(100% - 10px);
-    height: calc(100% - 10px);
-    margin: auto;
+    height: 300px;
+    margin: 5px auto;
     position: relative;
     box-shadow: var(--box-shadow);
 }
-.cards > div.filter {
+@media screen and (max-width: 1080px) {
+    .card {
+        height: 250px;
+    }
+}
+@media screen and (max-width: 850px) {
+    .card {
+        height: 200px;
+    }
+}
+@media screen and (max-width: 650px) {
+    .card {
+        height: 150px;
+    }
+}
+@media screen and (max-width: 540px) {
+    .card {
+        height: 200px;
+    }
+}
+.card > div.filter {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -418,17 +459,17 @@ body > main > div.categoryCards > a > div:last-child p {
     transition: opacity 0.5s ease-in-out;
     z-index: 10;
 }
-.cards:hover > div.filter {
+.card:hover > div.filter {
     opacity: 0;
 }
-.cards > img {
+.card > img {
     width: 100%;
     height: 100%;
 }
-.cardBody > h5 {
+.cardBody > h6 {
     color: var(--color-FF);
 }
-.cardBody > h6 {
+.cardBody > p {
     margin-top: 10px;
     color: var(--color-FF);
 }
@@ -439,118 +480,76 @@ body > main > div.categoryCards > a > div:last-child p {
     z-index: 30;
 }
 .propertyCategory {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 120px;
+    margin: auto;
     padding: 5px 10px;
     position: absolute;
     top: 10px;
     right: 10px;
-    border-radius: 8px;
-    background-color: var(--color-primary);
+    border-radius: 10px;
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
     z-index: 30;
+}
+@media screen and (max-width: 1080px) {
+    .propertyCategory {
+        min-width: initial;
+        padding: 10px;
+    }
 }
 .propertyCategory > p {
     color: var(--color-FF);
 }
-/*-----------category-------------------*/
-
-.categoryDiv {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin: 80px auto 30px auto;
-}
-/*-----Final-profil-------*/
-@media screen and (max-width: 900px){
-    .blockDiv{
-        flex-direction: column-reverse;
-        align-items: center;
-    }
-    .blockDiv > div > h2,
-    .blockDiv > div > h3
-    {
-        text-align: center;
-
-    }
-    .blockDiv > div > h3{
-        font-size: 20px;
-        margin-top: 50px;
-        margin-bottom: 30px !important;
-    }
-    .userProfil > div > p{
-        font-size: 15px;
-    }
-    .photoProfil{
-        margin-bottom: 30px;
-        margin-left: 0px !important;
-    }
-
-    .photoProfil >img{
-        width: 100%;
-    }
-}
-@media screen and (max-width: 500px){
-    .blockDiv{
-        flex-direction: column-reverse;
-        align-items: center;
-    }
-    .blockDiv > div > h2,
-    .blockDiv > div > h3
-    {
-        text-align: center;
-    }
-    .blockDiv > div > h3{
-
-        margin-top: 50px;
-        margin-bottom: 30px !important;
-    }
-    .photoProfil{
-        width: 350px;
-        margin-bottom: 30px;
-    }
-
-    .photoProfil >img{
-       width: 100%;
-
-    }
-}
-
+/* ------------------------------------------------------------------------------------------------------------------ */
+/* CSS - Profile page */
+/* ------------------------------------------------------------------------------------------------------------------ */
 .blockDiv {
     display: flex;
     justify-content: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    padding: 30px;
-}
-
-.userProfil{
-    display: flex;
-    margin-bottom: 10px;
-
-}
-.userProfil > div:first-child {
-    min-width: 30px;
-}
-.userProfil > div:last-child {
-    margin-left: 10px;
-}
-.blockDiv > div > h3{
-    font-size: 20px;
-    margin-top: 50px;
-    margin-bottom: 20px;
+    margin: 60px 30px;
 }
 .blockDiv > div {
     width: fit-content;
 }
-
-.photoProfil{
-    max-width: 400px;
-    margin-left: 150px;
+.blockDiv > div > h3 {
+    margin: 40px auto 20px auto;
 }
-.photoProfil > img{
+.blockDiv > div > .infoUser > .userProfile {
+    display: flex;
+    margin-bottom: 10px;
+}
+.blockDiv > div > .infoUser > .userProfile > div:first-child {
+    width: 40px;
+    height: 40px;
+}
+.blockDiv > div > .infoUser > .userProfile > div:first-child > i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    height: 100%;
 }
-
-.updateBtn{
+.blockDiv > div > .infoUser > .userProfile > div:last-child:not(.userLocation) {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+.blockDiv > div > .infoUser > .userProfile > div.userLocation {
+    margin-left: 10px;
+}
+.blockDiv > .photoProfile {
+    max-width: 400px;
+    max-height: 400px;
+    margin-left: 150px;
+    overflow: hidden;
+}
+.blockDiv > .photoProfile > img {
+    width: 100%;
+    height: 100%;
+}
+.updateBtn {
     max-width: 300px;
     padding: 10px;
     background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
@@ -559,22 +558,25 @@ body > main > div.categoryCards > a > div:last-child p {
     margin:  0 auto 30px;
 
 }
-
-/* ----------------------- page de connexion --------------------------*/
-.login{
-    width: 80%;
-    margin: 0 auto;
-}
-.connectMessage{
-    font-size: 25px;
-}
-#inputEmail{
-
+@media screen and (max-width: 900px){
+    .blockDiv {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .blockDiv > div > h2,
+    .blockDiv > div > h3 {
+        text-align: center;
+    }
+    .blockDiv > .photoProfile {
+        margin: 0 auto 20px auto;
+    }
 }
 /* ------------------------------------------------------------------------------------------------------------------ */
 /* CSS - Footer */
 /* ------------------------------------------------------------------------------------------------------------------ */
 footer {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     min-height: 250px;
     background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
@@ -584,7 +586,7 @@ footer > .center {
     justify-content: center;
     align-items: center;
     width: fit-content;
-    margin: 10px auto;
+    margin: 20px auto;
 }
 footer > .center > a {
     padding: 10px;
@@ -594,20 +596,15 @@ footer > .center > a {
     text-decoration: none;
 }
 footer > hr {
-    width: 75%;
+    width: 80%;
     margin: 0 auto;
     border: 1px solid white;
-    position: relative;
-    top: 15px;
 }
 footer > .social {
     display: flex;
     width: fit-content;
-    position: relative;
-    top: 25px;
     text-align: center;
-    padding: 15px;
-    margin: 0 auto;
+    margin: 30px auto 20px auto;
 }
 footer > .social > a {
     font-size: 45px;
@@ -621,7 +618,7 @@ footer > .credentials {
     justify-content: center;
     align-items: center;
     width: fit-content;
-    margin: 45px auto auto auto;
+    margin: 10px auto auto auto;
 }
 footer > .credentials > p {
     color: var(--color-FF);

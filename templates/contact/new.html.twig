@@ -2,17 +2,13 @@
 {% block title %}HousingRental - Contact{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('assets/stylesheets/forms/contact.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/stylesheets/forms/forms.css') }}">
 {% endblock %}
 {% block content %}
     <div class="formContainer">
-        <div>
-            <div></div>
-            <div>
-                <h3>Nous contactez</h3>
-                {{ form(form, {'attr' : {'novalidate':'novalidate'}}) }}
-            </div>
-            <div></div>
+        <div class="formBuilder">
+            <h2>Nous contacter</h2>
+            {{ form(form, {'attr' : {'novalidate':'novalidate'}}) }}
         </div>
     </div>
 {% endblock %}

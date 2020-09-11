@@ -1,31 +1,21 @@
 {% extends "base.html.twig" %}
 {% block title %}HousingRental - Inscription{% endblock %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css"
-          integrity="sha512-EZSUkJWTjzDlspOoPSpUFR0o0Xy7jdzW//6qhUkoZ9c4StFkVsp9fbbd0O06p9ELS3H486m4wmrCELjza4JEog=="
-          crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" integrity="sha512-EZSUkJWTjzDlspOoPSpUFR0o0Xy7jdzW//6qhUkoZ9c4StFkVsp9fbbd0O06p9ELS3H486m4wmrCELjza4JEog==" crossorigin="anonymous">
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('assets/stylesheets/forms/user.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/stylesheets/forms/forms.css') }}">
 {% endblock %}
 {% block content %}
     <div class="formContainer">
-        <div>
-        </div>
-        <div>
-            <div></div>
-            <div>
-                <h3>Inscrivez-vous</h3>
-                {{ form(form, {'attr' : {'novalidate':'novalidate'}}) }}
-            </div>
-            <div></div>
+        <div class="formBuilder">
+            <h2>Inscrivez-vous</h2>
+            {{ form(form, {'attr' : {'novalidate':'novalidate'}}) }}
         </div>
     </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"
-            integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew=="
-            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew==" crossorigin="anonymous"></script>
     <script>
         $('.dropify').dropify({
             messages: {

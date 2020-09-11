@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+{% block title %}HousingRental - Profil{% endblock %}
+{% block content %}
+    <div class="blockDiv">
+        <div>
+            <h2>{{ app.user.firstname | title }}</h2>
+            <h2>{{ app.user.lastname | title }}</h2>
+            <h3>Mes informations :</h3>
+            <div class="infoUser">
+                <div class="userProfile">
+                    <div>
+                        <i class="fas fa-at"></i>
+                    </div>
+                    <div>
+                        <p>{{ user.email }}</p>
+                    </div>
+                </div>
+                <div class="userProfile">
+                    <div>
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div>
+                        <p>0{{ user.phone }}</p>
+                    </div>
+                </div>
+                <div class="userProfile">
+                    <div>
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="userLocation">
+                        <p>{{ user.address }}</p>
+                        <p>{{ user.zipcode }}, {{ user.city }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="photoProfile">
+            <img src="{{ asset('uploads/users/' ~ user.photo) }}" alt="Photo de profil">
+        </div>
+    </div>
+    <a class="updateBtn" href="{{ path('user_update') }}">Modifier mes informations</a>
+{% endblock %}

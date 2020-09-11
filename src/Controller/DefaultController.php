@@ -38,6 +38,26 @@
                 ]);
         }
         /**
+         * @Route("/monde/proprietes", name="default_worldwide", methods={"GET"})
+         */
+        public function worldwide() {
+            return $this->render('default/worldwide.html.twig',
+                [
+                    'bannerTitle' => 'Monde',
+                    'bannerText' => 'Des propriétés pour vos vacances partout dans le monde'
+                ]);
+        }
+        /**
+         * @Route("/proprietes/tarification", name="default_pricing", methods={"GET"})
+         */
+        public function pricing() {
+            return $this->render('default/pricing.html.twig',
+                [
+                    'bannerTitle' => 'Tarification',
+                    'bannerText' => 'Meilleur prix garanti pour chaque propriété en location'
+                ]);
+        }
+        /**
          * @Route("/categorie/{alias}", name="default_category", methods={"GET"})
          * @param Category $category
          * @return Response
@@ -84,15 +104,14 @@
                     'bannerText' => 'Découvrez plus d\'informations sur cette propriété juste en dessous !'
                 ]);
         }
-
         /**
          * @Route("/politique-de-confidentialite", name="default_privacy")
          * @return Response
          */
-
-        public function privacy()
-        {
+        public function privacy() {
+            $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
             return $this->render('default/privacy.html.twig', [
+                'categories' => $categories,
                 'bannerTitle' => 'Politique de confidentialité',
                 'bannerText' => ''
             ]);

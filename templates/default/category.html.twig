@@ -1,9 +1,9 @@
 {% extends "base.html.twig" %}
-{% block title %}{{ category.name }}{% endblock %}
+{% block title %}HousingRental - {{ category.name }}{% endblock %}
 {% block content %}
     {% if category.name == "Appartement" %}
         <div id="appartement">
-            <div class="categoryDiv">
+            <div class="cardsContainer">
                 <div class="container">
                     {% for property in houses %}
                         {% include 'components/_card.html.twig' %}
@@ -13,7 +13,7 @@
         </div>
     {% elseif category.name == "Maison" %}
         <div id="maison">
-            <div class="categoryDiv">
+            <div class="cardsContainer">
                 <div class="container">
                     {% for property in houses %}
                         {% include 'components/_card.html.twig' %}
@@ -23,7 +23,7 @@
         </div>
     {% elseif category.name == "Évènement" %}
         <div id="evenement">
-            <div class="categoryDiv">
+            <div class="cardsContainer">
                 <div class="container">
                     {% for property in houses %}
                         {% include 'components/_card.html.twig' %}
