@@ -11,6 +11,7 @@
          * @return Response
          */
         public function home() {
+            $properties = $this->getDoctrine()->getRepository(House::class)->findAll();
             $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
             $lastHouses = $this->getDoctrine()
             ->getRepository(House::class)
@@ -31,6 +32,7 @@
                     'houses' => $houses,
                     'events' => $events,
                     'categories' => $categories,
+                    'properties' => $properties,
                     'bannerTitle' => 'En recherche de destination de vacances ?',
                     'bannerText' => 'Nous vous proposons des propriétés à louer pour tout les goûts !'
                 ]);

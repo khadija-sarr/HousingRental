@@ -119,34 +119,155 @@ body > main > .categoryDiv {
         margin: 10px auto 30px auto;
     }
 }
-.fontDiv >p{
-    font-size: 20px;
-    text-align: center;
-    margin-bottom: 50px;
-}
-.hauteurDiv{
-    height: 60px;
-}
-.categoryDiv >a{
-    background-color: #338FFF;
-    min-width: 150px;
-    text-align: center;
-    padding: 10px 20px;
-    font-size: 20px;
-    border-radius: 3px;
-
-    box-shadow: 2px 2px 4px black;
-    color: white;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-.categoryDiv >a:hover{
-    -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-}
-.fontDiv{
-    background-color: white;
+div.whyUs {
     width: 100%;
+    height: 700px;
+    margin: 80px 0 60px 0;
+    position: relative;
+}
+div.whyUs > div.whyUsSlider {
+    width: 60%;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url('../images/backgrounds/maldives.jpg');
+    background-size: cover;
+    transition: all 0.5s ease-in-out;
+    box-shadow: var(--box-shadow);
+    z-index: 30;
+}
+div.whyUs > div:not(.whyUsSlider) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: calc(100% - 200px);
+    height: 100%;
+    margin: auto 0 auto auto;
+    position: relative;
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
+}
+div.whyUs > div:not(.whyUsSlider) > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    max-width: 400px;
+    margin: auto calc(200px - 40px) auto auto;
+    z-index: 20;
+}
+div.whyUs > div:not(.whyUsSlider) > div * {
+    text-align: center;
+    color: var(--color-FF);
+}
+div.whyUs > div:not(.whyUsSlider) > div > h2 {
+    margin: auto auto 20px auto;
+}
+div.whyUs > div:not(.whyUsSlider) > div > p {
+    margin: 0 auto 20px auto;
+}
+div.whyUs > div:not(.whyUsSlider) > div > div {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 150px;
+    margin: 20px auto auto auto;
+}
+div.whyUs > div:not(.whyUsSlider) > div > div > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 3);
+}
+div.whyUs > div:not(.whyUsSlider) > div > div > div > a {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #FFFFFF50;
+    transition: background-color 0.5s ease-in-out;
+}
+div.whyUs > div:not(.whyUsSlider) > div > div > div > a > i {
+    width: 100%;
+    height: 100%;
+    font-size: 2em;
+}
+div.whyUs > div:not(.whyUsSlider) > div > div > div > a:hover {
+    background-color: var(--color-primary-dark);
+}
+div.whyUs > div:not(.whyUsSlider) > div > div > div > p {
+    margin: 20px auto auto auto;
+}
+@media screen and (max-width: 1500px) {
+    div.whyUs {
+        height: 600px;
+    }
+    div.whyUs > div.whyUsSlider {
+        width: 50%;
+        height: 400px;
+    }
+}
+@media screen and (max-width: 1300px) {
+    div.whyUs {
+        height: 500px;
+        margin: 70px 0 50px 0;
+    }
+    div.whyUs > div.whyUsSlider {
+        width: 50%;
+        height: 300px;
+    }
+    div.whyUs > div:not(.whyUsSlider) {
+        width: calc(100% - 150px);
+    }
+    div.whyUs > div:not(.whyUsSlider) > div {
+        margin: auto calc(150px - 40px) auto auto;
+    }
+}
+@media screen and (max-width: 1100px) {
+    div.whyUs {
+        height: 400px;
+        margin: 60px 0 40px 0;
+    }
+    div.whyUs > div.whyUsSlider {
+        width: 40%;
+        height: 200px;
+    }
+    div.whyUs > div:not(.whyUsSlider) {
+        width: calc(100% - 100px);
+    }
+    div.whyUs > div:not(.whyUsSlider) > div {
+        margin: auto calc(100px - 40px) auto auto;
+    }
+}
+@media screen and (max-width: 800px) {
+    div.whyUs {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: fit-content;
+        margin: 0;
+        position: initial;
+    }
+    div.whyUs > div.whyUsSlider {
+        width: 100%;
+        max-width: none;
+        height: 400px;
+        position: initial;
+        top: initial;
+        transform: none;
+    }
+    div.whyUs > div:not(.whyUsSlider) {
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 500px;
+        position: initial;
+    }
+    div.whyUs > div:not(.whyUsSlider) > div {
+        margin: auto;
+    }
 }
 /* ------------------------------------------------------------------------------------------------------------------ */
 /* CSS - Home category cards */
@@ -532,112 +653,3 @@ footer > .credentials > p {
 footer > .credentials > p > a {
     color: white;
 }
-
-/* ------------------------------------------------------------------------------------------------------------------ */
-/* CSS - Why Us Section */
-/* ------------------------------------------------------------------------------------------------------------------ */
-#carrousel{
-    position: relative;
-    height: 350px;
-    width: 600px;
-    margin: auto;
-}
-
-#carrousel ul li img {
-    position:absolute;
-    top:0;
-    left:0;
-    max-height: 100%;
-    max-width: 100%;
-}
-
-.position_container {
-    position: relative;
-}
-
-.container_carrousel {
-    position: absolute;
-    bottom: 350px;
-    left: 60px;
-}
-
-.whyUs {
-    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
-    height: 800px;
-    width: 70%;
-    display: flex;
-    margin: 0 auto;
-}
-
-.left_section {
-    height: 100%;
-    width: 50%
-}
-
-.right-section {
-    height: 100%;
-    width: 50%
-}
-
-.right-section h1 {
-    position: relative;
-    width: 70%;
-    top: 160px;
-    left: 50px;
-    font-family: Lobster, sans-serif;
-    color: white;
-    font-size: 45px;
-}
-
-.right-section p {
-    position: relative;
-    left: 50px;
-    top: 220px;
-    width: 70%;
-    color: white;
-    font-family: Roboto, sans-serif;
-}
-
-@media screen and (max-width: 1150px){
-
-    .whyUs {
-        flex-direction: column-reverse;
-        height: 500px;
-    }
-    .left_section {
-        width: 100%;
-    }
-    .right-section {
-        width: 100%;
-    }
-    .right-section h1 {
-        width: 100%;
-        text-align: center;
-        position: static;
-    }
-    .right-section > p {
-        width: 100%;
-        text-align: center;
-        position: static;
-        margin-top: 10px;
-    }
-    .container_carrousel {
-        position: relative;
-        bottom: 375px;
-        left: 35px;
-    }
-
-}
-
-@media screen and (max-width: 768px) {
-    .container_carrousel {
-        display: none;
-    }
-    .whyUs {
-        height: 200px;
-    }
-}
-
-
-
-
