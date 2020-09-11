@@ -32,16 +32,16 @@
             $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
             $user = new User();
             $form = $this->createFormBuilder($user)
-            ->add('firstname', TextType::class, ['label' => false, 'attr' => ['placeholder' => "Prénom"]])
-            ->add('lastname', TextType::class, ['label' => false, 'attr' => ['placeholder' => "Nom"]])
-            ->add('email', EmailType::class, ['label' => false, 'attr' => ['placeholder' => "Email"]])
-            ->add('password', PasswordType::class, ['label' => false, 'attr' => ['placeholder' => "Mot de passe"]])
-            ->add('phone', IntegerType::class, ['label' => false, 'attr' => ['placeholder' => "Téléphone"]])
-            ->add('address', TextType::class, ['label' => false, 'attr' => ['placeholder' => "Adresse"]])
-            ->add('city', TextType::class, ['label' => false, 'attr' => ['placeholder' => "Ville"]])
-            ->add('zipcode', IntegerType::class, ['label' => false, 'attr' => ['placeholder' => "Code Postal"]])
-            ->add('country', CountryType::class, ['label' => false])
-            ->add('photo', FileType::class, ['label' => false, 'attr' => ['class' => 'dropify']])
+            ->add('firstname', TextType::class, ['label' => 'Prénom'])
+            ->add('lastname', TextType::class, ['label' => 'Nom'])
+            ->add('email', EmailType::class, ['label' => 'Email'])
+            ->add('password', PasswordType::class, ['label' => 'Mot de passe'])
+            ->add('phone', IntegerType::class, ['label' => 'Téléphone'])
+            ->add('address', TextType::class, ['label' => 'Adresse'])
+            ->add('city', TextType::class, ['label' => 'Ville'])
+            ->add('zipcode', IntegerType::class, ['label' => 'Code Postal'])
+            ->add('country', CountryType::class, ['label' =>'Pays','preferred_choices' => ['value' => 'FR']])
+            ->add('photo', FileType::class, ['label' => 'Photo', 'attr' => ['class' => 'dropify']])
             ->add('submit', SubmitType::class, ['label' => 'Valider'])
             ->getForm();
             $form->handleRequest($request);
