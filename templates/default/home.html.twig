@@ -7,77 +7,63 @@
         {% for category in categories %}
             <a href="{{ path('default_category', { 'alias': category.alias }) }}">
                 {% if loop.index == 1 %}
-                    <img src="{{ asset('assets/images/backgrounds/appartement.jpg') }}" alt="">
+                    <img src="{{ asset('assets/images/backgrounds/appartement.jpg') }}" alt="Photo d'appartement">
                 {% elseif loop.index == 2 %}
-                    <img src="{{ asset('assets/images/backgrounds/maison.jpg') }}" alt="">
+                    <img src="{{ asset('assets/images/backgrounds/maison.jpg') }}" alt="Photo de maison">
                 {% elseif loop.index == 3 %}
-                    <img src="{{ asset('assets/images/backgrounds/evenement.jpg') }}" alt="">
+                    <img src="{{ asset('assets/images/backgrounds/evenement.jpg') }}" alt="Photo de bar">
                 {% endif %}
-                <div class="filter">
+                <div class="filter"></div>
+                <div>
                     <h5>{{ category.name }}</h5>
-                    <p>{{ category.houses|length }} propriétés</p>
+                    {% if category.houses|length > 1 %}
+                        <p>{{ category.houses|length }} propriétés</p>
+                    {% else %}
+                        <p>{{ category.houses|length }} propriété</p>
+                    {% endif %}
                 </div>
             </a>
         {% endfor %}
     </div>
+    <div class="whyUs">
+        <div class="whyUsSlider" data-image="image1"></div>
+        <div>
+            <div>
+                <h2>Pourquoi nous ?</h2>
+                <p>Des propriétés au design atypique aux propriétés de rêve avec piscine, isolées ou en centre ville, les meilleurs propriétés sont ici !</p>
+                <div>
+                    <div>
+                        <a href="#">
+                            <i class="fas fa-globe-asia"></i>
+                        </a>
+                        <p>Des propriétés partout dans le monde</p>
+                    </div>
+                    <div>
+                        <a href="{{ path('contact_form') }}">
+                            <i class="fas fa-headset"></i>
+                        </a>
+                        <p>Support 7j/7 & 24h/24</p>
+                    </div>
+                    <div>
+                        <a href="#">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </a>
+                        <p>Prix de rêve pour des vacances de rêve</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h6>Les propriétés les plus récentes</h6>
+    <h3>Une sélection de propriétés les plus récentes</h3>
     <div class="categoryDiv">
-        <div id="accueil" class="hauteurDiv"></div>
-        <h2 class="titre affichageTitre">Nos dernières offres !</h2>
         <div class="container">
             {% for property in lastHouses %}
                 {% include 'components/_card.html.twig' %}
             {% endfor %}
         </div>
     </div>
-{#    <div class="categoryDiv">#}
-{#        <div id="appartement" class="hauteurDiv"></div>#}
-{#        <div class="fontDiv">#}
-{#            <h2 class="titre">Appartement</h2>#}
-{#            <p>Découvrez toutes nos annonces immobilières de location d'appartements, actualisées en temps réel !!!</p>#}
-{#        </div>#}
-{#        <div class="container">#}
-{#            {% for property in apartments %}#}
-{#                {% if property.category.name == 'appartement' %}#}
-{#                    {% include 'components/_card.html.twig' %}#}
-{#                {% endif %}#}
-{#            {% endfor %}#}
-{#        </div>#}
-{#        <a href="{{ path('default_category', {'alias' : 'appartement'}) }}">Cliquez ici pour voir tous nos appartements</a>#}
-{#    </div>#}
-{#    <div class="categoryDiv">#}
-{#        <div id="maison" class="hauteurDiv"></div>#}
-{#        <div class="fontDiv">#}
-{#            <h2 class="titre">Maison</h2>#}
-{#            <p>Trouvez votre maison à louer. Annonces de maisons en location de particuliers et pros sur Housing Rental.</p>#}
-{#        </div>#}
-{#        <div class="container">#}
-{#            {% for property in houses %}#}
-{#                {% if property.category.name == 'maison' %}#}
-{#                    {% include 'components/_card.html.twig' %}#}
-{#                {% endif %}#}
-{#            {% endfor %}#}
-{#        </div>#}
-{#        <a href="{{ path('default_category', {'alias' : 'maison'}) }}">Cliquez ici pour voir toutes nos maisons</a>#}
-{#    </div>#}
-{#    <div class="categoryDiv">#}
-{#        <div id="evenement" class="hauteurDiv"></div>#}
-{#        <div class="fontDiv">#}
-{#            <h2 class="titre">Évènement</h2>#}
-{#        </div>#}
-{#        <div class="container">#}
-{#            {% for property in events %}#}
-{#                {% if property.category.name == 'evenement' %}#}
-{#                    {% include 'components/_card.html.twig' %}#}
-{#                {% endif %}#}
-{#            {% endfor %}#}
-{#        </div>#}
-{#        <a href="{{ path('default_category', {'alias' : 'evenement'}) }}">Cliquez ici pour voir nos évènements</a>#}
-{#    </div>#}
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
 {% endblock %}
-
-
-
-

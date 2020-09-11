@@ -26,6 +26,9 @@
          * @return RedirectResponse|Response
          */
         public function newUser(Request $request, UserPasswordEncoderInterface $encoder) {
+            if($this->getUser()) {
+                return $this->redirectToRoute('default_home');
+            }
             $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
             $user = new User();
             $form = $this->createFormBuilder($user)
@@ -68,7 +71,7 @@
                 ]);
         }
         /**
-         * @Route("/profil", name="user_profil", methods={"GET|POST"})
+         * @Route("/profil", name="user_profile", methods={"GET|POST"})
          */
         public function profil() {
             $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
@@ -82,42 +85,43 @@
                 ]);
         }
         /**
-         * @Route("/modification/{champ}", name="user_update", methods={"GET|POST"} )
+         * @Route("/modification", name="user_update", methods={"GET|POST"} )
          * @param Request $request
-         * @param $champ
          * @param UserPasswordEncoderInterface $encoder
          * @return Response
          */
-        public function update(Request $request, $champ, UserPasswordEncoderInterface $encoder) {
+        public function update(Request $request, UserPasswordEncoderInterface $encoder) {
             $user = $this->getUser();
-            $form = $this->createFormBuilder($user);
-            if($champ === "email") {
-                $form->add("email", EmailType::class, ['label' => false, 'attr' => ['placeholder' => 'Email']]);
-            }
-            if($champ === "telephone") {
-                $form->add("phone", NumberType::class, ['label' => false, 'attr' => ['placeholder' => 'Télèphone']]);
-            }
-            if($champ === "adresse") {
-                $form->add("address", TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Adresse']])
+            $form = $this->createFormBuilder($user)
+                ->add("email", EmailType::class, ['label' => false, 'attr' => ['placeholder' => 'Email']])
+                ->add("phone", NumberType::class, ['label' => false, 'attr' => ['placeholder' => 'Télèphone']])
+                ->add("address", TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Adresse']])
                 ->add('zipcode', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'code postal']])
-                ->add('city', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'ville']]);
-            }
-            if($champ === "mot-de-passe"){
-                $form->add('password', PasswordType::class, ['label' => false, 'attr' => ['placeholder' => 'mot de passe']]);
-            }
-            $form->add('submit', SubmitType::class, ['label' => 'modifier']);
+                ->add('city', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'ville']])
+                ->add('submit', SubmitType::class, ['label' => 'modifier']);
             $form = $form->getForm();
             $form->handleRequest($request);
             if($form->isSubmitted() && $form->isValid()) {
-                if($champ === 'mot-de-passe'){
-                    $encoded = $encoder->encodePassword($user, $form->get('password')->getData());
-                    $user->setPassword($encoded);
+
+                $new_pwd = $request->get('new_password');
+                $checkPass = $encoder->isPasswordValid($user, $new_pwd);
+                if($checkPass === true) {
+
+                } else {
+                    return new jsonresponse(array('error' => 'The current password is incorrect.'));
                 }
+
+
+
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($user);
                 $entityManager->flush();
                 $this->addFlash('notice', 'Vos modifications ont bien été prises en compte !');
             }
-            return $this->render('user/update.html.twig', ['form' => $form->createView(), 'champ' => $champ]);
+            return $this->render('user/update.html.twig', ['form' => $form->createView(),
+                'bannerTitle' => 'Modification du profil',
+                'bannerText' => "Vous pouvez modifier vos informations en-dessous"
+
+            ]);
         }
     }

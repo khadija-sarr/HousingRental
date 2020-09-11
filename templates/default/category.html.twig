@@ -4,7 +4,7 @@
     {% if category.name == "Appartement" %}
         <div id="appartement">
             <h2 class="text-center titreMargin">{{ category.name | title }}</h2>
-            <div>
+            <div class="categoryDiv">
                 <div class="container">
                     {% for property in houses %}
                         {% include 'components/_card.html.twig' %}
@@ -15,7 +15,7 @@
     {% elseif category.name == "Maison" %}
         <div id="maison">
             <h2 class="text-center titreMargin">{{ category.name | title }}</h2>
-            <div>
+            <div class="categoryDiv">
                 <div class="container">
                     {% for property in houses %}
                         {% include 'components/_card.html.twig' %}
@@ -23,10 +23,10 @@
                 </div>
             </div>
         </div>
-    {% elseif category.name == "Évenement" %}
+    {% elseif category.name == "Évènement" %}
         <div id="evenement">
             <h2 class="text-center titreMargin">{{ category.name | title }}</h2>
-            <div>
+            <div class="categoryDiv">
                 <div class="container">
                     {% for property in houses %}
                         {% include 'components/_card.html.twig' %}

@@ -20,24 +20,49 @@
             <li>
                 <a href="{{ path('contact_form') }}">Contact</a>
             </li>
-            <li id="login">
-                <a href="{{ path('app_login') }}">Connexion</a>
-            </li>
-            <li id="register">
-                <a href="{{ path('app_logout') }}">Inscription</a>
-            </li>
+            {% if app.user %}
+                <li>
+                    <a href="{{ path('house_new') }}">Location</a>
+                </li>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li>
+                        <a href="{{ path('admin_backOffice') }}">Back Office</a>
+                    </li>
+                {% endif %}
+                <li id="logout">
+                    <a href="{{ path('app_logout') }}">Déconnexion</a>
+                </li>
+            {% else %}
+                <li id="login">
+                    <a href="{{ path('app_login') }}">Connexion</a>
+                </li>
+                <li id="register">
+                    <a href="{{ path('app_logout') }}">Inscription</a>
+                </li>
+            {% endif %}
             <li id="closeMenu">
                 <button class="closeMenuButton">
                     <i class="fas fa-times"></i>
                 </button>
             </li>
         </ul>
-        <a class="loginButton" href="{{ path('app_login') }}">
-            <i class="fas fa-user"></i>
-        </a>
+        {% if app.user %}
+            <a class="loginButton" href="{{ path('user_profile') }}">
+                <i class="fas fa-user"></i>
+            </a>
+        {% else %}
+            <a class="loginButton" href="{{ path('app_login') }}">
+                <i class="fas fa-user"></i>
+            </a>
+        {% endif %}
     </div>
     <div class="userButtons">
-        <a href="{{ path('user_register') }}">Inscription</a>
-        <a href="{{ path('app_login') }}">Connexion</a>
+        {% if app.user %}
+            <a href=""></a>
+            <a href="{{ path('app_logout') }}">Déconnexion</a>
+        {% else %}
+            <a href="{{ path('user_register') }}">Inscription</a>
+            <a href="{{ path('app_login') }}">Connexion</a>
+        {% endif %}
     </div>
 </nav>

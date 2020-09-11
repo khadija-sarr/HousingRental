@@ -9,7 +9,6 @@
     color: var(--color-24);
     text-decoration: none;
     outline: none;
-    overflow-x: hidden;
 }
 ul, ol {
     list-style: none;
@@ -36,7 +35,11 @@ h6 {
     font-size: 1.4rem;
 }
 a, p, button, label, input, textarea, select, option {
-    font-size: 1.2rem;
+    font-size: 1rem;
+}
+a, p, button, label, input, textarea, select, option {
+    border: none;
+    background: none;
 }
 i {
     display: flex !important;
@@ -64,11 +67,6 @@ i {
     h6 {
         font-size: 1.2rem;
     }
-    a, p, button, label, input, textarea, select, option {
-        font-size: 1rem;
-        border: none;
-        background: none;
-    }
 }
 @media screen and (max-width: 900px) {
     h1 {
@@ -89,11 +87,6 @@ i {
     h6 {
         font-size: 1rem;
     }
-    a, p, button, label, input, textarea, select, option {
-        font-size: 0.8rem;
-        border: none;
-        background: none;
-    }
 }
 @media screen and (max-width: 700px) {
     h1 {
@@ -111,15 +104,4 @@ i {
     h5, i {
         font-size: 1rem;
     }
-    h6 {
-        font-size: 0.8rem;
-    }
-    a, p, button, label, input, textarea, select, option {
-        font-size: 0.6rem;
-        border: none;
-        background: none;
-    }
-}
-ul a {
-    font-size: 1rem;
 }
