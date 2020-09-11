@@ -372,6 +372,7 @@ body > main > div.categoryCards > a > div:last-child p {
     display: grid;
     grid-template-columns: repeat(2, 510px);
     grid-template-rows: repeat(2, 310px );
+
 }
 @media screen and (max-width: 1080px) {
     .container {
@@ -451,16 +452,18 @@ body > main > div.categoryCards > a > div:last-child p {
 }
 /*-----------category-------------------*/
 
-
-.titreMargin {
-    text-align: center;
+.categoryDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 80px auto 30px auto;
 }
-/*-----profil-------*/
+/*-----Final-profil-------*/
 @media screen and (max-width: 900px){
     .blockDiv{
         flex-direction: column-reverse;
         align-items: center;
-
     }
     .blockDiv > div > h2,
     .blockDiv > div > h3
@@ -475,35 +478,25 @@ body > main > div.categoryCards > a > div:last-child p {
     }
     .userProfil > div > p{
         font-size: 15px;
-
     }
     .photoProfil{
-        
         margin-bottom: 30px;
+        margin-left: 0px !important;
     }
 
     .photoProfil >img{
         width: 100%;
-
     }
-
-
-
-
 }
 @media screen and (max-width: 500px){
     .blockDiv{
         flex-direction: column-reverse;
-
         align-items: center;
     }
     .blockDiv > div > h2,
     .blockDiv > div > h3
     {
         text-align: center;
-
-
-
     }
     .blockDiv > div > h3{
 
@@ -519,60 +512,43 @@ body > main > div.categoryCards > a > div:last-child p {
        width: 100%;
 
     }
-    .userProfil > div:first-child{
-        max-width: 50%;
-    }
-    .userProfil > div:last-child{
-        max-width:50%;
-    }
-
-
-
-
 }
 
 .blockDiv {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     margin-top: 30px;
     margin-bottom: 30px;
     padding: 30px;
 }
 
-.userProfil > div:first-child{
-    max-width: 200px;
-}
-.userProfil > div:last-child{
-    max-width: 300px;
-}
-
-
-
 .userProfil{
     display: flex;
-    justify-content: center;
+    margin-bottom: 10px;
 
-    margin-bottom: 5px;
+}
+.userProfil > div:first-child {
+    min-width: 30px;
+}
+.userProfil > div:last-child {
+    margin-left: 10px;
 }
 .blockDiv > div > h3{
     font-size: 20px;
     margin-top: 50px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+}
+.blockDiv > div {
+    width: fit-content;
 }
 
-.userProfil > div:first-child{
-    width: 50%;
-}
-.userProfil > div:last-child{
-    width: 50%;
-}
-.photoProfil >img{
+.photoProfil{
     max-width: 400px;
+    margin-left: 150px;
 }
-
-
-
-
+.photoProfil > img{
+    width: 100%;
+}
 
 .updateBtn{
     max-width: 300px;

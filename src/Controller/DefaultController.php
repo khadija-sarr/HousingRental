@@ -84,4 +84,15 @@
                     'bannerText' => 'Découvrez plus d\'informations sur cette propriété juste en dessous !'
                 ]);
         }
+
+        /**
+         *
+         */
+        public function countAll() : int
+        { $result = $this->getDoctrine()->count();
+            if (\is_null($result)) {
+                throw new \UnexpectedValueException('Post total count error: list can not be generated!');
+            }
+            return $result;
+        }
     }
