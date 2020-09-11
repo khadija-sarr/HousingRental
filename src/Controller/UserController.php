@@ -103,20 +103,11 @@
             $form->handleRequest($request);
             if($form->isSubmitted() && $form->isValid()) {
 
-                $new_pwd = $request->get('new_password');
-                $checkPass = $encoder->isPasswordValid($user, $new_pwd);
-                if($checkPass === true) {
-
-                } else {
-                    return new jsonresponse(array('error' => 'The current password is incorrect.'));
-                }
-
-
-
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($user);
                 $entityManager->flush();
                 $this->addFlash('notice', 'Vos modifications ont bien été prises en compte !');
+                return $this->redirectToRoute('user_profile');
             }
             return $this->render('user/update.html.twig', ['form' => $form->createView(),
                 'bannerTitle' => 'Modification du profil',
