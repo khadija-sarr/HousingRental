@@ -3,6 +3,7 @@
     use App\Entity\Category;
     use App\Entity\House;
     use App\Entity\User;
+    use phpDocumentor\Reflection\Types\Void_;
     use Symfony\Bridge\Doctrine\Form\Type\EntityType;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -34,7 +35,8 @@
             $form = $this->createFormBuilder($house)
             ->add('name', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Nom de logement']])
             ->add('description', TextareaType::class, ['label' => false, 'attr' => ['placeholder' => 'Description']])
-            ->add('category', EntityType::class, ['class' => Category::class, 'choice_label' => 'name', 'label' => false])->add('zipcode', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Code Postal']])
+            ->add('category', EntityType::class, ['class' => Category::class, 'choice_label' => 'name', 'label' => false])
+            ->add('zipcode', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Code Postal']])
             ->add('city', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Ville']])
             ->add('country', CountryType::class, ['label' => false, 'preferred_choices' => ['value' => 'FR']])
             ->add('price', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Prix']])
@@ -83,9 +85,9 @@
         $result = [];
         $form = $this->createFormBuilder()
         ->setMethod('GET')
-        ->add('priceMin')
-        ->add('priceMax')
-        ->add('submit', SubmitType::class)
+        ->add('priceMin', TextType::class, ['label' => 'Prix min / nuit'])
+        ->add('priceMax', TextType::class, ['label' => 'Prix max / nuit'])
+        ->add('submit', SubmitType::class, ['label' => 'Valider'])
         ->getForm();
         $form->handleRequest($request);
         if($form->isSubmitted()) {

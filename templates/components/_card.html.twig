@@ -1,12 +1,11 @@
 <a class="cards" href="{{ path('default_house', { 'category': property.category.alias, 'alias': property.alias, 'id': property.id }) }}">
     <img src="{{ asset('uploads/houses/' ~ property.photo) }}" alt="Card image">
-    <div class="filter">
-      <div class="cardBody">
-          <h5>{{ property.name }}</h5>
-          <h6>{{ property.city }}, {{ property.price }} €/nuit</h6>
-      </div>
-      <div class="propertyCategory">
-          <p >{{ property.category.name | title }} </p>
-      </div>
+    <div class="filter"></div>
+    <div class="cardBody">
+        <h5>{{ property.name }}</h5>
+        <h6>{{ property.city }}, {{ property.price }} €/nuit</h6>
+    </div>
+    <div class="propertyCategory">
+        <p >{{ property.category.name | title }} </p>
     </div>
 </a>

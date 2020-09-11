@@ -30,7 +30,15 @@
             $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
             $users = $this->getDoctrine()->getRepository(User::class)->findAll();
             $houses = $this->getDoctrine()->getRepository(House::class)->findAll();
-            return $this->render('admin/backoffice.html.twig', ['users' => $users, 'categories' => $categories, 'houses' => $houses]);
+            $admin = $this->getUser();
+            return $this->render('admin/backoffice.html.twig',
+                [
+                    'users' => $users,
+                    'categories' => $categories,
+                    'houses' => $houses,
+                    'bannerTitle' => 'Bonjour ' . $admin->getFirstname(),
+                    'bannerText' => 'Bienvenue sur le dashboard administrateur'
+                ]);
         }
         /**
          * @IsGranted("ROLE_ADMIN")
