@@ -6,7 +6,7 @@
     flex-direction: column;
     width: 100%;
     /*height: fit-content;*/
-    margin-top: 60px;
+    padding: 70px;
 }
 .formContainer > div:first-child {
     display: flex;
@@ -25,7 +25,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: calc(100% / 3);
     height: 300px;
     position: relative;
 }
@@ -41,8 +40,6 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
-    width: calc(100% / 3);
     margin-bottom: 10px;
 }
 /* ----------------------------------------------------------------------------------------------------------------- */
@@ -97,35 +94,35 @@
     color: var(--alt-bckg);
 }
 .formContainer > div:last-child > div > h3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-height: 50px;
-    margin: 20px 0;
-    text-align: center;
-    color: var(--alt-bckg);
+    margin-top: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 .formContainer > div:last-child > div:nth-child(2) > form {
     width: 100%;
+    border: solid #797777 1px;
+    padding: 10px;
 }
+
 .formContainer > div:last-child > div:nth-child(2) > form > #form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
 .formContainer > div:last-child > div:nth-child(2) > form > #form > div {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 60px;
+    height: fit-content;
 }
 .formContainer > div:last-child > div:nth-child(2) > form > #form > div:nth-child(2) {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 200px;
+    height: fit-content;
 }
 .formContainer > div:last-child > div:nth-child(2) > form > #form > div:nth-child(9) {
     display: flex;
@@ -134,43 +131,47 @@
     height: fit-content;
 }
 .formContainer > div:last-child > div:nth-child(2) > form > #form > div > input {
+    max-width: 1800px;
+    width: 800px;
+    height: 50px;
+    background-color: #a4a2a2;
+    border-radius:5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.formContainer > div:last-child > div:nth-child(2) > form > #form > div > label{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    height: 40px;
-    margin: auto;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 2px 2px 4px #00000080 inset;
+    flex-direction: column;
+    overflow: hidden;
+    margin-top: 10px;
+
 }
 form select,
 form textarea {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    height: 40px;
-    margin: auto;
-    padding: 0 10px;
+    width: 800px;
+    height: 50px;
     text-align: center;
-    border-radius: 10px;
-    box-shadow: 2px 2px 4px #00000080 inset;
+    background-color: #a4a2a2;
+    border-radius: 5px;
+    color: white;
+    margin-top: 10px;
+    padding: 5px;
 }
 form textarea {
     height: 200px;
-    margin: auto;
-    padding: 10px;
     resize: none;
+    width: 800px;
 }
 form > #form button {
     width: 120px;
-    height: 30px;
-    margin: auto;
-    color: var(--base-bckg);
-    border-radius: 10px;
-    background-color: var(--color-38FF);
-    box-shadow: 2px 2px 4px #00000080;
+    height: 50px;
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
+    color: #FFFFFF;
+    margin-top: 10px;
+    border-radius:5px;
 }
 .formContainer > div:last-child > div:last-child > .lastRentals {
     display: flex;
@@ -185,6 +186,7 @@ form > #form button {
     margin: 10px auto;
     border-radius: 10px;
     box-shadow: 2px 2px 4px #00000080;
+    overflow: hidden;
 }
 .formContainer > div:last-child > div > .lastRentals > .houseCard > .carrousel {
     width: 100%;
@@ -203,6 +205,7 @@ form > #form button {
 .formContainer > div:last-child > div > .lastRentals > .houseCard > .carrousel > img {
     width: 100%;
     height: 100%;
+    display: flex;
 }
 .formContainer > div:last-child > div > .lastRentals > .houseCard > .cardBody {
     width: 100%;
@@ -239,19 +242,24 @@ form > #form button {
     background-color: var(--color-38FF);
 }
 @media screen and (max-width: 1000px) {
-    .formContainer > div:last-child > div:first-child,
-    .formContainer > div:last-child > div:last-child {
-        display: none;
-    }
-    .formContainer > div:last-child > div:nth-child(2) {
+    .formContainer > div:last-child > div:nth-child(2),
+    .formContainer > div:last-child > div:nth-child(2) > form > #form > div > input,
+    form select, form textarea, form .dropify-wrapper {
         width: 100%;
     }
 }
 @media screen and (max-width: 900px) {
-    .formContainer > div:first-child,
-    .formContainer > div:nth-child(2) {
-        display: none;
+    .formContainer > div:last-child > div:nth-child(2) > form > #form > div > input,
+    form select, form textarea, form .dropify-wrapper {
+        width: 100%;
     }
+}
+@media screen and (max-width: 500px) {
+    form > #form button {
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+
 }
 /* ----------------------------------------------------------------------------------------------------------------- */
 /* CSS Dropify */
@@ -260,13 +268,13 @@ form .dropify-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
-    height: calc(100% - 20px);
-    margin: 10px auto;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 2px 2px 4px #00000080 inset;
+    width: 800px;
+    height: 200px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #a4a2a2;
 }
+
 form .dropify-message {
     top: initial !important;
     transform: none !important;

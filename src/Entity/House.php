@@ -63,7 +63,6 @@ class House
     private $zipcode;
 
 
-
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="houses")
      * @ORM\JoinColumn(nullable=false)
@@ -170,6 +169,7 @@ class House
 
         return $this;
     }
+
     public function getUser(): ?User
     {
         return $this->user;

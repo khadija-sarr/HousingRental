@@ -1,6 +1,21 @@
 {% extends "base.html.twig" %}
 {% block title %}Housing Rental{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/stylesheets/forms/update.css') }}">
+{% endblock %}
 {% block content %}
-{{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
 
+    <div class="formContainer">
+        <div>
+        </div>
+        <div>
+            <div></div>
+            <div>
+                <h3>Modifiez votre Profil</h3>
+                {{ form(form, {'attr' : {'novalidate':'novalidate'}}) }}
+            </div>
+            <div></div>
+        </div>
+    </div>
 {% endblock %}
