@@ -329,77 +329,140 @@ body > main > div.categoryCards > a > div:last-child p {
     color: var(--color-FF);
 }
 /*-----------category-------------------*/
+
+
 .titreMargin {
     text-align: center;
 }
-/*-----test ______*/
+/*-----profil-------*/
+@media screen and (max-width: 900px){
+    .blockDiv{
+        flex-direction: column-reverse;
+        align-items: center;
+
+    }
+    .blockDiv > div > h2,
+    .blockDiv > div > h3
+    {
+        text-align: center;
+
+    }
+    .blockDiv > div > h3{
+        font-size: 20px;
+        margin-top: 50px;
+        margin-bottom: 30px !important;
+    }
+    .userProfil > div > p{
+        font-size: 15px;
+
+    }
+    .photoProfil{
+        
+        margin-bottom: 30px;
+    }
+
+    .photoProfil >img{
+        width: 100%;
+
+    }
+
+
+
+
+}
+@media screen and (max-width: 500px){
+    .blockDiv{
+        flex-direction: column-reverse;
+
+        align-items: center;
+    }
+    .blockDiv > div > h2,
+    .blockDiv > div > h3
+    {
+        text-align: center;
+
+
+
+    }
+    .blockDiv > div > h3{
+
+        margin-top: 50px;
+        margin-bottom: 30px !important;
+    }
+    .photoProfil{
+        width: 350px;
+        margin-bottom: 30px;
+    }
+
+    .photoProfil >img{
+       width: 100%;
+
+    }
+    .userProfil > div:first-child{
+        max-width: 50%;
+    }
+    .userProfil > div:last-child{
+        max-width:50%;
+    }
+
+
+
+
+}
+
 .blockDiv {
-    background: linear-gradient(to right, #007c91, white);
-    width:70%;
-    height: 600px;
-    position: relative;
-    margin-top: 180px;
-}
-.infoUser {
-    border-radius: 3px;
-    position: absolute;
-    top:310px;
-    right: -208px;
-    border: 1px solid black;
-    min-width: 600px;
-}
-.userProfil {
     display: flex;
-    background-color: white;
-    height: 35px;
-    border: 1px solid black;
-    text-decoration: none;
-    color: black;
-    padding-left: 10px;
-    align-items: center;
+    justify-content: space-around;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 30px;
 }
-.userProfil>div:first-child {
-    width:30%
+
+.userProfil > div:first-child{
+    max-width: 200px;
 }
-.userProfil>div:nth-child(2) {
-    width:66%
+.userProfil > div:last-child{
+    max-width: 300px;
 }
-.userProfil>div:last-child {
-    width:4%
+
+
+
+.userProfil{
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 5px;
 }
-.userProfil>div>p {
-    display: inline-block;
-    height: 100%;
-}
-.blockDiv > div:first-child {
-    position: absolute;
-    top: 225px;
-    left: 30px;
-}
-.blockDiv >div > h2,
-.blockDiv >div > p {
-    color: black;
-}
-.blockDiv >div > p {
+.blockDiv > div > h3{
     font-size: 20px;
+    margin-top: 50px;
+    margin-bottom: 10px;
 }
-.blockDiv >div  >figure {
-    width: 350px;
-    height: 350px;
-    margin-bottom: -50px;
+
+.userProfil > div:first-child{
+    width: 50%;
 }
-.blockDiv >div >figure >img{
-     width: 100%;
-     border: 1px solid black;
+.userProfil > div:last-child{
+    width: 50%;
 }
-.photoProfil{
-    position: absolute;
-    top:-150px;
-    right: 65px;
+.photoProfil >img{
+    max-width: 400px;
 }
-.infoUser >a:hover{
-    background-color: #5ddef4;
+
+
+
+
+
+.updateBtn{
+    max-width: 300px;
+    padding: 10px;
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
+    color: var(--color-FF);
+    text-align: center;
+    margin:  0 auto 30px;
+
 }
+
 /* ----------------------- page de connexion --------------------------*/
 .login{
     width: 80%;
