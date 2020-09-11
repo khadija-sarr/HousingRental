@@ -7,13 +7,9 @@
 
 {% block  content %}
     <div class="detailscontainer">
-
         <div class="droite">
-
-            <h1>{{ house.name }}</h1>
-
             <div class="housePhoto" id="carousel" data-image="image1">
-                <img src="{{ asset('assets/images/backgrounds/bckg1.jpg') }}"
+                <img src="{{ asset('assets/images/backgrounds/appartement.jpg') }}"
                      alt="{{ house.name }}">
                 <img src="{{ asset('uploads/houses/Belle-maison-avec-vue-sur-la-mer-5f4f7c38af211.jpeg') }}"
                      alt="{{ house.name }}" style="opacity: 0;">
@@ -30,24 +26,33 @@
                 <img src="{{ asset('uploads/houses/Appartement-5f4f8079078f3.jpeg') }}"
                      alt="{{ house.name }}" style="opacity: 0;">
             </div>
-            <br><br><br>
-
-            <div class="houseDescription"><p class="">{{ house.description | raw }}</p></div>
-
+            <div class="prix">
+                <p>Prix: {{ house.price }} € / nuit</p>
+            </div>
+            <h3>{{ house.name }}</h3>
+            <div class="houseDescription"><p class="">{{ house.description }}</p></div>
             <div class="ficheUser">
-                <h2>Proposé par: </h2><br>
-                {{ house.user.firstname | raw }}
-                {{ house.user.lastname | raw }}<br>
-                {{ house.user.address | raw }}
-                {{ house.user.zipcode | raw }}
-                {{ house.user.city | raw }}
-                {{ house.user.country | raw }}<br>
-                <p>Tel: {{ house.user.phone | raw }}
-                <p>Email: {{ house.user.email | raw }}<br>
+                <h4>Proposé par: </h4>
+                <div class="profil">
+                    <div class="photoUser">
+                        <img class="photo" src="{{ asset('uploads/users/' ~ house.user.photo) }}" alt="photo de profil">
+                    </div>
+                    <div>
+                        {{ house.user.firstname }}
+                        {{ house.user.lastname }}<br>
+                        {{ house.user.zipcode }}
+                        {{ house.user.city }}
+                        {{ house.user.country }}<br>
+                        Tel: {{ house.user.phone }}<br>
+                        Email: {{ house.user.email }}<br>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
 {% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('assets/javascripts/house.js') }}"></script>

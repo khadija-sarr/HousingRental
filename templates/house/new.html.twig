@@ -1,38 +1,15 @@
 {% extends "base.html.twig" %}
 {% block title %}HousingRental - Ajout location{% endblock %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" integrity="sha512-EZSUkJWTjzDlspOoPSpUFR0o0Xy7jdzW//6qhUkoZ9c4StFkVsp9fbbd0O06p9ELS3H486m4wmrCELjza4JEog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css"
+          integrity="sha512-EZSUkJWTjzDlspOoPSpUFR0o0Xy7jdzW//6qhUkoZ9c4StFkVsp9fbbd0O06p9ELS3H486m4wmrCELjza4JEog=="
+          crossorigin="anonymous"/>
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('assets/stylesheets/forms/house.css') }}">
 {% endblock %}
 {% block content %}
     <div class="formContainer">
         <div>
-            <h2>Vous êtes propriétaire et souhaitez proposer une location ?</h2>
-            <h6>Les étapes juste en dessous !</h6>
-        </div>
-        <div>
-            <div class="step">
-                <div class="stepNumber">
-                    <p>1</p>
-                </div>
-                <h5>Inscrivez-vous !</h5>
-                <p>Inscrivez-vous sur notre site, il vous sera possible de proposer des propriétés en location en indiquant le statut propriétaire lors de votre inscription !</p>
-            </div>
-            <div class="step">
-                <div class="stepNumber">
-                    <p>2</p>
-                </div>
-                <h5>Devenez propriétaire !</h5>
-                <p>Vous n'avez pas déclarer le statut propriétaire lors de votre inscription ? Ce n'est pas grave ! Vous pouvez toujours le devenir via votre page profil !</p>
-            </div>
-            <div class="step">
-                <div class="stepNumber">
-                    <p>3</p>
-                </div>
-                <h5>Remplissez le formulaire !</h5>
-                <p>Maintenant que vous êtes propriétaire, prenez soin de bien remplir le formulaire ci-dessous en détaillant les caractéristiques de la propriété mise en location !</p>
-            </div>
         </div>
         <div>
             <div></div>
@@ -40,39 +17,22 @@
                 <h3>Proposez une location</h3>
                 {{ form(form, {'attr' : {'novalidate':'novalidate'}}) }}
             </div>
-            <div>
-                <h3>Les dernières locations</h3>
-                <div class="lastRentals">
-                    {% for house in houses %}
-                        <div class="houseCard">
-                            <div class="carrousel">
-                                <img src="{{ asset('uploads/houses/' ~ house.photo) }}" alt="Photo de {{ house.name }}">
-                                <p>{{ house.category.name }}</p>
-                            </div>
-                            <div class="cardBody">
-                                <h5 title="{{ house.name }}">{{ house.name|slice(0, 14) }}[...]</h5>
-                                <p title="{{ house.description }}">{{ house.description|slice(0, 80) }}[...]</p>
-                            </div>
-                            <div class="cardFooter">
-                                <a href="{{ path('default_house', { 'category': house.category.name, 'alias': house.alias, 'id': house.id }) }}">En savoir plus</a>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
+
         </div>
     </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"
+            integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew=="
+            crossorigin="anonymous"></script>
     <script>
         $('.dropify').dropify({
             messages: {
                 default: 'Glissez-déposez un fichier ici ou cliquez',
                 replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
-                remove:  'Supprimer',
-                error:   'Désolé, le fichier est trop volumineux'
+                remove: 'Supprimer',
+                error: 'Désolé, le fichier est trop volumineux'
             }
         });
     </script>
