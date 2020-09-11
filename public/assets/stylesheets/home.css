@@ -501,9 +501,7 @@ footer > .credentials > p > a {
 }
 
 @media screen and (max-width: 1150px){
-    /*.position_container {*/
-    /*    display: none;*/
-    /*}*/
+
     .whyUs {
         flex-direction: column-reverse;
         height: 500px;
@@ -531,6 +529,15 @@ footer > .credentials > p > a {
         left: 35px;
     }
 
+}
+
+@media screen and (max-width: 768px) {
+    .container_carrousel {
+        display: none;
+    }
+    .whyUs {
+        height: 200px;
+    }
 }
 
 
