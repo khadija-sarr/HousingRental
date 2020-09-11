@@ -93,12 +93,12 @@
         public function update(Request $request, UserPasswordEncoderInterface $encoder) {
             $user = $this->getUser();
             $form = $this->createFormBuilder($user)
-                ->add("email", EmailType::class, ['label' => false, 'attr' => ['placeholder' => 'Email']])
-                ->add("phone", NumberType::class, ['label' => false, 'attr' => ['placeholder' => 'Télèphone']])
-                ->add("address", TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Adresse']])
-                ->add('zipcode', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'code postal']])
-                ->add('city', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'ville']])
-                ->add('submit', SubmitType::class, ['label' => 'modifier']);
+                ->add("email", EmailType::class, ['label' => 'Email'])
+                ->add("phone", NumberType::class, ['label' => 'Télèphone'])
+                ->add("address", TextType::class, ['label' => 'Adresse'])
+                ->add('zipcode', TextType::class, ['label' => 'Code postal'])
+                ->add('city', TextType::class, ['label' => 'Ville'])
+                ->add('submit', SubmitType::class, ['label' => 'Mdifier']);
             $form = $form->getForm();
             $form->handleRequest($request);
             if($form->isSubmitted() && $form->isValid()) {

@@ -156,6 +156,7 @@
     border-radius: 5px;
     margin-top: 10px;
     margin-bottom: 10px;
+    padding: 5px;
 }
 
 .formContainer > div:last-child > div:nth-child(2) > form > #form > div > label {
