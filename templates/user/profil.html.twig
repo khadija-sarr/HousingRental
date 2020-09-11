@@ -1,63 +1,59 @@
 {% extends "base.html.twig" %}
 {% block title %}Housing Rental{% endblock %}
 {% block content %}
-    <div class="hauteurDiv"></div>
 
-
-
-        <div class="blockDiv">
-            <div>
-                <h2>Bienvenue {{ app.user.firstname }}</h2>
-                <p>Ici tu vas pouvoir modifier les infos de ton profil :)</p>
+<div class="blockDiv">
+    <div>
+        <h2>{{ app.user.firstname | title }}</h2>
+        <h2>{{ app.user.lastname | title}}</h2>
+        <h3>Mes informations:</h3>
+        <div class="infoUser">
+            <div class="userProfil">
+                <div><p>NOM</p></div>
+                <div><p>{{ user.lastname }}</p></div>
 
             </div>
-            <div class="photoProfil">
-                <figure>
-                    <img src="{{ asset('uploads/users/' ~ user.photo) }}" alt="photo de profil">
-                    <a href=""></a>
-                </figure>
+            <div class="userProfil">
+                <div><p>PRÉNOM</p></div>
+                <div><p>{{ user.firstname }}</p></div>
+
             </div>
+            <div class="userProfil">
+                <div><p>MAIL</p></div>
+                <div><p>{{ user.email }}</p></div>
 
-                <div class="infoUser">
-                    <a class="userProfil" href="{{ path('user_update', { 'champ': 'nom' }) }}">
-                        <div><p>NOM</p></div>
-                        <div><p>{{ user.lastname }}</p></div>
-                        <div></div>
-                    </a>
-                    <a class="userProfil" href="{{ path('user_update', { 'champ': 'prenom' }) }}">
-                        <div><p>PRÉNOM</p></div>
-                        <div><p>{{ user.firstname }}</p></div>
-                        <div></div>
-                    </a>
-                    <a class="userProfil" href="{{ path('user_update', { 'champ': 'email' }) }}">
-                        <div><p>MAIL</p></div>
-                        <div><p>{{ user.email }}</p></div>
-                        <div><i class="fas fa-arrow-right"></i></div>
-                    </a>
-                    <a class="userProfil" href="{{ path('user_update', { 'champ': 'telephone' }) }}">
-                        <div><p>TÉLÈPHONE</p></div>
-                        <div><p>0{{ user.phone }}</p></div>
-                        <div><i class="fas fa-arrow-right"></i></div>
-                    </a>
-                    <a class="userProfil" href="{{ path('user_update', { 'champ': 'adresse' }) }}">
-                        <div><p>ADRESSE</p></div>
-                        <div><p>{{ user.address }} {{ user.zipcode }} {{ user.city }}</p></div>
-                        <div><i class="fas fa-arrow-right"></i></div>
-                    </a>
-                    <a class="userProfil" href="{{ path('user_update', { 'champ': 'mot-de-passe' }) }}">
-                        <div><p>Mot de passe</p></div>
-                        <div><p>******************</p></div>
-                        <div><i class="fas fa-arrow-right"></i></div>
-                    </a>
+            </div>
+            <div class="userProfil">
+                <div><p>TÉLÈPHONE</p></div>
+                <div><p>0{{ user.phone }}</p></div>
 
-                </div>
+            </div>
+            <div class="userProfil">
+                <div><p>ADRESSE</p></div>
+                <div><p>{{ user.address }}</p>
+                    <p>{{ user.zipcode }}</p>
+                    <p>{{ user.city }}</p></div>
 
+            </div>
+            <div class="userProfil" >
+                <div><p>Mot de passe</p></div>
+                <div><p>******************</p></div>
 
+            </div>
 
         </div>
 
 
     </div>
+    <div class="photoProfil">
+        <img src="{{ asset('uploads/users/' ~ user.photo) }}" alt="photo de profil">
+
+    </div>
+
+</div>
+    <a class="updateBtn" href="{{ path('user_update') }}">Modifier mes informations</a>
+
+
 
 
 
