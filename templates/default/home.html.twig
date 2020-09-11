@@ -34,7 +34,28 @@
             {% endfor %}
         </div>
     </div>
-{#    <div class="categoryDiv">#}
+    <div class="whyUs">
+        <div class="left_section"></div>
+        <div class="right-section">
+            <h1>Why Us ?</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus varius vehicula dui et hendrerit. Nunc iaculis nisi nec leo semper, nec pellentesque orci tempus.</p>
+        </div>
+    </div>
+    <div class="position_container">
+        <div class="container_carrousel">
+            <div id="carrousel">
+                <ul>
+                    <li><img src="{{ asset('assets/images/backgrounds/maison.jpg') }}" /></li>
+                    <li><img src="{{ asset('assets/images/backgrounds/appartement.jpg') }}" /></li>
+                    <li><img src="{{ asset('assets/images/backgrounds/evenement.jpg') }}" /></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+    {#    <div class="categoryDiv">#}
 {#        <div id="appartement" class="hauteurDiv"></div>#}
 {#        <div class="fontDiv">#}
 {#            <h2 class="titre">Appartement</h2>#}
@@ -81,6 +102,12 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="{{ asset('assets/javascripts/whyUs.js') }}"></script>
+
+    <script>
+
+    </script>
 {% endblock %}
 
 
