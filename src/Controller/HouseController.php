@@ -33,14 +33,14 @@
             $house->setUser($user);
             $houses = $this->getDoctrine()->getRepository(House::class)->findBy([], ['id' => 'DESC'], 2);
             $form = $this->createFormBuilder($house)
-            ->add('name', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Nom de logement']])
-            ->add('description', TextareaType::class, ['label' => false, 'attr' => ['placeholder' => 'Description']])
-            ->add('category', EntityType::class, ['class' => Category::class, 'choice_label' => 'name', 'label' => false])
-            ->add('zipcode', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Code Postal']])
-            ->add('city', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Ville']])
-            ->add('country', CountryType::class, ['label' => false, 'preferred_choices' => ['value' => 'FR']])
-            ->add('price', TextType::class, ['label' => false, 'attr' => ['placeholder' => 'Prix']])
-            ->add('photo', FileType::class, ['label' => false, 'attr' => ['class' => 'dropify']])
+            ->add('name', TextType::class, ['label' => 'Nom de logement'])
+            ->add('description', TextareaType::class, ['label' => 'Description'])
+            ->add('category', EntityType::class, ['class' => Category::class, 'choice_label' => 'name', 'label' => 'Catégorie'])
+            ->add('zipcode', TextType::class, ['label' => 'Code Postal'])
+            ->add('city', TextType::class, ['label' => 'Ville'])
+            ->add('country', CountryType::class, ['label' => 'Pays', 'preferred_choices' => ['value' => 'FR']])
+            ->add('price', TextType::class, ['label' => 'Prix'])
+            ->add('photo', FileType::class, ['label' => 'Photo', 'attr' => ['class' => 'dropify']])
             ->add('submit', SubmitType::class, ['label' => 'Ajouter'])
             ->getForm();
             $form->handleRequest($request);
