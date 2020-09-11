@@ -86,13 +86,15 @@
         }
 
         /**
-         *
+         * @Route("/politique-de-confidentialite", name="default_privacy")
+         * @return Response
          */
-        public function countAll() : int
-        { $result = $this->getDoctrine()->count();
-            if (\is_null($result)) {
-                throw new \UnexpectedValueException('Post total count error: list can not be generated!');
-            }
-            return $result;
+
+        public function privacy()
+        {
+            return $this->render('default/privacy.html.twig', [
+                'bannerTitle' => 'Politique de confidentialité',
+                'bannerText' => ''
+            ]);
         }
     }
