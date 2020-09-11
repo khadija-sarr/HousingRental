@@ -6,6 +6,56 @@ div.homeSlider {
     margin-top: 100px;
 }
 /* ----------------------------------------------------------------------------------------------------------------- */
+/* CSS - Modal */
+/* ----------------------------------------------------------------------------------------------------------------- */
+.confirmAction.switchDisplay {
+    display: flex;
+}
+.confirmAction.showModal {
+    visibility: visible;
+    opacity: 1;
+}
+.confirmAction {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 10px;
+    background-color: var(--color-FF);
+    box-shadow: var(--box-shadow);
+    transition: opacity 0.5s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 200;
+}
+.confirmAction > p {
+    margin: auto 20px;
+    text-align: center;
+}
+.confirmAction > .modalButtons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+}
+.confirmAction > .modalButtons > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 30px;
+    color: var(--color-FF);
+    border-radius: 10px;
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
+    box-shadow: var(--box-shadow);
+}
+/* ----------------------------------------------------------------------------------------------------------------- */
 /* CSS - Back office content */
 /* ----------------------------------------------------------------------------------------------------------------- */
 div.backOfficeContainer {
@@ -51,16 +101,14 @@ div.backOfficeContainer > div.tableContainer {
     overflow-y: auto;
 }
 div.backOfficeContainer > div.tableContainer > table {
+    display: none;
     width: 100%;
     height: 100%;
     position: absolute;
     background-color: var(--color-FF);
-    z-index: 1;
-    transition: opacity 0.5s ease-in-out;
-}
-div.backOfficeContainer > div.tableContainer > table#propertiesList {
     opacity: 0;
-    z-index: -1;
+    z-index: 1;
+    transition: all 0.5s ease-in-out;
 }
 div.backOfficeContainer > div.tableContainer > table > tbody {
     display: grid;
@@ -75,13 +123,81 @@ div.backOfficeContainer > div.tableContainer > table > tbody > tr > td {
     justify-content: center;
     align-items: center;
     flex: 1;
+    padding: 0 10px;
+    text-align: center;
+}
+div.backOfficeContainer > div.tableContainer > table > tbody > tr > th:first-child,
+div.backOfficeContainer > div.tableContainer > table > tbody > tr > td:first-child,
+div.backOfficeContainer > div.tableContainer > table > tbody > tr > th:last-of-type,
+div.backOfficeContainer > div.tableContainer > table > tbody > tr > td.delete {
+    width: 120px;
+    flex: none;
 }
 div.backOfficeContainer > div.tableContainer > table > tbody > tr > th:first-child,
 div.backOfficeContainer > div.tableContainer > table > tbody > tr > td:first-child {
-    width: calc(120px - 2px);
-    flex: none;
     color: var(--color-FF);
     background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
+}
+div.backOfficeContainer > div.tableContainer > table > tbody > tr > td.delete > a {
+    width: 100%;
+    height: 100%;
+}
+div.backOfficeContainer > div.tableContainer > table > tbody > tr > td.delete > a {
+    transition: background-color 0.5s ease-in-out;
+}
+div.backOfficeContainer > div.tableContainer > table > tbody > tr > td.delete:hover > a {
+    background-color: var(--color-F3E);
+}
+div.backOfficeContainer > div.tableContainer > table > tbody > tr > td.delete > a > i {
+    width: 100%;
+    height: 100%;
+    transition: color 0.5s ease-in-out;
+}
+div.backOfficeContainer > div.tableContainer > table > tbody > tr > td.delete:hover > a > i {
+    color: var(--color-FF);
+}
+@media screen and (max-width: 900px) {
+    div.backOfficeContainer > div.tableContainer > table#usersList > tbody > tr > th:nth-child(6),
+    div.backOfficeContainer > div.tableContainer > table#usersList > tbody > tr > td:nth-child(6) {
+        display: none;
+    }
+}
+@media screen and (max-width: 800px) {
+    div.backOfficeContainer > div.tableContainer > table#usersList > tbody > tr > th:nth-child(7),
+    div.backOfficeContainer > div.tableContainer > table#usersList > tbody > tr > td:nth-child(7),
+    div.backOfficeContainer > div.tableContainer > table#propertiesList > tbody > tr > th:nth-child(5),
+    div.backOfficeContainer > div.tableContainer > table#propertiesList > tbody > tr > td:nth-child(5) {
+        display: none;
+    }
+}
+@media screen and (max-width: 700px) {
+    div.backOfficeContainer > div.tableContainer > table#usersList > tbody > tr > th:nth-child(3),
+    div.backOfficeContainer > div.tableContainer > table#usersList > tbody > tr > td:nth-child(3),
+    div.backOfficeContainer > div.tableContainer > table#propertiesList > tbody > tr > th:nth-child(3),
+    div.backOfficeContainer > div.tableContainer > table#propertiesList > tbody > tr > td:nth-child(3) {
+        display: none;
+    }
+}
+@media screen and (max-width: 600px) {
+    div.backOfficeContainer > div.tableContainer > table#usersList > tbody > tr > th:nth-child(2),
+    div.backOfficeContainer > div.tableContainer > table#usersList > tbody > tr > td:nth-child(2),
+    div.backOfficeContainer > div.tableContainer > table#propertiesList > tbody > tr > th:nth-child(2),
+    div.backOfficeContainer > div.tableContainer > table#propertiesList > tbody > tr > td:nth-child(2) {
+        display: none;
+    }
+}
+@media screen and (max-width: 500px) {
+    div.backOfficeContainer > div.tableContainer > table#usersList > tbody > tr > th:nth-child(5),
+    div.backOfficeContainer > div.tableContainer > table#usersList > tbody > tr > td:nth-child(5) {
+        display: none;
+    }
+}
+@media screen and (max-width: 500px) {
+    div.backOfficeContainer > nav.subNav > div.cache,
+    div.backOfficeContainer > div.tableContainer > table > tbody > tr > th:first-child,
+    div.backOfficeContainer > div.tableContainer > table > tbody > tr > td:first-child {
+        width: 60px;
+    }
 }
 /* ----------------------------------------------------------------------------------------------------------------- */
 /* CSS - Footer */

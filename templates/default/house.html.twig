@@ -1,59 +1,61 @@
 {% extends "base.html.twig" %}
-{% block title %}{{ house.name }}{% endblock %}
+{% block title %}HousingRental - {{ house.name }}{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('assets/stylesheets/house.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/stylesheets/pages/house.css') }}">
 {% endblock %}
-
 {% block  content %}
-    <div class="detailscontainer">
-        <div class="droite">
-            <div class="housePhoto" id="carousel" data-image="image1">
-                <img src="{{ asset('assets/images/backgrounds/appartement.jpg') }}"
-                     alt="{{ house.name }}">
-                <img src="{{ asset('uploads/houses/Belle-maison-avec-vue-sur-la-mer-5f4f7c38af211.jpeg') }}"
-                     alt="{{ house.name }}" style="opacity: 0;">
-                <img src="{{ asset('uploads/houses/Charmante-maison-avec-jardin-quartier-calme-5f4f95d681b63.jpeg') }}"
-                     alt="{{ house.name }}" style="opacity: 0;">
-                <img src="{{ asset('uploads/houses/appa-5f4f7a70f3082.jpeg' ) }}"
-                     alt="{{ house.name }}" style="opacity: 0;">
-                <img src="{{ asset('uploads/houses/maison-5f4f89d1d4d9f.jpeg') }}"
-                     alt="{{ house.name }}" style="opacity: 0;">
-                <img src="{{ asset('assets/images/backgrounds/appartement.jpg') }}"
-                     alt="{{ house.name }}" style="opacity: 0;">
-                <img src="{{ asset('uploads/houses/appartement-5f4f7a915c7c9.jpeg') }}"
-                     alt="{{ house.name }}" style="opacity: 0;">
-                <img src="{{ asset('uploads/houses/Appartement-5f4f8079078f3.jpeg') }}"
-                     alt="{{ house.name }}" style="opacity: 0;">
+    <div class="detailsContainer">
+        <div>
+            <div class="houseDetailSlider">
+                <img src="{{ asset('uploads/houses/' ~ house.photo) }}" alt="Photo de la propriété">
             </div>
-            <div class="prix">
-                <p>Prix: {{ house.price }} € / nuit</p>
+            <div class="houseDetailsHead">
+                <div>
+                    <div class="houseLocation">
+                        <p>{{ house.country | country_name }}</p>
+                    </div>
+                    <h2>{{ house.name }}</h2>
+                    <div>
+                        <a href="{{ path('default_home') }}">Accueil</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <a href="{{ path('default_category', { 'alias': house.category.alias }) }}">{{ house.category.name }}</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="propertyPrice">
+                        <h5>{{ house.price }}€</h5>
+                        <p>/nuit</p>
+                    </div>
+                </div>
             </div>
-            <h3>{{ house.name }}</h3>
-            <div class="houseDescription"><p class="">{{ house.description }}</p></div>
-            <div class="ficheUser">
-                <h4>Proposé par: </h4>
-                <div class="profil">
-                    <div class="photoUser">
+            <div class="houseDescription">
+                <p>{{ house.description | nl2br }}</p>
+            </div>
+            <div class="propertyOwner">
+                <h4>Contact :</h4>
+                <div class="profile">
+                    <div class="userPhoto">
                         <img class="photo" src="{{ asset('uploads/users/' ~ house.user.photo) }}" alt="photo de profil">
                     </div>
                     <div>
-                        {{ house.user.firstname }}
-                        {{ house.user.lastname }}<br>
-                        {{ house.user.zipcode }}
-                        {{ house.user.city }}
-                        {{ house.user.country }}<br>
-                        Tel: {{ house.user.phone }}<br>
-                        Email: {{ house.user.email }}<br>
+                        <div>
+                            <p>{{ house.user.firstname }} {{ house.user.lastname }}</p>
+                        </div>
+                        <div>
+                            <p>Propriétaire</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-mobile-alt"></i>
+                            <p>0{{ house.user.phone }}</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-home"></i>
+                            <p>{{ house.user.country | country_name }}, {{ house.user.city }}, {{ house.user.zipcode }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-    <script src="{{ asset('assets/javascripts/house.js') }}"></script>
 {% endblock %}

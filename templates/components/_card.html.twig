@@ -1,11 +1,11 @@
-<a class="cards" href="{{ path('default_house', { 'category': property.category.alias, 'alias': property.alias, 'id': property.id }) }}">
+<a class="card" href="{{ path('default_house', { 'category': property.category.alias, 'alias': property.alias, 'id': property.id }) }}">
     <img src="{{ asset('uploads/houses/' ~ property.photo) }}" alt="Card image">
     <div class="filter"></div>
     <div class="cardBody">
-        <h5>{{ property.name }}</h5>
-        <h6>{{ property.city }}, {{ property.price }} €/nuit</h6>
+        <h6>{{ property.name }}</h6>
+        <p>{{ property.city }}, {{ property.country | country_name }}. {{ property.price }}€ /nuit</p>
     </div>
     <div class="propertyCategory">
-        <p >{{ property.category.name | title }} </p>
+        <p>{{ property.category.name | title }}</p>
     </div>
 </a>

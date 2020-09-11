@@ -16,7 +16,7 @@
                 <div class="filter"></div>
                 <div>
                     <h5>{{ category.name }}</h5>
-                    {% if category.houses|length > 1 %}
+                    {% if category.houses | length > 1 %}
                         <p>{{ category.houses|length }} propriétés</p>
                     {% else %}
                         <p>{{ category.houses|length }} propriété</p>
@@ -30,10 +30,10 @@
         <div>
             <div>
                 <h2>Pourquoi nous ?</h2>
-                <p>Des propriétés au design atypique aux propriétés de rêve avec piscine, isolées ou en centre ville, les meilleurs propriétés sont ici !</p>
+                <p>Des propriétés au design atypique aux propriétés de rêve avec piscine, isolées ou en centre ville, les meilleures propriétés sont ici !</p>
                 <div>
                     <div>
-                        <a href="#">
+                        <a href="{{ path('default_worldwide') }}">
                             <i class="fas fa-globe-asia"></i>
                         </a>
                         <p>Des propriétés partout dans le monde</p>
@@ -45,7 +45,7 @@
                         <p>Support 7j/7 & 24h/24</p>
                     </div>
                     <div>
-                        <a href="#">
+                        <a href="{{ path('default_pricing') }}">
                             <i class="fas fa-money-bill-wave"></i>
                         </a>
                         <p>Prix de rêve pour des vacances de rêve</p>
@@ -54,9 +54,9 @@
             </div>
         </div>
     </div>
-    <h6>Les propriétés les plus récentes</h6>
+    <h6>Aperçu de nos offres</h6>
     <h3>Une sélection de propriétés les plus récentes</h3>
-    <div class="categoryDiv">
+    <div class="cardsContainer">
         <div class="container">
             {% for property in lastHouses %}
                 {% include 'components/_card.html.twig' %}

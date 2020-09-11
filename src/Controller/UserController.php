@@ -76,7 +76,7 @@
         public function profil() {
             $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
             $user = $this->getUser();
-            return $this->render('user/profil.html.twig',
+            return $this->render('user/profile.html.twig',
                 [
                     'user' => $user,
                     'categories' => $categories,
@@ -91,14 +91,15 @@
          * @return Response
          */
         public function update(Request $request, UserPasswordEncoderInterface $encoder) {
+            $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
             $user = $this->getUser();
             $form = $this->createFormBuilder($user)
                 ->add("email", EmailType::class, ['label' => 'Email'])
-                ->add("phone", NumberType::class, ['label' => 'Télèphone'])
+                ->add("phone", NumberType::class, ['label' => 'Téléphone'])
                 ->add("address", TextType::class, ['label' => 'Adresse'])
                 ->add('zipcode', TextType::class, ['label' => 'Code postal'])
                 ->add('city', TextType::class, ['label' => 'Ville'])
-                ->add('submit', SubmitType::class, ['label' => 'Mdifier']);
+                ->add('submit', SubmitType::class, ['label' => 'Modifier']);
             $form = $form->getForm();
             $form->handleRequest($request);
             if($form->isSubmitted() && $form->isValid()) {
@@ -111,8 +112,8 @@
             }
             return $this->render('user/update.html.twig', ['form' => $form->createView(),
                 'bannerTitle' => 'Modification du profil',
-                'bannerText' => "Vous pouvez modifier vos informations en-dessous"
-
+                'bannerText' => "Vous pouvez modifier vos informations en-dessous",
+                'categories' => $categories
             ]);
         }
     }

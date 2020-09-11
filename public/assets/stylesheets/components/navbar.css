@@ -43,6 +43,7 @@ nav#mainNav > div.menuContainer > ul > li {
 }
 nav#mainNav > div.menuContainer > ul > li#login,
 nav#mainNav > div.menuContainer > ul > li#register,
+nav#mainNav > div.menuContainer > ul > li#profile,
 nav#mainNav > div.menuContainer > ul > li#closeMenu {
     display: none;
 }
@@ -102,6 +103,11 @@ nav#mainNav > div.menuContainer > a.loginButton > i {
     }
     nav#mainNav > div.menuContainer > ul > li#logout {
         display: none;
+    }
+    nav#mainNav > div.menuContainer > ul > li#profile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 @media screen and (max-width: 800px) {
