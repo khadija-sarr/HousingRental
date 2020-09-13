@@ -3,6 +3,7 @@
     use App\Entity\Category;
     use App\Entity\User;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+    use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
     use Symfony\Component\Form\Extension\Core\Type\CountryType;
     use Symfony\Component\Form\Extension\Core\Type\EmailType;
     use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -19,13 +20,12 @@
     use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
     class UserController extends AbstractController {
         /**
-         * Formulaire pour ajouter un nouveau membre
          * @Route("/inscription", name="user_register", methods={"GET|POST"})
          * @param Request $request
          * @param UserPasswordEncoderInterface $encoder
          * @return RedirectResponse|Response
          */
-        public function newUser(Request $request, UserPasswordEncoderInterface $encoder) {
+        public function register(Request $request, UserPasswordEncoderInterface $encoder) {
             if($this->getUser()) {
                 return $this->redirectToRoute('default_home');
             }
@@ -36,6 +36,16 @@
             ->add('lastname', TextType::class, ['label' => 'Nom'])
             ->add('email', EmailType::class, ['label' => 'Email'])
             ->add('password', PasswordType::class, ['label' => 'Mot de passe'])
+            ->add('roles', ChoiceType::class,
+                [
+                    'label' => 'Status',
+                    'attr' => [
+                        'title' => 'Le statut indique quelle utilisation vous souhaitez avoir du site. 
+                        Si vous choisissez d\'être un utilisateur, il vous sera uniquement possible de réserver des propriétés pour vos vacances. 
+                        Si vous indiquez être propriétaire, en plus de pouvoir réserver, il vous sera notamment possible de proposer vos propres propriétés comme destination de vacances sur notre site.'
+                    ],
+                    'choices' => ['Utilisateur' => 'ROLE_USER', 'Propriétaire' => 'ROLE_OWNER']
+                ])
             ->add('phone', IntegerType::class, ['label' => 'Téléphone'])
             ->add('address', TextType::class, ['label' => 'Adresse'])
             ->add('city', TextType::class, ['label' => 'Ville'])
@@ -47,7 +57,8 @@
             $form->handleRequest($request);
             if($form->isSubmitted() && $form->isValid()) {
                 $encoded = $encoder->encodePassword($user, $form->get('password')->getData());
-                $user->setPassword($encoded)->setRoles(['ROLE_USER']);
+                $role = $form->get('roles')->getData();
+                $user->setPassword($encoded)->setRoles([$role]);
                 $imageFile = $form->get('photo')->getData();
                 $newFilename = $user->getFirstname() . '-' . $user->getLastname() . '-' . uniqid() . '.' . $imageFile->guessExtension();
                 try {
@@ -59,8 +70,8 @@
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($user);
                 $entityManager->flush();
-                $this->addFlash('notice', 'Félicitations vous êtes inscrit !');
-                return $this->redirectToRoute('default_home');
+                $this->addFlash('success', 'Votre inscription est validée.');
+                return $this->redirectToRoute('app_login');
             }
             return $this->render('user/register.html.twig',
                 [
@@ -103,11 +114,10 @@
             $form = $form->getForm();
             $form->handleRequest($request);
             if($form->isSubmitted() && $form->isValid()) {
-
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($user);
                 $entityManager->flush();
-                $this->addFlash('notice', 'Vos modifications ont bien été prises en compte !');
+                $this->addFlash('success', 'Votre profil a bien été modifié.');
                 return $this->redirectToRoute('user_profile');
             }
             return $this->render('user/update.html.twig', ['form' => $form->createView(),

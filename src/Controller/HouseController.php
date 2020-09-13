@@ -4,6 +4,7 @@
     use App\Entity\House;
     use App\Entity\User;
     use phpDocumentor\Reflection\Types\Void_;
+    use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
     use Symfony\Bridge\Doctrine\Form\Type\EntityType;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -19,12 +20,13 @@
     use Symfony\Component\String\Slugger\SluggerInterface;
     class HouseController extends AbstractController {
         /**
+         * @IsGranted("ROLE_OWNER")
          * @Route("/logement/nouveau", name="house_new", methods={"GET|POST"})
          * @param Request $request
          * @param SluggerInterface $slugger
          * @return RedirectResponse|Response
          */
-        public function newHouse(Request $request, SluggerInterface $slugger) {
+        public function newProperty(Request $request, SluggerInterface $slugger) {
             $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
             $house = new House();
             $user = $this->getDoctrine()
@@ -57,7 +59,7 @@
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($house);
                 $em->flush();
-                $this->addFlash('notice', 'Félicitation votre logement a bien été ajouté !');
+                $this->addFlash('success', 'Votre location a bien été ajoutée.');
                 return $this->redirectToRoute('default_home',
                     [
                         'category' => $house->getCategory()->getAlias(),
@@ -95,6 +97,9 @@
             $priceMin = $search['priceMin'];
             $priceMax = $search['priceMax'];
             $result = $houses->findHouses($priceMin, $priceMax);
+            if(sizeof($result) < 1) {
+                $this->addFlash('error', 'Aucune propriété n\'a été trouvée.');
+            }
         }
         return $this->render('house/searched.html.twig', [
             'categories' => $categories,

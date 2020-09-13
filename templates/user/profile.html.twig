@@ -1,7 +1,11 @@
 {% extends "base.html.twig" %}
 {% block title %}HousingRental - Profil{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/stylesheets/pages/profile.css') }}">
+{% endblock %}
 {% block content %}
-    <div class="blockDiv">
+    <div class="userInfoContainer">
         <div>
             <h2>{{ app.user.firstname | title }}</h2>
             <h2>{{ app.user.lastname | title }}</h2>
@@ -39,4 +43,19 @@
         </div>
     </div>
     <a class="updateBtn" href="{{ path('user_update') }}">Modifier mes informations</a>
+    <div class="myProperties">
+        <h3>Mes propriétés :</h3>
+        {% for property in user.houses %}
+            <div class="property">
+                <div class="propertyPhoto">
+                    <img src="{{ asset('uploads/houses/' ~ property.photo) }}" alt="Photo de la propriété : {{ property.name }}">
+                </div>
+                <div class="propertyDetails">
+                    <h4>{{ property.name }}</h4>
+                    <p>{{ property.city }}, {{ property.country | country_name }}</p>
+                    <p>{{ property.price }}€ /nuit</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

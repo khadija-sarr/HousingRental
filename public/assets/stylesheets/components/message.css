@@ -1,0 +1,71 @@
+/* ------------------------------------------------------------------------------------------------------------------ */
+/* CSS - Flash messages */
+/* ------------------------------------------------------------------------------------------------------------------ */
+div.flashMessage {
+    display: flex;
+    width: 450px;
+    height: 150px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border: 1px solid #FFFFFF50;
+    background-color: #00000060;
+    backdrop-filter: blur(2px);
+    box-shadow: var(--box-shadow);
+    opacity: 1;
+    z-index: 1000;
+    transition: opacity 0.5s ease-in-out;
+}
+div.flashMessage.close {
+    opacity: 0;
+}
+div.flashMessage > div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 150px);
+    height: 100%;
+}
+div.flashMessage > div:first-child > * {
+    color: var(--color-FF);
+}
+div.flashMessage > div:first-child > h4 {
+    margin: auto auto 10px 20px;
+}
+div.flashMessage > div:first-child > p {
+    margin: 0 auto 20px 20px;
+}
+div.flashMessage > div:first-child > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100px;
+    height: 40px;
+    margin: 0 auto auto 20px;
+    border: 1px solid #FFFFFF50;
+    background-color: #00000010;
+    backdrop-filter: blur(2px);
+}
+div.flashMessage > div:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 100%;
+}
+div.flashMessage > div:last-child > i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 75px;
+    color: var(--color-FF);
+    border-radius: 50%;
+}
+div.flashMessage.success > div:last-child > i {
+    background-color: var(--color-green);
+}
+div.flashMessage.error > div:last-child > i {
+    background-color: var(--color-red);
+}

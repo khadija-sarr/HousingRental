@@ -1,0 +1,136 @@
+/* ------------------------------------------------------------------------------------------------------------------ */
+/* CSS - Profile page */
+/* ------------------------------------------------------------------------------------------------------------------ */
+.userInfoContainer {
+    display: flex;
+    justify-content: center;
+    margin: 60px 30px;
+}
+.userInfoContainer > div {
+    width: fit-content;
+}
+.userInfoContainer > div > h3 {
+    margin: 40px auto 20px auto;
+}
+.userInfoContainer > div > .infoUser > .userProfile {
+    display: flex;
+    margin-bottom: 10px;
+}
+.userInfoContainer > div > .infoUser > .userProfile > div:first-child {
+    width: 40px;
+    height: 40px;
+}
+.userInfoContainer > div > .infoUser > .userProfile > div:first-child > i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.userInfoContainer > div > .infoUser > .userProfile > div:last-child:not(.userLocation) {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+.userInfoContainer > div > .infoUser > .userProfile > div.userLocation {
+    margin-left: 10px;
+}
+.userInfoContainer > .photoProfile {
+    max-width: 400px;
+    max-height: 400px;
+    margin-left: 150px;
+    overflow: hidden;
+}
+.userInfoContainer > .photoProfile > img {
+    width: 100%;
+    height: 100%;
+}
+.updateBtn {
+    max-width: 300px;
+    padding: 10px;
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
+    color: var(--color-FF);
+    text-align: center;
+    margin:  0 auto 20px auto;
+
+}
+@media screen and (max-width: 900px){
+    .userInfoContainer {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .userInfoContainer > div > h2,
+    .userInfoContainer > div > h3 {
+        text-align: center;
+    }
+    .userInfoContainer > .photoProfile {
+        margin: 0 auto 20px auto;
+    }
+}
+.myProperties {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+    border-top: 1px dashed var(--color-grey-light);
+}
+.myProperties > h3 {
+    margin: 20px auto 0 0;
+}
+.myProperties > .property {
+    display: flex;
+    width: 100%;
+    height: 150px;
+    margin: 20px 0 0 0;
+}
+@media screen and (max-width: 600px){
+    .myProperties > .property {
+        height: 130px;
+    }
+}
+@media screen and (max-width: 500px){
+    .myProperties > .property {
+        height: 100px;
+    }
+}
+@media screen and (max-width: 400px){
+    .myProperties > .property {
+        flex-direction: column;
+        height: fit-content;
+    }
+}
+.myProperties > .property > .propertyPhoto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 100%;
+    overflow: hidden;
+}
+@media screen and (max-width: 400px){
+    .myProperties > .property > .propertyPhoto {
+        width: 100%;
+        min-height: 150px;
+    }
+}
+.myProperties > .property > .propertyPhoto > img {
+    width: 100%;
+    height: 100%;
+}
+.myProperties > .property > .propertyDetails {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+@media screen and (max-width: 400px){
+    .myProperties > .property > .propertyDetails {
+        margin: 0;
+    }
+    .myProperties > .property > .propertyDetails > h4 {
+        margin: 10px auto 0 0;
+    }
+}
+.myProperties > .property > .propertyDetails > p:first-of-type {
+    margin: 10px auto 10px 0;
+    color: var(--color-primary);
+}

@@ -1,3 +1,6 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/stylesheets/components/cards.css') }}">
+{% endblock %}
 <a class="card" href="{{ path('default_house', { 'category': property.category.alias, 'alias': property.alias, 'id': property.id }) }}">
     <img src="{{ asset('uploads/houses/' ~ property.photo) }}" alt="Card image">
     <div class="filter"></div>

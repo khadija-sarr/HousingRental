@@ -1,3 +1,6 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/stylesheets/components/navbar.css') }}">
+{% endblock %}
 <nav id="mainNav">
     <div class="siteLogo">
         <a href="{{ path('default_home') }}">
@@ -23,9 +26,11 @@
                 <a href="{{ path('contact_form') }}">Contact</a>
             </li>
             {% if app.user %}
-                <li>
-                    <a href="{{ path('house_new') }}">Location</a>
-                </li>
+                {% if is_granted('ROLE_OWNER') %}
+                    <li>
+                        <a href="{{ path('house_new') }}">Location</a>
+                    </li>
+                {% endif %}
                 <li id="profile">
                     <a href="{{ path('user_profile') }}">Profil</a>
                 </li>

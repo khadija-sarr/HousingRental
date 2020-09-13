@@ -1,0 +1,56 @@
+/* ------------------------------------------------------------------------------------------------------------------ */
+/* CSS - Footer */
+/* ------------------------------------------------------------------------------------------------------------------ */
+footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 250px;
+    margin-top: 80px;
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
+}
+footer > .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: 20px auto;
+}
+footer > .center > a {
+    padding: 10px;
+    color: var(--color-FF);
+}
+.footer_link:hover {
+    text-decoration: none;
+}
+footer > hr {
+    width: 80%;
+    margin: 0 auto;
+    border: 1px solid white;
+}
+footer > .social {
+    display: flex;
+    width: fit-content;
+    text-align: center;
+    margin: 30px auto 20px auto;
+}
+footer > .social > a {
+    font-size: 45px;
+}
+footer > .social > a > i {
+    color: white;
+    padding: 10px;
+}
+footer > .credentials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: 10px auto auto auto;
+}
+footer > .credentials > p {
+    color: var(--color-FF);
+}
+footer > .credentials > p > a {
+    color: white;
+}

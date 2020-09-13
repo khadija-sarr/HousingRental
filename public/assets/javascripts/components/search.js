@@ -5,7 +5,6 @@ slider1.oninput = function() {
     priceMin.value = this.value;
 
 }
-
 var slider2 = document.getElementById("myRangeMax");
 var priceMax = document.getElementById("form_priceMax");
 priceMax.value = slider2.value;

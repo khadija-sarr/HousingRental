@@ -52,9 +52,9 @@
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->remove($user);
                 $entityManager->flush();
-                $this->addFlash('success', 'L\utilisateur a bien été supprimé de la base de données.');
+                $this->addFlash('success', 'L\'utilisateur a bien été supprimé.');
             } else {
-                $this->addFlash('error', 'Une erreur est survenue lors de la suppression de l\'utilisateur sélectionné.');
+                $this->addFlash('error', 'Impossible de supprimer l\'utilisateur.');
             }
             return $this->redirectToRoute('admin_backOffice');
         }
@@ -70,19 +70,10 @@
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->remove($rental);
                 $entityManager->flush();
-                $this->addFlash('success', 'La location a bien été supprimée de la base de données.');
+                $this->addFlash('success', 'La propriété à bien été supprimée.');
             } else {
-                $this->addFlash('error', 'Une erreur est survenue lors de la suppression de la location sélectionnée.');
+                $this->addFlash('error', 'Impossible de supprimer la propriété.');
             }
-            return $this->redirectToRoute('admin_backOffice');
-        }
-        /**
-         * @IsGranted("ROLE_ADMIN")
-         * @Route("/admin/location/modifier/{id}", name="admin_updateRental", methods={"GET"})
-         * @param $id
-         * @return Response
-         */
-        public function updateRental($id) {
             return $this->redirectToRoute('admin_backOffice');
         }
         /**

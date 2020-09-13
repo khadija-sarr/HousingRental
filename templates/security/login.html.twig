@@ -19,8 +19,8 @@
                 </div>
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                 <div class="checkbox">
-                    <input type="checkbox" name="_remember_me">
-                    <p>Se souvenir de moi</p>
+                    <input id="rememberMe" type="checkbox" name="_remember_me">
+                    <label for="rememberMe">Se souvenir de moi</label>
                 </div>
                 <button class="bouton" type="submit">Connexion</button>
             </div>

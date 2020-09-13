@@ -34,7 +34,7 @@ h5, i {
 h6 {
     font-size: 1.4rem;
 }
-a, p, button, label, input, textarea, select, option {
+a, p, button, label, input, textarea, select, option, li {
     font-size: 1rem;
 }
 a, p, button, label, input, textarea, select, option {
@@ -61,7 +61,7 @@ i {
     h4 {
         font-size: 1.6rem;
     }
-    h5, i {
+    h5 {
         font-size: 1.4rem;
     }
     h6 {
@@ -81,13 +81,13 @@ i {
     h4 {
         font-size: 1.4rem;
     }
-    h5, i {
+    h5 {
         font-size: 1.2rem;
     }
     h6 {
         font-size: 1rem;
     }
-    a, p, button, label, input, textarea, select, option {
+    a, p, button, label, input, textarea, select, option, li {
         font-size: 0.9rem;
     }
 }
@@ -104,13 +104,16 @@ i {
     h4 {
         font-size: 1.2rem;
     }
-    h5, i {
+    h5 {
         font-size: 1rem;
     }
     h6 {
         font-size: 0.9rem;
     }
-    a, p, button, label, input, textarea, select, option {
+    a, p, button, label, input, textarea, select, option, li {
         font-size: 0.8rem;
+    }
+    .menuContainer ul > li > a {
+        font-size: 1rem;
     }
 }
