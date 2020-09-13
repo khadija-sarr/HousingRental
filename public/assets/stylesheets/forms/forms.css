@@ -54,7 +54,7 @@
     display: flex;
     align-items: center;
 }
-.formContainer > form > .form > div.checkbox > p {
+.formContainer > form > .form > div.checkbox > label {
     margin-left: 10px;
 }
 .formContainer > form > .form > .bouton,

@@ -1,3 +1,6 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/stylesheets/components/footer.css') }}">
+{% endblock %}
 <footer>
     <div class="center">
         <a class="footer_link" href="{{ path('default_home') }}">HousingRental</a>
@@ -5,9 +8,9 @@
     </div>
     <hr class="w-75">
     <div class="social">
-        <a href="https://google.com"><i class="fab fa-facebook-square"></i></a>
-        <a href="https://google.com"><i class="fab fa-instagram-square"></i></a>
-        <a href="https://google.com"><i class="fab fa-twitter-square"></i></a>
+        <a href="https://www.facebook.com"><i class="fab fa-facebook-square"></i></a>
+        <a href="https://www.instagram.com"><i class="fab fa-instagram-square"></i></a>
+        <a href="https://twitter.com"><i class="fab fa-twitter-square"></i></a>
     </div>
     <div class="credentials">
         <p>&copy; 2020 - HousingRental | <a class="footer_link" href="{{ path('default_privacy') }}">Politique de confidentialité</a></p>

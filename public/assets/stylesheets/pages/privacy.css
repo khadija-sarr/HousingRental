@@ -1,0 +1,28 @@
+/* ------------------------------------------------------------------------------------------------------------------ */
+/* CSS - Privacy policy */
+/* ------------------------------------------------------------------------------------------------------------------ */
+body > main > div.privacyPolicy {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 40px);
+    margin: 80px 20px 0 20px;
+}
+body > main > div.privacyPolicy > h2:first-of-type {
+    margin: 0 auto 20px 20px;
+}
+body > main > div.privacyPolicy > h2:not(:first-of-type),
+body > main > div.privacyPolicy > h3 {
+    margin: 20px auto 20px 20px;
+}
+body > main > div.privacyPolicy > p ~ h2,
+body > main > div.privacyPolicy > p ~ h3 {
+    margin: 0 auto 20px 20px !important;
+}
+body > main > div.privacyPolicy > h2 ~ p,
+body > main > div.privacyPolicy > h3 ~ p,
+body > main > div.privacyPolicy > ul {
+    margin: 0 auto 20px 20px;
+}
+body > main > div.privacyPolicy a {
+    color: var(--color-primary-dark);
+}

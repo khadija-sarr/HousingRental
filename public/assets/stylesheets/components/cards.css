@@ -1,0 +1,115 @@
+/* ------------------------------------------------------------------------------------------------------------------ */
+/* CSS - Properties cards */
+/* ------------------------------------------------------------------------------------------------------------------ */
+.cardsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 80px auto 0 auto;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 510px);
+}
+@media screen and (max-width: 1080px) {
+    .container {
+        grid-template-columns: repeat(2, 410px) !important;
+    }
+}
+@media screen and (max-width: 850px) {
+    .container {
+        grid-template-columns: repeat(2, 310px) !important;
+    }
+}
+@media screen and (max-width: 650px) {
+    .container {
+        grid-template-columns: repeat(2, 260px) !important;
+    }
+}
+@media screen and (max-width: 540px) {
+    .container {
+        grid-template-columns: repeat(1, 390px) !important;
+    }
+}
+.card {
+    display: flex;
+    width: calc(100% - 10px);
+    height: 300px;
+    margin: 5px auto;
+    position: relative;
+    box-shadow: var(--box-shadow);
+}
+@media screen and (max-width: 1080px) {
+    .card {
+        height: 250px;
+    }
+}
+@media screen and (max-width: 850px) {
+    .card {
+        height: 200px;
+    }
+}
+@media screen and (max-width: 650px) {
+    .card {
+        height: 150px;
+    }
+}
+@media screen and (max-width: 540px) {
+    .card {
+        height: 200px;
+    }
+}
+.card > div.filter {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background: linear-gradient(#00000020, #00000040, #00000060, #000000B0, #000000F0);
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 10;
+}
+.card:hover > div.filter {
+    opacity: 0;
+}
+.card > img {
+    width: 100%;
+    height: 100%;
+}
+.cardBody > h6 {
+    color: var(--color-FF);
+}
+.cardBody > p {
+    margin-top: 10px;
+    color: var(--color-FF);
+}
+.cardBody {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    z-index: 30;
+}
+.propertyCategory {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 120px;
+    margin: auto;
+    padding: 5px 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 10px;
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
+    z-index: 30;
+}
+@media screen and (max-width: 1080px) {
+    .propertyCategory {
+        min-width: initial;
+        padding: 10px;
+    }
+}
+.propertyCategory > p {
+    color: var(--color-FF);
+}
