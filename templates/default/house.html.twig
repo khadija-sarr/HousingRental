@@ -36,7 +36,15 @@
                 <h4>Contact :</h4>
                 <div class="profile">
                     <div class="userPhoto">
-                        <img class="photo" src="{{ asset('uploads/users/' ~ house.user.photo) }}" alt="photo de profil">
+                        {% if house.user.photo is not null %}
+                            <img src="{{ asset('uploads/users/' ~ house.user.photo) }}" alt="Photo de profil de {{ house.user.firstname }} {{ house.user.lastname }}">
+                        {% else %}
+                            {% if house.user.gender == "Femme" %}
+                                <img src="{{ asset('assets/images/placeholders/woman.jpg') }}" alt="Avatar par défaut">
+                            {% else %}
+                                <img src="{{ asset('assets/images/placeholders/man.jpg') }}" alt="Avatar par défaut">
+                            {% endif %}
+                        {% endif %}
                     </div>
                     <div>
                         <div>
@@ -47,7 +55,7 @@
                         </div>
                         <div>
                             <i class="fas fa-mobile-alt"></i>
-                            <p>0{{ house.user.phone }}</p>
+                            <p>{{ house.user.phone }}</p>
                         </div>
                         <div>
                             <i class="fas fa-home"></i>

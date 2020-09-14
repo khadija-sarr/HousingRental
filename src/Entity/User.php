@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -22,11 +23,14 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank(message="Veuillez indiquer votre adresse email.")
+     * @Assert\Email(message="Veuillez indiquer une adresse email valide.")
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Assert\NotNull(message="Veuillez indiquer votre statut.")
      */
     private $roles;
 
@@ -38,36 +42,46 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=80)
+     * @Assert\NotBlank(message="Veuillez indiquer votre prénom.")
+     * @Assert\Length(max="30", maxMessage="Votre prénom ne doit pas dépasser les {{ limit }} caractères.")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=80)
+     * @Assert\NotBlank(message="Veuillez indiquer votre nom.")
+     * @Assert\Length(max="30", maxMessage="Votre nom ne doit pas dépasser les {{ limit }} caractères.")
      */
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $photo;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\Country(message="Veuillez indiquer la ville où vous vivez.")
      */
     private $country;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank(message="Veuillez indiquer votre code postal.")
+     * @Assert\Length(max="20", maxMessage="Veuillez saisir un code postal correct.")
      */
     private $zipcode;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez indiquer votre adresse postale.")
      */
     private $address;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank(message="Veuillez indiquer votre numéro de téléphone.")
+     * @Assert\Regex("/^([0-9]+)$/", message="Veuillez indiquer un numéro de téléphone correct.")
      */
     private $phone;
 
@@ -78,8 +92,16 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @Assert\NotBlank(message="Veuillez indiquer la ville où vous vivez.")
+     * @Assert\Length(max="30", maxMessage="Veuillez saisir un nom de ville correct.")
      */
     private $city;
+
+    /**
+     * @ORM\Column(type="string", length=20)
+     * @Assert\NotNull(message="Veuillez indiquer votre genre.")
+     */
+    private $gender;
 
     public function __construct()
     {
@@ -188,7 +210,7 @@ class User implements UserInterface
         return $this->photo;
     }
 
-    public function setPhoto(string $photo): self
+    public function setPhoto(?string $photo): self
     {
         $this->photo = $photo;
 
@@ -231,12 +253,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getPhone(): ?int
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
-    public function setPhone(int $phone): self
+    public function setPhone(string $phone): self
     {
         $this->phone = $phone;
 
@@ -282,6 +304,18 @@ class User implements UserInterface
     public function setCity(string $city): self
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    public function getGender(): ?string
+    {
+        return $this->gender;
+    }
+
+    public function setGender(string $gender): self
+    {
+        $this->gender = $gender;
 
         return $this;
     }

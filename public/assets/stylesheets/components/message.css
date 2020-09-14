@@ -58,8 +58,8 @@ div.flashMessage > div:last-child > i {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 75px;
-    height: 75px;
+    width: 60px;
+    height: 60px;
     color: var(--color-FF);
     border-radius: 50%;
 }

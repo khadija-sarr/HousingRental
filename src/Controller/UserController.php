@@ -2,13 +2,12 @@
     namespace App\Controller;
     use App\Entity\Category;
     use App\Entity\User;
+    use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
     use Symfony\Component\Form\Extension\Core\Type\CountryType;
     use Symfony\Component\Form\Extension\Core\Type\EmailType;
     use Symfony\Component\Form\Extension\Core\Type\FileType;
-    use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-    use Symfony\Component\Form\Extension\Core\Type\NumberType;
     use Symfony\Component\Form\Extension\Core\Type\PasswordType;
     use Symfony\Component\Form\Extension\Core\Type\SubmitType;
     use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -44,12 +43,15 @@
                         Si vous choisissez d\'être un utilisateur, il vous sera uniquement possible de réserver des propriétés pour vos vacances. 
                         Si vous indiquez être propriétaire, en plus de pouvoir réserver, il vous sera notamment possible de proposer vos propres propriétés comme destination de vacances sur notre site.'
                     ],
-                    'choices' => ['Utilisateur' => 'ROLE_USER', 'Propriétaire' => 'ROLE_OWNER']
+                    'choices' => ['Utilisateur' => 'ROLE_USER', 'Propriétaire' => 'ROLE_OWNER'],
+                    'multiple' => false,
+                    'expanded' => true
                 ])
-            ->add('phone', IntegerType::class, ['label' => 'Téléphone'])
+            ->add('gender', ChoiceType::class, ['label' => 'Sexe', 'choices' => ['Homme' => 'Homme', 'Femme' => 'Femme'], 'multiple' => false, 'expanded' => true])
+            ->add('phone', TextType::class, ['label' => 'Téléphone'])
             ->add('address', TextType::class, ['label' => 'Adresse'])
             ->add('city', TextType::class, ['label' => 'Ville'])
-            ->add('zipcode', IntegerType::class, ['label' => 'Code Postal'])
+            ->add('zipcode', TextType::class, ['label' => 'Code Postal'])
             ->add('country', CountryType::class, ['label' =>'Pays','preferred_choices' => ['value' => 'FR']])
             ->add('photo', FileType::class, ['label' => 'Photo', 'attr' => ['class' => 'dropify']])
             ->add('submit', SubmitType::class, ['label' => 'Valider'])
@@ -58,15 +60,18 @@
             if($form->isSubmitted() && $form->isValid()) {
                 $encoded = $encoder->encodePassword($user, $form->get('password')->getData());
                 $role = $form->get('roles')->getData();
+                $photo = $form->get('photo')->getData();
                 $user->setPassword($encoded)->setRoles([$role]);
-                $imageFile = $form->get('photo')->getData();
-                $newFilename = $user->getFirstname() . '-' . $user->getLastname() . '-' . uniqid() . '.' . $imageFile->guessExtension();
-                try {
-                    $imageFile->move($this->getParameter('users_directory'), $newFilename);
-                } catch (FileException $e) {
-                    die();
+                if($photo != null) {
+                    $imageFile = $form->get('photo')->getData();
+                    $newFilename = $user->getFirstname() . '-' . $user->getLastname() . '-' . uniqid() . '.' . $imageFile->guessExtension();
+                    try {
+                        $imageFile->move($this->getParameter('users_directory'), $newFilename);
+                    } catch (FileException $e) {
+                        die();
+                    }
+                    $user->setPhoto($newFilename);
                 }
-                $user->setPhoto($newFilename);
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($user);
                 $entityManager->flush();
@@ -82,9 +87,14 @@
                 ]);
         }
         /**
+         * @IsGranted("IS_AUTHENTICATED_FULLY")
          * @Route("/profil", name="user_profile", methods={"GET|POST"})
          */
         public function profil() {
+            if(!$this->getUser()) {
+                $this->addFlash('error', 'Vous devez être connecté.');
+                return $this->redirectToRoute('app_login');
+            }
             $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
             $user = $this->getUser();
             return $this->render('user/profile.html.twig',
@@ -98,22 +108,37 @@
         /**
          * @Route("/modification", name="user_update", methods={"GET|POST"} )
          * @param Request $request
-         * @param UserPasswordEncoderInterface $encoder
          * @return Response
          */
-        public function update(Request $request, UserPasswordEncoderInterface $encoder) {
+        public function update(Request $request) {
             $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
             $user = $this->getUser();
+            $oldPhoto = $this->getDoctrine()->getRepository(User::class)->find($this->getUser())->getPhoto();
             $form = $this->createFormBuilder($user)
-                ->add("email", EmailType::class, ['label' => 'Email'])
-                ->add("phone", NumberType::class, ['label' => 'Téléphone'])
-                ->add("address", TextType::class, ['label' => 'Adresse'])
-                ->add('zipcode', TextType::class, ['label' => 'Code postal'])
-                ->add('city', TextType::class, ['label' => 'Ville'])
-                ->add('submit', SubmitType::class, ['label' => 'Modifier']);
+            ->add("email", EmailType::class, ['label' => 'Email'])
+            ->add('country', CountryType::class, ['label' =>'Pays','preferred_choices' => ['value' => 'FR']])
+            ->add('city', TextType::class, ['label' => 'Ville'])
+            ->add('zipcode', TextType::class, ['label' => 'Code postal'])
+            ->add("address", TextType::class, ['label' => 'Adresse'])
+            ->add("phone", TextType::class, ['label' => 'Téléphone'])
+            ->add('photo', FileType::class, ['label' => 'Photo', 'data_class' => null, 'attr' => ['class' => 'dropify', 'data-default-file' => '/uploads/users/' . $user->getPhoto()]])
+            ->add('submit', SubmitType::class, ['label' => 'Modifier']);
             $form = $form->getForm();
             $form->handleRequest($request);
             if($form->isSubmitted() && $form->isValid()) {
+                $photo = $form->get('photo')->getData();
+                if($photo != null) {
+                    $imageFile = $form->get('photo')->getData();
+                    $newFilename = $user->getFirstname() . '-' . $user->getLastname() . '-' . uniqid() . '.' . $imageFile->guessExtension();
+                    try {
+                        $imageFile->move($this->getParameter('users_directory'), $newFilename);
+                    } catch (FileException $e) {
+                        die();
+                    }
+                    $user->setPhoto($newFilename);
+                } else {
+                    $user->setPhoto($oldPhoto);
+                }
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($user);
                 $entityManager->flush();

@@ -146,7 +146,7 @@ div.backOfficeContainer > div.tableContainer > table > tbody > tr > td.delete > 
     transition: background-color 0.5s ease-in-out;
 }
 div.backOfficeContainer > div.tableContainer > table > tbody > tr > td.delete:hover > a {
-    background-color: var(--color-F3E);
+    background-color: var(--color-red);
 }
 div.backOfficeContainer > div.tableContainer > table > tbody > tr > td.delete > a > i {
     width: 100%;
@@ -203,5 +203,5 @@ div.backOfficeContainer > div.tableContainer > table > tbody > tr > td.delete:ho
 /* CSS - Footer */
 /* ----------------------------------------------------------------------------------------------------------------- */
 footer {
-    display: none;
+    display: none !important;
 }
