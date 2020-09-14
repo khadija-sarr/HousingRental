@@ -45,6 +45,8 @@ class ContactController extends AbstractController
             } catch (TransportExceptionInterface $e) {
                 dd($e);
             }
+            $this->addFlash('success', 'Votre message a bien été envoyé.');
+            return $this->redirectToRoute('default_home');
         }
         return $this->render('contact/new.html.twig',
             [
