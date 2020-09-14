@@ -316,6 +316,7 @@ body > main > div.categoryCards > a {
 body > main > div.categoryCards > a > img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 body > main > div.categoryCards > a > div.filter {
     display: flex;
