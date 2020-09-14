@@ -34,7 +34,7 @@
             ->add('firstname', TextType::class, ['label' => 'Prénom'])
             ->add('lastname', TextType::class, ['label' => 'Nom'])
             ->add('email', EmailType::class, ['label' => 'Email'])
-            ->add('password', PasswordType::class, ['label' => 'Mot de passe'])
+            ->add('password', PasswordType::class, ['label' => 'Mot de passe', 'empty_data' => ''])
             ->add('roles', ChoiceType::class,
                 [
                     'label' => 'Status',
