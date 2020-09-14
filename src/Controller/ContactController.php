@@ -14,6 +14,7 @@ use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ContactController extends AbstractController
 {
@@ -27,10 +28,10 @@ class ContactController extends AbstractController
     {
         $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
         $form = $this->createFormBuilder()
-            ->add('fullname', TextType::class, ['label' => 'Nom et Prénom'])
-            ->add('email', EmailType::class, ['label' => 'Adresse email'])
-            ->add('subject', TextType::class, ['label' => 'Sujet'])
-            ->add('message', TextareaType::class, ['label' => 'Message'])
+            ->add('fullname', TextType::class, ['label' => 'Nom et Prénom', 'constraints' => new NotBlank()])
+            ->add('email', EmailType::class, ['label' => 'Adresse email', 'constraints' => [new NotBlank(), new \Symfony\Component\Validator\Constraints\Email()]])
+            ->add('subject', TextType::class, ['label' => 'Sujet', 'constraints' => new NotBlank()])
+            ->add('message', TextareaType::class, ['label' => 'Message', 'constraints' => new NotBlank()])
             ->add('submit', SubmitType::class, ['label' => 'Envoyer'])
             ->getForm();
         $form->handleRequest($request);
