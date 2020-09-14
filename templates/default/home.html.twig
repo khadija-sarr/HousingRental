@@ -33,19 +33,19 @@
                 <p>Des propriétés au design atypique aux propriétés de rêve avec piscine, isolées ou en centre ville, les meilleures propriétés sont ici !</p>
                 <div>
                     <div>
-                        <a href="{{ path('default_worldwide') }}">
+                        <a class="whyUsLink" href="#">
                             <i class="fas fa-globe-asia"></i>
                         </a>
                         <p>Des propriétés partout dans le monde</p>
                     </div>
                     <div>
-                        <a href="{{ path('contact_form') }}">
+                        <a class="whyUsLink" href="#">
                             <i class="fas fa-headset"></i>
                         </a>
                         <p>Support 7j/7 & 24h/24</p>
                     </div>
                     <div>
-                        <a href="{{ path('default_pricing') }}">
+                        <a class="whyUsLink" href="#">
                             <i class="fas fa-money-bill-wave"></i>
                         </a>
                         <p>Prix de rêve pour des vacances de rêve</p>
@@ -66,4 +66,16 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
+    <script>
+        window.onload = function() {
+            const whyUsButtons = document.querySelectorAll('.whyUsLink');
+            if(whyUsButtons) {
+                whyUsButtons.forEach(function(element) {
+                    element.addEventListener("click", function(event) {
+                        event.preventDefault();
+                    })
+                });
+            }
+        };
+    </script>
 {% endblock %}
