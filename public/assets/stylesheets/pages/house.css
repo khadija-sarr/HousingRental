@@ -28,6 +28,7 @@
 .detailsContainer > div > .houseDetailSlider > img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 .detailsContainer > div > .houseDetailsHead {
     display: flex;
@@ -115,6 +116,7 @@
 .detailsContainer > div > .propertyOwner > .profile > .userPhoto > img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 .detailsContainer > div > .propertyOwner > .profile > div:last-child {
     display: flex;
