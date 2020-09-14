@@ -7,8 +7,8 @@
 {% block content %}
     <div class="userInfoContainer">
         <div>
-            <h2>{{ app.user.firstname | title }}</h2>
-            <h2>{{ app.user.lastname | title }}</h2>
+            <h2>{{ user.firstname }}</h2>
+            <h2>{{ user.lastname }}</h2>
             <h3>Mes informations :</h3>
             <div class="infoUser">
                 <div class="userProfile">
@@ -24,7 +24,7 @@
                         <i class="fas fa-mobile-alt"></i>
                     </div>
                     <div>
-                        <p>0{{ user.phone }}</p>
+                        <p>{{ user.phone }}</p>
                     </div>
                 </div>
                 <div class="userProfile">
@@ -39,7 +39,15 @@
             </div>
         </div>
         <div class="photoProfile">
-            <img src="{{ asset('uploads/users/' ~ user.photo) }}" alt="Photo de profil">
+            {% if user.photo is not null %}
+                <img src="{{ asset('uploads/users/' ~ user.photo) }}" alt="Photo de profil de {{ user.firstname }} {{ user.lastname }}">
+            {% else %}
+                {% if user.gender == "Femme" %}
+                    <img src="{{ asset('assets/images/placeholders/woman.jpg') }}" alt="Avatar par défaut">
+                {% else %}
+                    <img src="{{ asset('assets/images/placeholders/man.jpg') }}" alt="Avatar par défaut">
+                {% endif %}
+            {% endif %}
         </div>
     </div>
     <a class="updateBtn" href="{{ path('user_update') }}">Modifier mes informations</a>

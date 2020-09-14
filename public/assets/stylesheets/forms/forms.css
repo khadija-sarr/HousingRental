@@ -13,6 +13,9 @@
 .formContainer > div.formBuilder {
     width: 900px;
 }
+.formContainer form li {
+    color: var(--color-red);
+}
 .formContainer > form > h2,
 .formContainer > div.formBuilder > h2 {
     margin: 0 auto 10px 0;
@@ -46,9 +49,31 @@
     background-color: var(--color-grey-light);
     border-radius: 10px;
 }
+.formContainer #form_gender,
+.formContainer #form_roles {
+    display: flex;
+    align-items: center;
+}
+.formContainer form input[type="radio"] {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 25px 10px 25px 0;
+}
+.formContainer form input[type="radio"]:last-of-type {
+    margin: 25px 10px;
+}
 .formContainer > div.formBuilder > form > div > div > textarea {
     height: 120px;
     resize: none;
+}
+.formContainer > div.formBuilder > form .dropify,
+.formContainer > div.formBuilder > form .dropify-wrapper {
+    border-color: var(--color-grey-light);
+}
+.formContainer > div.formBuilder > form .dropify *,
+.formContainer > div.formBuilder > form .dropify-wrapper * {
+    color: var(--color-FF);
 }
 .formContainer > form > .form > div.checkbox {
     display: flex;
