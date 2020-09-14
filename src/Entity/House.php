@@ -22,7 +22,7 @@ class House
      * @ORM\Column(type="string", length=255)
      * @Assert\Image(
      *     mimeTypesMessage="Vérifiez le format de votre image.",
-     *     maxSize="2M", maxSizeMessage="Votre image est trop lourde."
+     *     maxSize="4M", maxSizeMessage="Votre image est trop lourde."
      * )
      */
     private $photo;
