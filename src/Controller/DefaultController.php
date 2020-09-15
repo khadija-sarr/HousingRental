@@ -16,21 +16,9 @@
             $lastHouses = $this->getDoctrine()
             ->getRepository(House::class)
             ->findBy([], ['id' => 'DESC'], 4);
-            $apartments = $this->getDoctrine()
-            ->getRepository(House::class)
-            ->findBy(['category' => 1], ['id' => 'DESC'], 4);
-            $houses = $this->getDoctrine()
-            ->getRepository(House::class)
-            ->findBy(['category' => 2], ['id' => 'DESC'], 4);
-            $events = $this->getDoctrine()
-            ->getRepository(House::class)
-            ->findBy(['category' => 3], ['id' => 'DESC'], 4);
             return $this->render('default/home.html.twig',
                 [
                     'lastHouses' => $lastHouses,
-                    'apartments' => $apartments,
-                    'houses' => $houses,
-                    'events' => $events,
                     'categories' => $categories,
                     'properties' => $properties,
                     'bannerTitle' => 'En recherche de destination de vacances ?',

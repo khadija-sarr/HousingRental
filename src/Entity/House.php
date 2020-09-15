@@ -29,8 +29,8 @@ class House
 
     /**
      * @ORM\Column(type="string", length=80)
-     * @Assert\Length(max="35", maxMessage="Attention pas plus de {{ limit }} caractères")
      * @Assert\NotBlank(message="Veuillez saisir le nom du logement.")
+     * @Assert\Length(max="35", maxMessage="Le nom de votre logement ne doit pas dépasser les {{ limit }} caractères.")
      */
     private $name;
 

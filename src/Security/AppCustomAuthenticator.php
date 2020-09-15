@@ -53,7 +53,7 @@
             }
             $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
             if (!$user) {
-                throw new CustomUserMessageAuthenticationException('Email could not be found.');
+                throw new CustomUserMessageAuthenticationException('Cette adresse email n\'existe pas.');
             }
             return $user;
         }

@@ -9,6 +9,11 @@
         <form method="post">
             <h2 class="title">Connexion</h2>
             <div class="form">
+                {% if error %}
+                    <ul class="alert alert-danger">
+                        <li>{{ error.messageKey|trans(error.messageData, 'security') }}</li>
+                    </ul>
+                {% endif %}
                 <div class="username">
                     <label for="inputEmail">Email</label>
                     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="formInput" required autofocus>
